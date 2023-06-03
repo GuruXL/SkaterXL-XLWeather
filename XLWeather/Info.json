@@ -1,0 +1,11 @@
+﻿{
+	"Id": "XLWeather",
+	"DisplayName": "XLWeather_sxl_1.2.2.8",
+	"Author": "Guru",
+	"Version": "0.2.0",
+	"ManagerVersion": "0.22.5.0",
+	"Requirements": [],
+	"LoadAfter": [],
+	"AssemblyName": "XLWeather.dll",
+	"EntryMethod": "XLWeather.Main.Load"
+}
