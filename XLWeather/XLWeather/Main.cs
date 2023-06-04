@@ -43,7 +43,8 @@ namespace XLWeather
             GUILayout.BeginVertical(GUILayout.Width(284));
             if (settings.MapLayersToggle)
             {
-                GUILayout.Label($"<color=#ffe600><i>Please note: dynamic lights are only functional on maps that have been configured to use the feature.</i></color>");
+                GUILayout.Label($"<b>Experimental. May cause extra lag during day/night transitions.</b>");
+                GUILayout.Label($"<color=#ffe600><i>Please note: Dynamic lights only work on maps that are set up to use this feature.</i></color>");
             }
             if (RGUI.Button(settings.MapLayersToggle, "Dynamic Map Lights"))
             {

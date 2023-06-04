@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using XLWeather.Data;
 using ModIO.UI;
+using System;
 
 namespace XLWeather.Controller
 {
@@ -15,6 +16,7 @@ namespace XLWeather.Controller
         public LightType lightType = LightType.Directional;
         public Light MainLight = null;
         public List<Material> hdrpMaterials;
+        public List<ReflectionProbe> probes;
         public Dictionary<Material, float> originalEmissionweights;
         //private int delay = 0;
 
@@ -146,6 +148,7 @@ namespace XLWeather.Controller
             GetLayerMapLights();
             GetLayerGO();
             GetMapMaterials();
+            GetReflectionProbes();
         }
         private void GetLayerMapLights()
         {
@@ -166,6 +169,7 @@ namespace XLWeather.Controller
 
             Main.Logger.Log($"{TaggedLightsList.Count} Map Lights on Layer 30");
         }
+
         private void GetLayerGO()
         {
             TaggedGO = new List<GameObject>();
@@ -235,15 +239,17 @@ namespace XLWeather.Controller
             switch (sunActive)
             {
                 case true:
-                    ToggleLayerGO(true);
+                    ToggleLayerGO(false);
                     ToggleMapLights(false);
                     ToggleEmission(false);
+                    toggleProbes(true);
                     Main.Logger.Log("sunActive: " + sunActive);
                     break;
                 case false:
-                    ToggleLayerGO(false);
+                    ToggleLayerGO(true);
                     ToggleMapLights(true);
                     ToggleEmission(true);
+                    toggleProbes(false);
                     Main.Logger.Log("sunActive: " + sunActive);
                     break;
             }
@@ -252,9 +258,10 @@ namespace XLWeather.Controller
         public void ResetLayerToggles()
         {
             previousSunActive = false;
-            ToggleLayerGO(true);
+            ToggleLayerGO(false);
             ToggleMapLights(true);
             ToggleEmission(true);
+            toggleProbes(true);
         }
 
         // ------- End Toggle for Tagged Lights ---------------
@@ -330,5 +337,40 @@ namespace XLWeather.Controller
         }
 
         // ---------- end of Material changes  --------------
+
+        // ---------- reflection probe functions -------------
+
+        void GetReflectionProbes()
+        {
+            probes = new List<ReflectionProbe>();
+            probes.Clear();
+
+            foreach (GameObject obj in TaggedGO)
+            {
+                ReflectionProbe[] reflectionProbes = obj.GetComponents<ReflectionProbe>();
+
+                if (reflectionProbes.Length > 0)
+                {
+                    probes.AddRange(reflectionProbes);
+                }
+            }
+        }
+
+        void toggleProbes(bool value)
+        {
+            foreach (ReflectionProbe probe in probes)
+            {
+                string probeName = probe.gameObject.name.ToLower(); // Convert the name to lowercase
+
+                if (probeName.IndexOf("day", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    probe.gameObject.SetActive(value);
+                }
+                else if (probeName.IndexOf("night", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    probe.gameObject.SetActive(!value);
+                }
+            }
+        }
     }   
 }
