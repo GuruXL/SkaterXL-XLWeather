@@ -40,6 +40,7 @@ namespace XLWeather
         }
         private static void OnGUI(UnityModManager.ModEntry modEntry)
         {
+            /*
             GUILayout.BeginVertical(GUILayout.Width(284));
             if (settings.MapLayersToggle)
             {
@@ -60,6 +61,8 @@ namespace XLWeather
                 }
             }
             GUILayout.EndVertical();
+            */
+
             GUILayout.BeginVertical(GUILayout.Width(284));
             if (RGUI.Button(ToggleStateData.HotKeyToggle, "Change HotKey"))
             {

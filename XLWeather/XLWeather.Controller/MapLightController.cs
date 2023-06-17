@@ -150,6 +150,7 @@ namespace XLWeather.Controller
             GetMapMaterials();
             GetReflectionProbes();
         }
+
         private void GetLayerMapLights()
         {
             TaggedLightsList = new List<Light>();
