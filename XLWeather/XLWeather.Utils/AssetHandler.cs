@@ -155,7 +155,7 @@ namespace XLWeather.Utils
             yield return null;
             VFXprefab[1] = fxBundle.LoadAsset<GameObject>("SnowV3");
             yield return null;
-            VFXprefab[2] = fxBundle.LoadAsset<GameObject>("RainV3");
+            VFXprefab[2] = fxBundle.LoadAsset<GameObject>("RainV5");
             yield return null;
             VFXprefab[3] = fxBundle.LoadAsset<GameObject>("NorthernLights");
             yield return null;
