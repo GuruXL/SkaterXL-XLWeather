@@ -116,7 +116,7 @@ namespace XLWeather.Controller
                 if (toggles[i])
                 {
                     //ResetDataSettings();
-                    updateFunctions[i].Invoke();
+                    updateFunctions[i]?.Invoke();
                 }
             }
         }
@@ -351,11 +351,6 @@ namespace XLWeather.Controller
                 CustomFog.maximumHeight.Override(Main.settings.fogMaxHeight);
                 FogSettings.FogMH = Main.settings.fogMaxHeight;
             }
-            FogSettings = new WeatherData.FogSettings(
-                Main.settings.fogMeanFreePath,
-                Main.settings.fogBaseHeight,
-                Main.settings.fogMaxDistance,
-                Main.settings.fogMaxHeight);
 
 
             if (AssetHandler.Instance.ActiveDensityVol != null)
@@ -453,13 +448,6 @@ namespace XLWeather.Controller
                     leaves.SetFloat(LeafLifetime, Main.settings.LeafLifeFloat);
                     leafSettings.Lifetime = Main.settings.LeafLifeFloat;
                 }
-
-                leafSettings = new WeatherData.LeafSettings(
-                    Main.settings.LeafDensityFloat,
-                    Main.settings.LeafSizeFloat,
-                    Main.settings.LeafGravityFloat,
-                    Main.settings.LeafWindFloat,
-                    Main.settings.LeafLifeFloat);
             }
         }
 
@@ -492,13 +480,6 @@ namespace XLWeather.Controller
                     snow.SetFloat(SnowLifetime, Main.settings.SnowLifeFloat);
                     snowSettings.Lifetime = Main.settings.SnowLifeFloat;
                 }
-
-                snowSettings = new WeatherData.SnowSettings(
-                    Main.settings.SnowDensityFloat,
-                    Main.settings.SnowSizeFloat,
-                    Main.settings.SnowGravityFloat,
-                    Main.settings.SnowWindFloat,
-                    Main.settings.SnowLifeFloat);
             }       
         }
 
@@ -531,13 +512,6 @@ namespace XLWeather.Controller
                     rain.SetFloat(RainLifetime, Main.settings.RainLifeFloat);
                     rainSettings.Lifetime = Main.settings.RainLifeFloat;
                 }
-
-                rainSettings = new WeatherData.RainSettings(
-                    Main.settings.RainDensityFloat,
-                    Main.settings.RainSizeFloat,
-                    Main.settings.RainGravityFloat,
-                    Main.settings.RainWindFloat,
-                    Main.settings.RainLifeFloat);
 
                 if (RainAudio.volume != Main.settings.RainVolumeFloat)
                 {
@@ -591,16 +565,6 @@ namespace XLWeather.Controller
                     cloudRenderer.material.SetFloat("_Intensity", Main.settings.Cloud_Intensity);
                     cloudSettings.Intensity = Main.settings.Cloud_Intensity;
                 }
-
-                cloudSettings = new WeatherData.CloudSettings(
-                    Main.settings.Cloud_ParallexOffset,
-                    Main.settings.Cloud_Parallex2,
-                    Main.settings.Cloud_Iterations,
-                    Main.settings.Cloud_NoiseScale,
-                    Main.settings.Cloud_NoiseDepth,
-                    tiling,
-                    Main.settings.Cloud_Speed,
-                    Main.settings.Cloud_Intensity);
             } 
         }
 
