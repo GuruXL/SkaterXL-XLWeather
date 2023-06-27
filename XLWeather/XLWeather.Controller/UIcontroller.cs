@@ -430,6 +430,7 @@ namespace XLWeather.Controller
                         break;
                     case false:
                         // Off toggle for Fog
+                        Main.Weatherctrl.ResetDataSettings();
                         AssetHandler.Instance.activeSky[3].SetActive(false);
                         ToggleStateData.addFogToggle = false;
                         ToggleStateData.removeFogToggle = false;
@@ -535,6 +536,7 @@ namespace XLWeather.Controller
                     }    
                     break;
                 case false:
+                    Main.Weatherctrl.ResetDataSettings();
                     AssetHandler.Instance.activeVFX[0].SetActive(false);
                     break;
             }
@@ -567,6 +569,7 @@ namespace XLWeather.Controller
                     }   
                     break;
                 case false:
+                    Main.Weatherctrl.ResetDataSettings();
                     AssetHandler.Instance.activeVFX[1].SetActive(false);
                     break;
             }
@@ -620,6 +623,7 @@ namespace XLWeather.Controller
                     break;
 
                 case false:
+                    Main.Weatherctrl.ResetDataSettings();
                     AssetHandler.Instance.activeVFX[2].SetActive(false);
                     AssetHandler.Instance.activeVFX[4].SetActive(false);
                     break;
@@ -681,6 +685,7 @@ namespace XLWeather.Controller
                     }  
                     break;
                 case false:
+                    Main.Weatherctrl.ResetDataSettings();
                     AssetHandler.Instance.activeVFX[5].SetActive(false);
                     break;
             }

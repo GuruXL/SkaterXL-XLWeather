@@ -88,7 +88,7 @@ namespace XLWeather.Controller
             }
             else if (!ToggleStateData.DayNightToggle && !hasReset)
             {
-                ResetSettings();
+                ResetVolWeight();
                 hasReset = true;
             }
         }
@@ -115,7 +115,7 @@ namespace XLWeather.Controller
             {
                 if (toggles[i])
                 {
-                    ResetDataSettings();
+                    //ResetDataSettings();
                     updateFunctions[i].Invoke();
                 }
             }
@@ -305,11 +305,7 @@ namespace XLWeather.Controller
         private WeatherData.FogSettings FogSettings = new WeatherData.FogSettings(Main.settings.fogMeanFreePath, Main.settings.fogBaseHeight, Main.settings.fogMaxDistance, Main.settings.fogMaxHeight);
         private Vector3 UpdatedSpeed;
         private float oldDensityDist;
-        public void ResetSettings()
-        {
-            ResetVolWeight();
-            //ResetShadowSettings();
-        }
+
         public void ResetDataSettings()
         {
             FogSettings = new WeatherData.FogSettings(0, 0, 0, 0);
@@ -430,182 +426,182 @@ namespace XLWeather.Controller
 
         private void UpdateLeafSettings()
         {
-            if (AssetHandler.Instance.activeVFX[0]?.activeSelf == false)
-                return;
+            if (AssetHandler.Instance.activeVFX[0]?.activeSelf == true)
+            {
+                if (leafSettings.Density != Main.settings.LeafDensityFloat)
+                {
+                    leaves.SetFloat(LeafDensity, Main.settings.LeafDensityFloat);
+                    leafSettings.Density = Main.settings.LeafDensityFloat;
+                }
+                if (leafSettings.AreaSize != Main.settings.LeafSizeFloat)
+                {
+                    leaves.SetFloat(LeafAreaSize, Main.settings.LeafSizeFloat);
+                    leafSettings.AreaSize = Main.settings.LeafSizeFloat;
+                }
+                if (leafSettings.Gravity != Main.settings.LeafGravityFloat)
+                {
+                    leaves.SetFloat(LeafGravity, Main.settings.LeafGravityFloat);
+                    leafSettings.Gravity = Main.settings.LeafGravityFloat;
+                }
+                if (leafSettings.Wind != Main.settings.LeafWindFloat)
+                {
+                    leaves.SetFloat(LeafWind, Main.settings.LeafWindFloat);
+                    leafSettings.Wind = Main.settings.LeafWindFloat;
+                }
+                if (leafSettings.Lifetime != Main.settings.LeafLifeFloat)
+                {
+                    leaves.SetFloat(LeafLifetime, Main.settings.LeafLifeFloat);
+                    leafSettings.Lifetime = Main.settings.LeafLifeFloat;
+                }
 
-            if (leafSettings.Density != Main.settings.LeafDensityFloat)
-            {
-                leaves.SetFloat(LeafDensity, Main.settings.LeafDensityFloat);
-                leafSettings.Density = Main.settings.LeafDensityFloat;
+                leafSettings = new WeatherData.LeafSettings(
+                    Main.settings.LeafDensityFloat,
+                    Main.settings.LeafSizeFloat,
+                    Main.settings.LeafGravityFloat,
+                    Main.settings.LeafWindFloat,
+                    Main.settings.LeafLifeFloat);
             }
-            if (leafSettings.AreaSize != Main.settings.LeafSizeFloat)
-            {
-                leaves.SetFloat(LeafAreaSize, Main.settings.LeafSizeFloat);
-                leafSettings.AreaSize = Main.settings.LeafSizeFloat;
-            }
-            if (leafSettings.Gravity != Main.settings.LeafGravityFloat)
-            {
-                leaves.SetFloat(LeafGravity, Main.settings.LeafGravityFloat);
-                leafSettings.Gravity = Main.settings.LeafGravityFloat;
-            }
-            if (leafSettings.Wind != Main.settings.LeafWindFloat)
-            {
-                leaves.SetFloat(LeafWind, Main.settings.LeafWindFloat);
-                leafSettings.Wind = Main.settings.LeafWindFloat;
-            }
-            if (leafSettings.Lifetime != Main.settings.LeafLifeFloat)
-            {
-                leaves.SetFloat(LeafLifetime, Main.settings.LeafLifeFloat);
-                leafSettings.Lifetime = Main.settings.LeafLifeFloat;
-            }
-
-            leafSettings = new WeatherData.LeafSettings(
-                Main.settings.LeafDensityFloat,
-                Main.settings.LeafSizeFloat,
-                Main.settings.LeafGravityFloat,
-                Main.settings.LeafWindFloat,
-                Main.settings.LeafLifeFloat);
         }
 
         private void UpdateSnowSettings()
         {
-            if (AssetHandler.Instance.activeVFX[1]?.activeSelf == false)
-                return;
+            if (AssetHandler.Instance.activeVFX[1]?.activeSelf == true)
+            {
+                if (snowSettings.Density != Main.settings.SnowDensityFloat)
+                {
+                    snow.SetFloat(SnowDensity, Main.settings.SnowDensityFloat);
+                    snowSettings.Density = Main.settings.SnowDensityFloat;
+                }
+                if (snowSettings.AreaSize != Main.settings.SnowSizeFloat)
+                {
+                    snow.SetFloat(SnowAreaSize, Main.settings.SnowSizeFloat);
+                    snowSettings.AreaSize = Main.settings.SnowSizeFloat;
+                }
+                if (snowSettings.Gravity != Main.settings.SnowGravityFloat)
+                {
+                    snow.SetFloat(SnowGravity, Main.settings.SnowGravityFloat);
+                    snowSettings.Gravity = Main.settings.SnowGravityFloat;
+                }
+                if (snowSettings.Wind != Main.settings.SnowWindFloat)
+                {
+                    snow.SetFloat(SnowWind, Main.settings.SnowWindFloat);
+                    snowSettings.Wind = Main.settings.SnowWindFloat;
+                }
+                if (snowSettings.Lifetime != Main.settings.SnowLifeFloat)
+                {
+                    snow.SetFloat(SnowLifetime, Main.settings.SnowLifeFloat);
+                    snowSettings.Lifetime = Main.settings.SnowLifeFloat;
+                }
 
-            if (snowSettings.Density != Main.settings.SnowDensityFloat)
-            {
-                snow.SetFloat(SnowDensity, Main.settings.SnowDensityFloat);
-                snowSettings.Density = Main.settings.SnowDensityFloat;
-            }
-            if (snowSettings.AreaSize != Main.settings.SnowSizeFloat)
-            {
-                snow.SetFloat(SnowAreaSize, Main.settings.SnowSizeFloat);
-                snowSettings.AreaSize = Main.settings.SnowSizeFloat;
-            }
-            if (snowSettings.Gravity != Main.settings.SnowGravityFloat)
-            {
-                snow.SetFloat(SnowGravity, Main.settings.SnowGravityFloat);
-                snowSettings.Gravity = Main.settings.SnowGravityFloat;
-            }
-            if (snowSettings.Wind != Main.settings.SnowWindFloat)
-            {
-                snow.SetFloat(SnowWind, Main.settings.SnowWindFloat);
-                snowSettings.Wind = Main.settings.SnowWindFloat;
-            }
-            if (snowSettings.Lifetime != Main.settings.SnowLifeFloat)
-            {
-                snow.SetFloat(SnowLifetime, Main.settings.SnowLifeFloat);
-                snowSettings.Lifetime = Main.settings.SnowLifeFloat;
-            }
-
-            snowSettings = new WeatherData.SnowSettings(
-                Main.settings.SnowDensityFloat,
-                Main.settings.SnowSizeFloat,
-                Main.settings.SnowGravityFloat,
-                Main.settings.SnowWindFloat,
-                Main.settings.SnowLifeFloat);
+                snowSettings = new WeatherData.SnowSettings(
+                    Main.settings.SnowDensityFloat,
+                    Main.settings.SnowSizeFloat,
+                    Main.settings.SnowGravityFloat,
+                    Main.settings.SnowWindFloat,
+                    Main.settings.SnowLifeFloat);
+            }       
         }
 
         private void UpdateRainSettings()
         {
-            if (!AssetHandler.Instance.activeVFX[2]?.activeSelf == false)
-                return;
+            if (AssetHandler.Instance.activeVFX[2]?.activeSelf == true)
+            {
+                if (rainSettings.Density != Main.settings.RainDensityFloat)
+                {
+                    rain.SetFloat(RainDensity, Main.settings.RainDensityFloat);
+                    rainSettings.Density = Main.settings.RainDensityFloat;
+                }
+                if (rainSettings.AreaSize != Main.settings.RainSizeFloat)
+                {
+                    rain.SetFloat(RainAreaSize, Main.settings.RainSizeFloat);
+                    rainSettings.AreaSize = Main.settings.RainSizeFloat;
+                }
+                if (rainSettings.Gravity != Main.settings.RainGravityFloat)
+                {
+                    rain.SetFloat(RainGravity, Main.settings.RainGravityFloat);
+                    rainSettings.Gravity = Main.settings.RainGravityFloat;
+                }
+                if (rainSettings.Wind != Main.settings.RainWindFloat)
+                {
+                    rain.SetFloat(RainWind, Main.settings.RainWindFloat);
+                    rainSettings.Wind = Main.settings.RainWindFloat;
+                }
+                if (rainSettings.Lifetime != Main.settings.RainLifeFloat)
+                {
+                    rain.SetFloat(RainLifetime, Main.settings.RainLifeFloat);
+                    rainSettings.Lifetime = Main.settings.RainLifeFloat;
+                }
 
-            if (rainSettings.Density != Main.settings.RainDensityFloat)
-            {
-                rain.SetFloat(RainDensity, Main.settings.RainDensityFloat);
-                rainSettings.Density = Main.settings.RainDensityFloat;
-            }
-            if (rainSettings.AreaSize != Main.settings.RainSizeFloat)
-            {
-                rain.SetFloat(RainAreaSize, Main.settings.RainSizeFloat);
-                rainSettings.AreaSize = Main.settings.RainSizeFloat;
-            }
-            if (rainSettings.Gravity != Main.settings.RainGravityFloat)
-            {
-                rain.SetFloat(RainGravity, Main.settings.RainGravityFloat);
-                rainSettings.Gravity = Main.settings.RainGravityFloat;
-            }
-            if (rainSettings.Wind != Main.settings.RainWindFloat)
-            {
-                rain.SetFloat(RainWind, Main.settings.RainWindFloat);
-                rainSettings.Wind = Main.settings.RainWindFloat;
-            }
-            if (rainSettings.Lifetime != Main.settings.RainLifeFloat)
-            {
-                rain.SetFloat(RainLifetime, Main.settings.RainLifeFloat);
-                rainSettings.Lifetime = Main.settings.RainLifeFloat;
-            }
+                rainSettings = new WeatherData.RainSettings(
+                    Main.settings.RainDensityFloat,
+                    Main.settings.RainSizeFloat,
+                    Main.settings.RainGravityFloat,
+                    Main.settings.RainWindFloat,
+                    Main.settings.RainLifeFloat);
 
-            rainSettings = new WeatherData.RainSettings(
-                Main.settings.RainDensityFloat,
-                Main.settings.RainSizeFloat,
-                Main.settings.RainGravityFloat,
-                Main.settings.RainWindFloat,
-                Main.settings.RainLifeFloat);
-
-            if (RainAudio.volume != Main.settings.RainVolumeFloat)
-            {
-                RainAudio.volume = Main.settings.RainVolumeFloat;
+                if (RainAudio.volume != Main.settings.RainVolumeFloat)
+                {
+                    RainAudio.volume = Main.settings.RainVolumeFloat;
+                }
             }
         }
 
         private void UpdateCloudSettings()
         {
-            if (AssetHandler.Instance.activeVFX[5]?.activeSelf == false)
-                return;
+            if (AssetHandler.Instance.activeVFX[5]?.activeSelf == true)
+            {
+                if (cloudSettings.ParallexOffset != Main.settings.Cloud_ParallexOffset)
+                {
+                    cloudRenderer.material.SetFloat("_ParallexOffset", Main.settings.Cloud_ParallexOffset);
+                    cloudSettings.ParallexOffset = Main.settings.Cloud_ParallexOffset;
+                }
+                if (cloudSettings.Parallex2 != Main.settings.Cloud_Parallex2)
+                {
+                    cloudRenderer.material.SetFloat("_Parallax2", Main.settings.Cloud_Parallex2);
+                    cloudSettings.Parallex2 = Main.settings.Cloud_Parallex2;
+                }
+                if (cloudSettings.Iterations != Main.settings.Cloud_Iterations)
+                {
+                    cloudRenderer.material.SetFloat("_Iterations", Main.settings.Cloud_Iterations);
+                    cloudSettings.Iterations = Main.settings.Cloud_Iterations;
+                }
+                if (cloudSettings.NoiseScale != Main.settings.Cloud_NoiseScale)
+                {
+                    cloudRenderer.material.SetFloat("_NoiseScale", Main.settings.Cloud_NoiseScale);
+                    cloudSettings.NoiseScale = Main.settings.Cloud_NoiseScale;
+                }
+                if (cloudSettings.NoiseDepth != Main.settings.Cloud_NoiseDepth)
+                {
+                    cloudRenderer.material.SetFloat("_NoiseDepth", Main.settings.Cloud_NoiseDepth);
+                    cloudSettings.NoiseDepth = Main.settings.Cloud_NoiseDepth;
+                }
+                var tiling = new Vector3(Main.settings.Cloud_CrackTiling_x, Main.settings.Cloud_CrackTiling_y, 1);
+                if (cloudSettings.CrackTiling != tiling)
+                {
+                    cloudRenderer.material.SetVector("_CrackTiling", tiling);
+                    cloudSettings.CrackTiling = tiling;
+                }
+                if (cloudSettings.Speed != Main.settings.Cloud_Speed)
+                {
+                    cloudRenderer.material.SetFloat("_Speed", Main.settings.Cloud_Speed);
+                    cloudSettings.Speed = Main.settings.Cloud_Speed;
+                }
+                if (cloudSettings.Intensity != Main.settings.Cloud_Intensity)
+                {
+                    cloudRenderer.material.SetFloat("_Intensity", Main.settings.Cloud_Intensity);
+                    cloudSettings.Intensity = Main.settings.Cloud_Intensity;
+                }
 
-            if (cloudSettings.ParallexOffset != Main.settings.Cloud_ParallexOffset)
-            {
-                cloudRenderer.material.SetFloat("_ParallexOffset", Main.settings.Cloud_ParallexOffset);
-                cloudSettings.ParallexOffset = Main.settings.Cloud_ParallexOffset;
-            }
-            if (cloudSettings.Parallex2 != Main.settings.Cloud_Parallex2)
-            {
-                cloudRenderer.material.SetFloat("_Parallax2", Main.settings.Cloud_Parallex2);
-                cloudSettings.Parallex2 = Main.settings.Cloud_Parallex2;
-            }
-            if (cloudSettings.Iterations != Main.settings.Cloud_Iterations)
-            {
-                cloudRenderer.material.SetFloat("_Iterations", Main.settings.Cloud_Iterations);
-                cloudSettings.Iterations = Main.settings.Cloud_Iterations;
-            }
-            if (cloudSettings.NoiseScale != Main.settings.Cloud_NoiseScale)
-            {
-                cloudRenderer.material.SetFloat("_NoiseScale", Main.settings.Cloud_NoiseScale);
-                cloudSettings.NoiseScale = Main.settings.Cloud_NoiseScale;
-            }
-            if (cloudSettings.NoiseDepth != Main.settings.Cloud_NoiseDepth)
-            {
-                cloudRenderer.material.SetFloat("_NoiseDepth", Main.settings.Cloud_NoiseDepth);
-                cloudSettings.NoiseDepth = Main.settings.Cloud_NoiseDepth;
-            }
-            var tiling = new Vector3(Main.settings.Cloud_CrackTiling_x, Main.settings.Cloud_CrackTiling_y, 1);
-            if (cloudSettings.CrackTiling != tiling)
-            {
-                cloudRenderer.material.SetVector("_CrackTiling", tiling);
-                cloudSettings.CrackTiling = tiling;
-            }
-            if (cloudSettings.Speed != Main.settings.Cloud_Speed)
-            {
-                cloudRenderer.material.SetFloat("_Speed", Main.settings.Cloud_Speed);
-                cloudSettings.Speed = Main.settings.Cloud_Speed;
-            }
-            if (cloudSettings.Intensity != Main.settings.Cloud_Intensity)
-            {
-                cloudRenderer.material.SetFloat("_Intensity", Main.settings.Cloud_Intensity);
-                cloudSettings.Intensity = Main.settings.Cloud_Intensity;
-            }
-
-            cloudSettings = new WeatherData.CloudSettings(
-                Main.settings.Cloud_ParallexOffset,
-                Main.settings.Cloud_Parallex2,
-                Main.settings.Cloud_Iterations,
-                Main.settings.Cloud_NoiseScale,
-                Main.settings.Cloud_NoiseDepth,
-                tiling,
-                Main.settings.Cloud_Speed,
-                Main.settings.Cloud_Intensity);
+                cloudSettings = new WeatherData.CloudSettings(
+                    Main.settings.Cloud_ParallexOffset,
+                    Main.settings.Cloud_Parallex2,
+                    Main.settings.Cloud_Iterations,
+                    Main.settings.Cloud_NoiseScale,
+                    Main.settings.Cloud_NoiseDepth,
+                    tiling,
+                    Main.settings.Cloud_Speed,
+                    Main.settings.Cloud_Intensity);
+            } 
         }
 
         // ------------- End Update VFX settings --------------
