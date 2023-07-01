@@ -407,6 +407,7 @@ namespace XLWeather.Controller
         private WeatherData.SnowSettings snowSettings = new WeatherData.SnowSettings(Main.settings.SnowDensityFloat, Main.settings.SnowSizeFloat, Main.settings.SnowGravityFloat, Main.settings.SnowWindFloat, Main.settings.SnowLifeFloat);
         private WeatherData.RainSettings rainSettings = new WeatherData.RainSettings(Main.settings.RainDensityFloat, Main.settings.RainSizeFloat, Main.settings.RainGravityFloat, Main.settings.RainWindFloat, Main.settings.RainLifeFloat);
         private WeatherData.CloudSettings cloudSettings = new WeatherData.CloudSettings(Main.settings.Cloud_ParallexOffset, Main.settings.Cloud_Parallex2, Main.settings.Cloud_Iterations, Main.settings.Cloud_NoiseScale, Main.settings.Cloud_NoiseDepth, new Vector3(1, 1, 1), Main.settings.Cloud_Speed, Main.settings.Cloud_Intensity);
+
         private IEnumerator GetVfxComponent()
         {
             yield return new WaitUntil(() => AssetHandler.Instance.IsPrefabsSpawned());
@@ -418,22 +419,11 @@ namespace XLWeather.Controller
             lightning = AssetHandler.Instance.activeVFX[4].GetComponent<VisualEffect>();
             cloudRenderer = AssetHandler.Instance.activeVFX[5].GetComponent<MeshRenderer>();
         }
-
-        void VfxStopCheck(float settingsValue, VisualEffect vfx)
-        {
-            bool isPlaying = true;
-
-            if (settingsValue == 0)
-            {
-                vfx.Stop();
-                isPlaying = false;
-            }
-            else if (settingsValue > 0 && !isPlaying)
-            {
-                vfx.Play();
-            }
-        }
-
+        
+        // creates state check instances for each vfx to stop and play effects if density should be 0, not a good fix. will come up with better solution.
+        VFXUtils.VFXStateCheck LeavesStateCheck = new VFXUtils.VFXStateCheck();
+        VFXUtils.VFXStateCheck RainStateCheck = new VFXUtils.VFXStateCheck();
+        VFXUtils.VFXStateCheck SnowStateCheck = new VFXUtils.VFXStateCheck();
         private void UpdateLeafSettings()
         {
             if (AssetHandler.Instance.activeVFX[0]?.activeSelf == true)
@@ -443,7 +433,9 @@ namespace XLWeather.Controller
                     leaves.SetFloat(LeafDensity, Main.settings.LeafDensityFloat);
                     leafSettings.Density = Main.settings.LeafDensityFloat;
                 }
-                VfxStopCheck(Main.settings.LeafDensityFloat, leaves);
+
+                // This is to Stop the VFX if the density value should be 0. tempoary solution...
+                LeavesStateCheck.UpdateVFXState(Main.settings.LeafDensityFloat, leaves);
 
                 if (leafSettings.AreaSize != Main.settings.LeafSizeFloat)
                 {
@@ -467,7 +459,6 @@ namespace XLWeather.Controller
                 }
             }
         }
-
         private void UpdateSnowSettings()
         {
             if (AssetHandler.Instance.activeVFX[1]?.activeSelf == true)
@@ -477,7 +468,9 @@ namespace XLWeather.Controller
                     snow.SetFloat(SnowDensity, Main.settings.SnowDensityFloat);
                     snowSettings.Density = Main.settings.SnowDensityFloat;
                 }
-                VfxStopCheck(Main.settings.SnowDensityFloat, snow);
+
+                // This is to Stop the VFX if the density value should be 0. tempoary solution...
+                SnowStateCheck.UpdateVFXState(Main.settings.SnowDensityFloat, snow);
 
                 if (snowSettings.AreaSize != Main.settings.SnowSizeFloat)
                 {
@@ -511,7 +504,9 @@ namespace XLWeather.Controller
                     rain.SetFloat(RainDensity, Main.settings.RainDensityFloat);
                     rainSettings.Density = Main.settings.RainDensityFloat;
                 }
-                VfxStopCheck(Main.settings.RainDensityFloat, rain);
+
+                // This is to Stop the VFX if the density value should be 0. tempoary solution...
+                RainStateCheck.UpdateVFXState(Main.settings.RainDensityFloat, rain);
 
                 if (rainSettings.AreaSize != Main.settings.RainSizeFloat)
                 {

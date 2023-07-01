@@ -527,7 +527,7 @@ namespace XLWeather.Controller
                     {
                         // Creates UI for Slider
                         GUILayout.BeginVertical("Box");
-                        Main.settings.LeafDensityFloat = RGUI.SliderFloat(Main.settings.LeafDensityFloat, 0f, 80000f, DefaultSettings.LeafDensityFloat, "Density");
+                        Main.settings.LeafDensityFloat = RGUI.SliderFloat((int)Main.settings.LeafDensityFloat, 0f, 80000f, DefaultSettings.LeafDensityFloat, "Density");
                         Main.settings.LeafSizeFloat = RGUI.SliderFloat(Main.settings.LeafSizeFloat, 1f, 200f, DefaultSettings.LeafSizeFloat, "Area Size");
                         Main.settings.LeafGravityFloat = RGUI.SliderFloat(Main.settings.LeafGravityFloat, 1f, 6f, DefaultSettings.LeafGravityFloat, "Gravity");
                         Main.settings.LeafWindFloat = RGUI.SliderFloat(Main.settings.LeafWindFloat, 1f, 12f, DefaultSettings.LeafWindFloat, "Wind");
@@ -560,7 +560,7 @@ namespace XLWeather.Controller
                     {
                         // Creates UI for Slider
                         GUILayout.BeginVertical("Box");
-                        Main.settings.SnowDensityFloat = RGUI.SliderFloat(Main.settings.SnowDensityFloat, 0f, 285000f, DefaultSettings.SnowDensityFloat, "Density");
+                        Main.settings.SnowDensityFloat = RGUI.SliderFloat((int)Main.settings.SnowDensityFloat, 0f, 285000f, DefaultSettings.SnowDensityFloat, "Density");
                         Main.settings.SnowSizeFloat = RGUI.SliderFloat(Main.settings.SnowSizeFloat, 1f, 200f, DefaultSettings.SnowSizeFloat, "Area Size");
                         Main.settings.SnowGravityFloat = RGUI.SliderFloat(Main.settings.SnowGravityFloat, 1f, 4f, DefaultSettings.SnowGravityFloat, "Gravity");
                         Main.settings.SnowWindFloat = RGUI.SliderFloat(Main.settings.SnowWindFloat, 0f, 4f, DefaultSettings.SnowWindFloat, "Wind");
@@ -596,7 +596,7 @@ namespace XLWeather.Controller
                         Main.settings.RainVolumeFloat = RGUI.SliderFloat(Main.settings.RainVolumeFloat, 0f, 1f, 0.4f, "Volume");
                         GUILayout.EndVertical();
                         GUILayout.BeginVertical("Box");
-                        Main.settings.RainDensityFloat = RGUI.SliderFloat(Main.settings.RainDensityFloat, 0f, 850000f, DefaultSettings.RainDensityFloat, "Density");
+                        Main.settings.RainDensityFloat = RGUI.SliderFloat((int)Main.settings.RainDensityFloat, 0f, 850000f, DefaultSettings.RainDensityFloat, "Density");
                         Main.settings.RainSizeFloat = RGUI.SliderFloat(Main.settings.RainSizeFloat, 1f, 100f, DefaultSettings.RainSizeFloat, "Area Size");
                         Main.settings.RainGravityFloat = RGUI.SliderFloat(Main.settings.RainGravityFloat, 1f, 60f, DefaultSettings.RainGravityFloat, "Gravity");
                         Main.settings.RainWindFloat = RGUI.SliderFloat(Main.settings.RainWindFloat, 0f, 4f, DefaultSettings.RainWindFloat, "Wind");

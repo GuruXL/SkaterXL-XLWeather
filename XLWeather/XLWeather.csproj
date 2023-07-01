@@ -224,6 +224,7 @@
     <Compile Include="RapidGUI\Utilities\WarningLabelNoStyle.cs" />
     <Compile Include="RapidGUI\Utilities\WindowInvoker.cs" />
     <Compile Include="XLWeather.Utils\SceneChangeManager.cs" />
+    <Compile Include="XLWeather.Utils\VFXUtils.cs" />
     <Compile Include="XLWeather.Utils\UIextensions.cs" />
     <Compile Include="XLWeather.Utils\AssetHandler.cs" />
     <Compile Include="XLWeather.Controller\MapLightController.cs" />
