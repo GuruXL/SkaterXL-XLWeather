@@ -596,7 +596,7 @@ namespace XLWeather.Controller
                         Main.settings.RainVolumeFloat = RGUI.SliderFloat(Main.settings.RainVolumeFloat, 0f, 1f, 0.4f, "Volume");
                         GUILayout.EndVertical();
                         GUILayout.BeginVertical("Box");
-                        Main.settings.RainDensityFloat = RGUI.SliderFloat(Main.settings.RainDensityFloat, 0f, 1000000f, DefaultSettings.RainDensityFloat, "Density");
+                        Main.settings.RainDensityFloat = RGUI.SliderFloat(Main.settings.RainDensityFloat, 0f, 850000f, DefaultSettings.RainDensityFloat, "Density");
                         Main.settings.RainSizeFloat = RGUI.SliderFloat(Main.settings.RainSizeFloat, 1f, 100f, DefaultSettings.RainSizeFloat, "Area Size");
                         Main.settings.RainGravityFloat = RGUI.SliderFloat(Main.settings.RainGravityFloat, 1f, 60f, DefaultSettings.RainGravityFloat, "Gravity");
                         Main.settings.RainWindFloat = RGUI.SliderFloat(Main.settings.RainWindFloat, 0f, 4f, DefaultSettings.RainWindFloat, "Wind");
@@ -850,11 +850,14 @@ namespace XLWeather.Controller
                         // Off toggle for Day/Night Cycle
                         AssetHandler.Instance.activeDayNight.SetActive(false);
                         Main.MapLightctrl.ToggleMainLights(true);
-                        if (Main.settings.MapLayersToggle)
-                        {
-                            Main.MapLightctrl.ResetLayerToggles();
-                        }
+
+                        //if (Main.settings.MapLayersToggle)
+                        //{
+                        //    Main.MapLightctrl.ResetLayerToggles();
+                        //}
+
                         //ToggleStateData.ResetVolWeight = true;
+
                         break;
                 }
             }

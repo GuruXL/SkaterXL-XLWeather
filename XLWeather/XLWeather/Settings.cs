@@ -69,7 +69,8 @@ namespace XLWeather
         // ----- End Set KeyBindings ------
 
         public Color BGColor = new Color(0.85f, 0.90f, 1.0f);
-        public bool MapLayersToggle = false;
+
+        //public bool MapLayersToggle = false;
 
         public float NightFixedExposureFloat = DefaultSettings.NightFixedExposureFloat;
         public float NightSkyboxExposureFloat = DefaultSettings.NightSkyboxExposureFloat;

@@ -67,9 +67,9 @@ namespace XLWeather.Data
         public static float SnowLifeFloat = 8f;
 
         public static float RainDensityFloat = 120000f;
-        public static float RainSizeFloat = 30f;
+        public static float RainSizeFloat = 25f;
         public static float RainGravityFloat = 35f;
-        public static float RainWindFloat = 1.4f;
+        public static float RainWindFloat = 1.2f;
         public static float RainLifeFloat = 0.4f;
         public static float RainVolumeFloat = 0.4f;
 

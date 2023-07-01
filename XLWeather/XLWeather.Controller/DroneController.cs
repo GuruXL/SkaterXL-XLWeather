@@ -362,9 +362,6 @@ namespace XLWeather.Controller
                     droneLight.color = Main.settings.DroneLightColor;
                     DroneSettings.LightColor = Main.settings.DroneLightColor;
                 }
-
-                // store old settings in LightSettings object
-                DroneSettings = new DroneData.DroneLightSettings(Main.settings.droneLtIntesityFlt, Main.settings.droneLtRangeFlt, Main.settings.droneLtAngleFlt, Main.settings.droneLtRadiusFlt, Main.settings.droneLtDimmerFlt, Main.settings.DroneLightColor);
             }
 
             // Update Audio settings

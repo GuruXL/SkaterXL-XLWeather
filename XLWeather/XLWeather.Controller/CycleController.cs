@@ -232,8 +232,6 @@ namespace XLWeather.Controller
             // Update sunsetTime if the sunsetHour has changed
             sunsetTime = TimeSettings.SunSet != Main.settings.sunsetHour ? TimeSpan.FromHours(Main.settings.sunsetHour) : sunsetTime;
             TimeSettings.SunSet = Main.settings.sunsetHour;
-
-            TimeSettings = new CycleData.TimeSettings(Main.settings.startHour, Main.settings.sunriseHour, Main.settings.sunsetHour);
         }
 
         protected bool hasSkyUpdated = false;
@@ -509,12 +507,12 @@ namespace XLWeather.Controller
         private float oldAmbientLight = 400f;
         private void UpdateProperties()
         {
-            if (cyclesunLight == null && cyclemoonLight == null)
+            if (cyclesunLight == null || cyclemoonLight == null)
                 return;
 
             UpdateLightSettings();
 
-            if (sunVolume == null && moonVolume == null)
+            if (sunVolume == null || moonVolume == null)
                 return;
 
             UpdateVolumeSettings();       
@@ -523,7 +521,7 @@ namespace XLWeather.Controller
         private void UpdateLightSettings()
         {
             // Sun
-            if (cyclesunLight.gameObject.activeSelf)
+            if (cyclesunLight.gameObject?.activeSelf == true)
             {
                 if (SunLightData.flareSize != SunflareFloat) // not stored becasue updated in rotate sun
                 {
@@ -543,7 +541,7 @@ namespace XLWeather.Controller
                 }
             }
 
-            if (cyclemoonLight.gameObject.activeSelf)
+            if (cyclemoonLight.gameObject?.activeSelf == true)
             {
                 if (moonLightSettings.Intensity != Main.settings.moonIntensity)
                 {

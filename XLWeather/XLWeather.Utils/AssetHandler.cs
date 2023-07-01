@@ -52,9 +52,7 @@ namespace XLWeather.Utils
 
             if (unityObjectType != null)
             {
-                // load assets here
-                PlayerController.Instance.StartCoroutine(LoadAssetBundleAsync()); // 1.2.2.8
-                //PlayerController.Instance.StartCoroutine(LoadAssetBundleAsync()); // 1.2.6.0             
+                PlayerController.Instance.StartCoroutine(LoadAssetBundleAsync()); // 1.2.2.8           
             }
         }
 
