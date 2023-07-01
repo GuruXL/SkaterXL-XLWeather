@@ -419,6 +419,21 @@ namespace XLWeather.Controller
             cloudRenderer = AssetHandler.Instance.activeVFX[5].GetComponent<MeshRenderer>();
         }
 
+        void VfxStopCheck(float settingsValue, VisualEffect vfx)
+        {
+            bool isPlaying = true;
+
+            if (settingsValue == 0)
+            {
+                vfx.Stop();
+                isPlaying = false;
+            }
+            else if (settingsValue > 0 && !isPlaying)
+            {
+                vfx.Play();
+            }
+        }
+
         private void UpdateLeafSettings()
         {
             if (AssetHandler.Instance.activeVFX[0]?.activeSelf == true)
@@ -428,6 +443,8 @@ namespace XLWeather.Controller
                     leaves.SetFloat(LeafDensity, Main.settings.LeafDensityFloat);
                     leafSettings.Density = Main.settings.LeafDensityFloat;
                 }
+                VfxStopCheck(Main.settings.LeafDensityFloat, leaves);
+
                 if (leafSettings.AreaSize != Main.settings.LeafSizeFloat)
                 {
                     leaves.SetFloat(LeafAreaSize, Main.settings.LeafSizeFloat);
@@ -460,6 +477,8 @@ namespace XLWeather.Controller
                     snow.SetFloat(SnowDensity, Main.settings.SnowDensityFloat);
                     snowSettings.Density = Main.settings.SnowDensityFloat;
                 }
+                VfxStopCheck(Main.settings.SnowDensityFloat, snow);
+
                 if (snowSettings.AreaSize != Main.settings.SnowSizeFloat)
                 {
                     snow.SetFloat(SnowAreaSize, Main.settings.SnowSizeFloat);
@@ -492,6 +511,8 @@ namespace XLWeather.Controller
                     rain.SetFloat(RainDensity, Main.settings.RainDensityFloat);
                     rainSettings.Density = Main.settings.RainDensityFloat;
                 }
+                VfxStopCheck(Main.settings.RainDensityFloat, rain);
+
                 if (rainSettings.AreaSize != Main.settings.RainSizeFloat)
                 {
                     rain.SetFloat(RainAreaSize, Main.settings.RainSizeFloat);
