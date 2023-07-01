@@ -69,7 +69,7 @@ namespace XLWeather.Controller
             CheckforTimechanges();
             UpdateProperties();
 
-            if (cyclesunLight == null && cyclemoonLight == null)
+            if (cyclesunLight == null || cyclemoonLight == null)
                 return;
 
             UpdateTimeOfDay();
@@ -86,7 +86,6 @@ namespace XLWeather.Controller
         {
             currentTime = DateTime.Now.Date + TimeSpan.FromHours(DefaultSettings.startHour);
         }
-
         public bool GetIsDay()
         {
             return IsDay;
@@ -105,7 +104,6 @@ namespace XLWeather.Controller
                 timeText = currentTime.ToString("HH:mm");
             }
         }
-
         private TimeSpan GetTimeDifference(TimeSpan fromTime, TimeSpan toTime)
         {
             TimeSpan diff = toTime - fromTime;
@@ -141,6 +139,7 @@ namespace XLWeather.Controller
                 moonRotation = Mathf.Lerp(180, 360, (float)percentage);
                 //sunSpaceRot = Mathf.Lerp(180, 360, (float)percentagex2);
 
+                // controls fading in and out of effects at certain percentages of the cycle
                 // Fade In
                 if (percentage <= 0.2f)
                 {
@@ -181,6 +180,8 @@ namespace XLWeather.Controller
                 moonRotation = Mathf.Lerp(0, 180, (float)percentage);
                 //moonSpaceRot = Mathf.Lerp(0, 360, (float)percentagex2);
 
+                // controls fading in and out of effects at certain percentages of the cycle
+                // fade in
                 if (percentage <= 0.2f)
                 {
                     // Fades starDome in
@@ -189,6 +190,7 @@ namespace XLWeather.Controller
                     StarFxRateFloat = Mathf.Lerp(0f, 25f, (float)FadeInTime);
                     Main.settings.moonSpaceEmission = Mathf.Lerp(0f, 1.8f, (float)FadeInTime);
                 }
+                // fade out
                 if (percentage >= 0.8f)
                 {
                     // Fades starDome Out
@@ -198,6 +200,8 @@ namespace XLWeather.Controller
                     Main.settings.moonSpaceEmission = Mathf.Lerp(0f, 1.8f, (float)FadeoutTime);
                 }
             }
+
+            // This is for control of horizontal rotation
 
             float oldXrot = 0.0f;
             if (oldXrot != Main.settings.CycleXrotFloat)
@@ -479,13 +483,6 @@ namespace XLWeather.Controller
                 MoonLightData.SetShadowDimmer(Main.settings.moonShadowFloat, 1f);
                 ShadowSettings.MoonShadowStr = Main.settings.moonShadowFloat;
             }
-
-            ShadowSettings = new CycleData.ShadowSettings(
-                Main.settings.sunShadowFloat,
-                Main.settings.moonShadowFloat,
-                Main.settings.ShadowDistFloat,
-                Main.settings.ShadowHighlights);
-
         }
 
         private CycleData.SunVolSettings sunSettings = new CycleData.SunVolSettings(
@@ -576,7 +573,7 @@ namespace XLWeather.Controller
         private void UpdateVolumeSettings()
         {
             // Sun volume exposure options
-            if (sunVolume.gameObject.activeSelf)
+            if (sunVolume.gameObject?.activeSelf == true)
             {
                 if (sunSettings.Min != Main.settings.SunMinExFloat)
                 {
@@ -617,19 +614,10 @@ namespace XLWeather.Controller
                     sunLC.indirectSpecularIntensity.Override(Main.settings.SunIndirectSpecular);
                     sunSettings.SpecularLight = Main.settings.SunIndirectSpecular;
                 }
-
-                sunSettings = new CycleData.SunVolSettings(
-                    Main.settings.SunMinExFloat,
-                    Main.settings.SunMaxExFloat,
-                    Main.settings.sunSkyExFloat,
-                    Main.settings.sunSpaceEmission,
-                    Main.settings.sunDimmerFloat,
-                    Main.settings.SunIndirectLight,
-                    Main.settings.SunIndirectSpecular);
             }
 
             // moon
-            if (moonVolume.gameObject.activeSelf)
+            if (moonVolume.gameObject?.activeSelf == true)
             {
                 if (moonSettings.Min != Main.settings.MoonMinExFloat)
                 {
@@ -670,15 +658,6 @@ namespace XLWeather.Controller
                     moonLC.indirectSpecularIntensity.Override(Main.settings.MoonIndirectSpecular);
                     moonSettings.SpecularLight = Main.settings.MoonIndirectSpecular;
                 }
-
-                moonSettings = new CycleData.MoonVolSettings(
-                    Main.settings.MoonMinExFloat,
-                    Main.settings.MoonMaxExFloat,
-                    Main.settings.moonSkyExFloat,
-                    Main.settings.moonSpaceEmission,
-                    Main.settings.moonDimmerFloat,
-                    Main.settings.MoonIndirectLight,
-                    Main.settings.MoonIndirectSpecular);
             }
         }
         // --------------- End set Properites -----------------
