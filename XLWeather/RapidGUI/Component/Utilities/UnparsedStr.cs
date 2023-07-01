@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+
 namespace RapidGUI
 {
     /// <summary>
@@ -16,7 +17,7 @@ namespace RapidGUI
 
         public static UnparsedStr Create()
         {
-            if (FocusChecker.IsChanged())
+            if (ForcusChecker.IsChanged())
             {
                 Reset();
             }
@@ -31,6 +32,7 @@ namespace RapidGUI
         }
 
         #endregion
+
 
         int controlID;
 
@@ -48,7 +50,7 @@ namespace RapidGUI
         {
             if (str == null)
             {
-                if (hasStr)
+                if ( hasStr )
                 {
                     Reset();
                 }
@@ -67,12 +69,12 @@ namespace RapidGUI
             var ret = false;
             var str = Get();
 
-            if (str != null)
-                try
-                {
-                    ret = Convert.ChangeType(str, type).ToString() == str;
-                }
-                catch { }
+            if ( str != null)
+            try
+            {
+                ret = Convert.ChangeType(str, type).ToString() == str;
+            }
+            catch { }
 
             return ret;
         }

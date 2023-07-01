@@ -4,8 +4,8 @@ namespace RapidGUI
 {
     public static partial class RGUI
     {
-        public static string warningLabelPrefix = "<b><color=#f9ca24>";
-        public static string warningLabelPostfix = "</color></b>";
+        public static string warningLabelPrefix = "<color=grey>";
+        public static string warningLabelPostfix = "</color>";
 
         static string WarningLabelModifyLabel(string label) => warningLabelPrefix + label + warningLabelPostfix;
 
