@@ -195,57 +195,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RapidGUI\Component\FastScrollView.cs" />
-    <Compile Include="RapidGUI\Component\Fold.cs" />
-    <Compile Include="RapidGUI\Component\Folds.cs" />
-    <Compile Include="RapidGUI\Component\IDoGUI.cs" />
-    <Compile Include="RapidGUI\Component\IMColorPicker\Scripts\IMColorPicker.cs" />
-    <Compile Include="RapidGUI\Component\IMColorPicker\Scripts\IMColorPreset.cs" />
-    <Compile Include="RapidGUI\Component\IMColorPicker\Test\TestOnGUI.cs" />
-    <Compile Include="RapidGUI\Component\MinMax.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\Cursor\Cursor.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\Cursor\CursorData.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\FocusChecker.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\IDoGUIWindow.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\LazyFindObject.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\RapidGUIBehaviour.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\Recursive.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\RGUILayoutUtility.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\RGUIStyle.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\RGUIUtility.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\TitleContent.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\TitleContents.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\TypeUtility.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\TypeUtilityMemberInfo.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\UnparsedStr.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\WarningLabel.cs" />
-    <Compile Include="RapidGUI\Component\Utilities\WindowInvoker.cs" />
-    <Compile Include="RapidGUI\Component\WindowLauncher.cs" />
-    <Compile Include="RapidGUI\Component\WindowLaunchers.cs" />
-    <Compile Include="RapidGUI\RGUI\Button.cs" />
-    <Compile Include="RapidGUI\RGUI\CustomGUI\CustomGUI.cs" />
-    <Compile Include="RapidGUI\RGUI\Field.cs" />
-    <Compile Include="RapidGUI\RGUI\Field\BoolField.cs" />
-    <Compile Include="RapidGUI\RGUI\Field\ColorField.cs" />
-    <Compile Include="RapidGUI\RGUI\Field\EnumField.cs" />
-    <Compile Include="RapidGUI\RGUI\Field\ListField.cs" />
-    <Compile Include="RapidGUI\RGUI\Field\RecursiveField.cs" />
-    <Compile Include="RapidGUI\RGUI\Field\StandardField.cs" />
-    <Compile Include="RapidGUI\RGUI\MinMaxSlider.cs" />
-    <Compile Include="RapidGUI\RGUI\MinMaxSlider\MinMaxSliderCore.cs" />
-    <Compile Include="RapidGUI\RGUI\MinMaxSlider\RecursiveMinMaxSlider.cs" />
-    <Compile Include="RapidGUI\RGUI\Popup.cs" />
-    <Compile Include="RapidGUI\RGUI\PrefixLabel.cs" />
-    <Compile Include="RapidGUI\RGUI\ResizableWindow.cs" />
-    <Compile Include="RapidGUI\RGUI\Scope\BackgroundColorScope.cs" />
-    <Compile Include="RapidGUI\RGUI\Scope\ColorScope.cs" />
-    <Compile Include="RapidGUI\RGUI\Scope\CustomLabelScope.cs" />
-    <Compile Include="RapidGUI\RGUI\Scope\EnabledScope.cs" />
-    <Compile Include="RapidGUI\RGUI\Scope\IgnoreFieldScope.cs" />
-    <Compile Include="RapidGUI\RGUI\Scope\IndentScope.cs" />
-    <Compile Include="RapidGUI\RGUI\Scope\PrefixLabelIndentScope.cs" />
-    <Compile Include="RapidGUI\RGUI\Slider.cs" />
-    <Compile Include="RapidGUI\RGUI\Slider\RecursiveSlider.cs" />
+    <Compile Include="RapidGUI\Button.cs" />
+    <Compile Include="RapidGUI\Field.cs" />
+    <Compile Include="RapidGUI\Field\BoolField.cs" />
+    <Compile Include="RapidGUI\Field\EnumField.cs" />
+    <Compile Include="RapidGUI\Field\ListField.cs" />
+    <Compile Include="RapidGUI\Field\StandardField.cs" />
+    <Compile Include="RapidGUI\MinMax.cs" />
+    <Compile Include="RapidGUI\Popup.cs" />
+    <Compile Include="RapidGUI\Scope\BackgroundColorScope.cs" />
+    <Compile Include="RapidGUI\Scope\ColorScope.cs" />
+    <Compile Include="RapidGUI\Scope\EnabledScope.cs" />
+    <Compile Include="RapidGUI\Scope\IndentScope.cs" />
+    <Compile Include="RapidGUI\Slider.cs" />
+    <Compile Include="RapidGUI\Utilities\FocusChecker.cs" />
+    <Compile Include="RapidGUI\Utilities\IDoGUIWindow.cs" />
+    <Compile Include="RapidGUI\Utilities\RapidGUIBehaviour.cs" />
+    <Compile Include="RapidGUI\Utilities\RGUIStyle.cs" />
+    <Compile Include="RapidGUI\Utilities\RGUIUtility.cs" />
+    <Compile Include="RapidGUI\Utilities\TypeUtility.cs" />
+    <Compile Include="RapidGUI\Utilities\TypeUtilityMemberInfo.cs" />
+    <Compile Include="RapidGUI\Utilities\UnparsedStr.cs" />
+    <Compile Include="RapidGUI\Utilities\WarningLabelNoStyle.cs" />
+    <Compile Include="RapidGUI\Utilities\WindowInvoker.cs" />
     <Compile Include="XLWeather.Data\DefaultSettings.cs" />
     <Compile Include="XLWeather.Data\ToggleStateData.cs" />
     <Compile Include="XLWeather.Data\WeatherData.cs" />
@@ -269,22 +241,9 @@
     <None Include="Info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="RapidGUI\Component\IMColorPicker\Resources\imPreset.asset" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="RapidGUI\Component\IMColorPicker\Resources\imBorder.png" />
-    <Content Include="RapidGUI\Component\IMColorPicker\Resources\imBorderHighlighted.png" />
-    <Content Include="RapidGUI\Component\IMColorPicker\Resources\imCircle.png" />
-    <Content Include="RapidGUI\Component\IMColorPicker\Resources\imLeft.png" />
-    <Content Include="RapidGUI\Component\IMColorPicker\Resources\imRight.png" />
-    <Content Include="RapidGUI\Component\Utilities\Cursor\Resources\cursor_ew.png" />
-    <Content Include="RapidGUI\Component\Utilities\Cursor\Resources\cursor_ns.png" />
-    <Content Include="RapidGUI\Component\Utilities\Cursor\Resources\cursor_nwse.png" />
-    <Content Include="RapidGUI\RGUI\MinMaxSlider\Resources\minmax slider thumb act.png" />
-    <Content Include="RapidGUI\RGUI\MinMaxSlider\Resources\minmax slider thumb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

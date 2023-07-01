@@ -2,7 +2,7 @@
 
 namespace RapidGUI
 {
-    public static class ForcusChecker
+    public static class FocusChecker
     {
         static int time;
         static int mouseId;

@@ -19,7 +19,6 @@ namespace RapidGUI
             GUI.color = colorScopeStack.Pop();
         }
 
-
         public class ColorScope : GUI.Scope
         {
             public ColorScope(Color color) => BeginColor(color);

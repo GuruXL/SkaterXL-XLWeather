@@ -13,7 +13,6 @@ namespace RapidGUI
             RapidGUIBehaviour.Instance.onGUI += DoGUI;
         }
 
-
         public static void Add(IDoGUIWindow window) => Windows.Add(window);
         public static void Remove(IDoGUIWindow window) => Windows.Remove(window);
 
@@ -30,7 +29,7 @@ namespace RapidGUI
 
             var evt = Event.current;
 
-            if ((evt.type == EventType.KeyUp) 
+            if ((evt.type == EventType.KeyUp)
                 && (evt.keyCode == RapidGUIBehaviour.Instance.closeFocusedWindowKey)
                 && (GUIUtility.keyboardControl == 0)
                 )
@@ -41,7 +40,6 @@ namespace RapidGUI
                     focusedWindow = null;
                 }
             }
-
 
             if (Event.current.type == EventType.Repaint)
             {

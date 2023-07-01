@@ -48,7 +48,7 @@ namespace RapidGUI
             {
                 this.info = info;
                 var rangeAttr = info.GetCustomAttribute<RangeAttribute>();
-                if ( rangeAttr != null)
+                if (rangeAttr != null)
                 {
                     range = new MinMaxFloat()
                     {
