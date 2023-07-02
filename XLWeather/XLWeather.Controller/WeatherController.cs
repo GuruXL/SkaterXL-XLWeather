@@ -45,8 +45,8 @@ namespace XLWeather.Controller
 
         private void Awake()
         {
-            MasterPrefab = PlayerController.Instance.skaterController.transform.parent.transform.parent; // 1.2.2.8
-            //MasterPrefab = PlayerController.Main.transform.parent; //1.2.6.0
+            //MasterPrefab = PlayerController.Instance.skaterController.transform.parent.transform.parent; // 1.2.2.8
+            MasterPrefab = PlayerController.Main.transform.parent; //1.2.6.0
 
             Main.settings.ResetIfEnabled();
         }
@@ -145,13 +145,13 @@ namespace XLWeather.Controller
         }
         private void GetPlayerTarget()
         {
-            Transform parent = PlayerController.Instance.skaterController.gameObject.transform; // 1.2.2.8
-            //Transform parent = PlayerController.Main.gameplay.skaterController.gameObject.transform; // 1.2.6.0
+            //Transform parent = PlayerController.Instance.skaterController.gameObject.transform; // 1.2.2.8
+            Transform parent = PlayerController.Main.gameplay.skaterController.gameObject.transform; // 1.2.6.0
             Transform joints = parent.Find("Skater_Joints");
             pelvis = joints.FindChildRecursively("Skater_pelvis");
 
-            board = PlayerController.Instance.boardController.boardTransform; // 1.2.2.8
-            //board = PlayerController.Main.gameplay.boardController.gameObject.transform; // 1.2.6.0
+            //board = PlayerController.Instance.boardController.boardTransform; // 1.2.2.8
+            board = PlayerController.Main.gameplay.boardController.gameObject.transform; // 1.2.6.0
         }
         private void GetMainCamera()
         {

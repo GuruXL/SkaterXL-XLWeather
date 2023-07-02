@@ -52,7 +52,8 @@ namespace XLWeather.Utils
 
             if (unityObjectType != null)
             {
-                PlayerController.Instance.StartCoroutine(LoadAssetBundleAsync()); // 1.2.2.8           
+                //PlayerController.Instance.StartCoroutine(LoadAssetBundleAsync()); // 1.2.2.8
+                PlayerController.Main.StartCoroutine(LoadAssetBundleAsync()); // 1.2.6.0
             }
         }
 
@@ -69,9 +70,11 @@ namespace XLWeather.Utils
             fxBundle = requestFXbundle.assetBundle;
             dayNightBundle = requestDayNightbundle.assetBundle;
 
-            yield return PlayerController.Instance.StartCoroutine(LoadPrefabs());
+            //yield return PlayerController.Instance.StartCoroutine(LoadPrefabs()); // 1.2.2.8
+            yield return PlayerController.Main.StartCoroutine(LoadPrefabs()); // 1.2.6.0
             yield return new WaitUntil(() => prefabsLoaded == true);
-            yield return PlayerController.Instance.StartCoroutine(InstantiatePrefabs());
+            //yield return PlayerController.Instance.StartCoroutine(InstantiatePrefabs()); // 1.2.2.8
+            yield return PlayerController.Main.StartCoroutine(InstantiatePrefabs()); // 1.2.6.0
         }
         private IEnumerator LoadPrefabs()
         {
@@ -81,12 +84,12 @@ namespace XLWeather.Utils
                 yield break;
             }
 
-            yield return PlayerController.Instance.StartCoroutine(LoadDayNightPrefab());
-            yield return PlayerController.Instance.StartCoroutine(LoadCycleSkys());
-            yield return PlayerController.Instance.StartCoroutine(LoadVolumes());
-            yield return PlayerController.Instance.StartCoroutine(LoadActiveCubeMaps());
-            yield return PlayerController.Instance.StartCoroutine(LoadVFXPrefabs());
-            yield return PlayerController.Instance.StartCoroutine(LoadDronePrefab());
+            yield return PlayerController.Main.StartCoroutine(LoadDayNightPrefab());
+            yield return PlayerController.Main.StartCoroutine(LoadCycleSkys());
+            yield return PlayerController.Main.StartCoroutine(LoadVolumes());
+            yield return PlayerController.Main.StartCoroutine(LoadActiveCubeMaps());
+            yield return PlayerController.Main.StartCoroutine(LoadVFXPrefabs());
+            yield return PlayerController.Main.StartCoroutine(LoadDronePrefab());
 
             // Wait for all prefabs to finish loading before setting prefabsLoaded to true
             while (!DayNightprefab || cycleSkys.Any(c => c == null) || SkyVolume.Any(v => v == null) ||
