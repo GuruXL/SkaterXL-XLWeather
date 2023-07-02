@@ -312,7 +312,7 @@ namespace XLWeather.Controller
             leafSettings = new WeatherData.LeafSettings(0, 0, 0, 0, 0);
             snowSettings = new WeatherData.SnowSettings(0, 0, 0, 0, 0);
             rainSettings = new WeatherData.RainSettings(0, 0, 0, 0, 0);
-            cloudSettings = new WeatherData.CloudSettings(0, 0, 0, 0, 0, new Vector3(0, 0, 0), 0, 0);
+            cloudSettings = new WeatherData.CloudSettings(0, 0, 0, 0, new Vector3(0, 0, 0), 0, 0);
         }
         private void UpdateFogSettings()
         {
@@ -406,7 +406,7 @@ namespace XLWeather.Controller
         private WeatherData.LeafSettings leafSettings = new WeatherData.LeafSettings(Main.settings.LeafDensityFloat, Main.settings.LeafSizeFloat, Main.settings.LeafGravityFloat, Main.settings.LeafWindFloat, Main.settings.LeafLifeFloat);
         private WeatherData.SnowSettings snowSettings = new WeatherData.SnowSettings(Main.settings.SnowDensityFloat, Main.settings.SnowSizeFloat, Main.settings.SnowGravityFloat, Main.settings.SnowWindFloat, Main.settings.SnowLifeFloat);
         private WeatherData.RainSettings rainSettings = new WeatherData.RainSettings(Main.settings.RainDensityFloat, Main.settings.RainSizeFloat, Main.settings.RainGravityFloat, Main.settings.RainWindFloat, Main.settings.RainLifeFloat);
-        private WeatherData.CloudSettings cloudSettings = new WeatherData.CloudSettings(Main.settings.Cloud_ParallexOffset, Main.settings.Cloud_Parallex2, Main.settings.Cloud_Iterations, Main.settings.Cloud_NoiseScale, Main.settings.Cloud_NoiseDepth, new Vector3(1, 1, 1), Main.settings.Cloud_Speed, Main.settings.Cloud_Intensity);
+        private WeatherData.CloudSettings cloudSettings = new WeatherData.CloudSettings(Main.settings.Cloud_ParallexOffset, Main.settings.Cloud_Iterations, Main.settings.Cloud_NoiseScale, Main.settings.Cloud_NoiseDepth, new Vector3(1, 1, 1), Main.settings.Cloud_Speed, Main.settings.Cloud_Intensity);
 
         private IEnumerator GetVfxComponent()
         {
@@ -434,7 +434,6 @@ namespace XLWeather.Controller
                     leafSettings.Density = Main.settings.LeafDensityFloat;
                 }
 
-                // This is to Stop the VFX if the density value should be 0. tempoary solution...
                 LeavesStateCheck.UpdateVFXState(Main.settings.LeafDensityFloat, leaves);
 
                 if (leafSettings.AreaSize != Main.settings.LeafSizeFloat)
@@ -469,7 +468,6 @@ namespace XLWeather.Controller
                     snowSettings.Density = Main.settings.SnowDensityFloat;
                 }
 
-                // This is to Stop the VFX if the density value should be 0. tempoary solution...
                 SnowStateCheck.UpdateVFXState(Main.settings.SnowDensityFloat, snow);
 
                 if (snowSettings.AreaSize != Main.settings.SnowSizeFloat)
@@ -505,7 +503,6 @@ namespace XLWeather.Controller
                     rainSettings.Density = Main.settings.RainDensityFloat;
                 }
 
-                // This is to Stop the VFX if the density value should be 0. tempoary solution...
                 RainStateCheck.UpdateVFXState(Main.settings.RainDensityFloat, rain);
 
                 if (rainSettings.AreaSize != Main.settings.RainSizeFloat)
@@ -544,11 +541,6 @@ namespace XLWeather.Controller
                 {
                     cloudRenderer.material.SetFloat("_ParallexOffset", Main.settings.Cloud_ParallexOffset);
                     cloudSettings.ParallexOffset = Main.settings.Cloud_ParallexOffset;
-                }
-                if (cloudSettings.Parallex2 != Main.settings.Cloud_Parallex2)
-                {
-                    cloudRenderer.material.SetFloat("_Parallax2", Main.settings.Cloud_Parallex2);
-                    cloudSettings.Parallex2 = Main.settings.Cloud_Parallex2;
                 }
                 if (cloudSettings.Iterations != Main.settings.Cloud_Iterations)
                 {

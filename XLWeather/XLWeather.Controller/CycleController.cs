@@ -427,8 +427,8 @@ namespace XLWeather.Controller
         {
             TimeSettings = new CycleData.TimeSettings(0, 0, 0);
             ShadowSettings = new CycleData.ShadowSettings(0, 0, 0, 0);
-            sunSettings = new CycleData.SunVolSettings(0, 0, 0, 0, 0, 0, 0);
-            moonSettings = new CycleData.MoonVolSettings(0, 0, 0, 0, 0, 0, 0);
+            sunSettings = new CycleData.SunVolSettings(0, 0, 0, 0, 0, 0, 0, 0);
+            moonSettings = new CycleData.MoonVolSettings(0, 0, 0, 0, 0, 0, 0, 0);
             sunLightSettings = new CycleData.SunLightSettings(0);
             moonLightSettings = new CycleData.MoonLightSettings(0, 0);
     }
@@ -486,6 +486,7 @@ namespace XLWeather.Controller
         private CycleData.SunVolSettings sunSettings = new CycleData.SunVolSettings(
             Main.settings.SunMinExFloat,
             Main.settings.SunMaxExFloat,
+            Main.settings.SunExCompFlt,
             Main.settings.sunSkyExFloat,
             Main.settings.sunSpaceEmission,
             Main.settings.sunDimmerFloat,
@@ -495,6 +496,7 @@ namespace XLWeather.Controller
         private CycleData.MoonVolSettings moonSettings = new CycleData.MoonVolSettings(
             Main.settings.MoonMinExFloat,
             Main.settings.MoonMaxExFloat,
+            Main.settings.MoonExCompFlt,
             Main.settings.moonSkyExFloat,
             Main.settings.moonSpaceEmission,
             Main.settings.moonDimmerFloat,
@@ -590,6 +592,12 @@ namespace XLWeather.Controller
                     sunSettings.SkyExposure = Main.settings.sunSkyExFloat;
                 }
 
+                if (sunSettings.Compensation != Main.settings.SunExCompFlt)
+                {
+                    sunExposure.compensation.Override(Main.settings.SunExCompFlt);
+                    sunSettings.Compensation = Main.settings.SunExCompFlt;
+                }
+
                 if (sunSettings.SpaceEmission != Main.settings.sunSpaceEmission)
                 {
                     sunPBS.spaceEmissionMultiplier.Override(Main.settings.sunSpaceEmission);
@@ -632,6 +640,12 @@ namespace XLWeather.Controller
                 {
                     moonPBS.exposure.Override(Main.settings.moonSkyExFloat);
                     moonSettings.SkyExposure = Main.settings.moonSkyExFloat;
+                }
+
+                if (moonSettings.Compensation != Main.settings.MoonExCompFlt)
+                {
+                    moonExposure.compensation.Override(Main.settings.MoonExCompFlt);
+                    moonSettings.Compensation = Main.settings.MoonExCompFlt;
                 }
 
                 if (moonSettings.SpaceEmission != Main.settings.moonSpaceEmission)

@@ -28,8 +28,10 @@ namespace XLWeather.Data
         public static float ShadowHighlights = 0.04f;
         public static float SunMinExFloat = 9.8f;
         public static float SunMaxExFloat = 10.85f;
+        public static float SunExCompFlt = 0.42f;
         public static float MoonMinExFloat = 10.6f;
         public static float MoonMaxExFloat = 15f;
+        public static float MoonExCompFlt = 0.42f;
         public static float sunSkyExFloat = 1f;
         public static float moonSkyExFloat = -0.6f;
         public static float CycleXrotFloat = 0f;
@@ -74,7 +76,6 @@ namespace XLWeather.Data
         public static float RainVolumeFloat = 0.4f;
 
         public static float Cloud_ParallexOffset = -32f;
-        public static float Cloud_Parallex2 = -1.45f;
         public static float Cloud_Iterations = 7.8f;
         public static float Cloud_NoiseScale = 1.8f;
         public static float Cloud_NoiseDepth = 1.2f;

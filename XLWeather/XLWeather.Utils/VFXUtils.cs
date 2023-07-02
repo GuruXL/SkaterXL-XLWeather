@@ -14,6 +14,8 @@ namespace XLWeather.Utils
         public class VFXStateCheck
         {
             private bool vfxStopped = false;
+
+            // Temporary fix for an issue with VFX property values not updating in sync with the ui slider values
             public void UpdateVFXState(float settingsValue, VisualEffect vfx)
             {
                 if (settingsValue == 0.0f && !vfxStopped)
