@@ -95,6 +95,6 @@ namespace XLWeather.Data
         public static float droneRotSpeed = 2f;
         public static float droneVolume = 0.2f;
         public static float droneCamFov = 80f;
-        public  static Color DroneLightColor = new Color(1.0f, 1.0f, 1.0f);
+        public static Color DroneLightColor = new Color(1.0f, 1.0f, 1.0f);
     }
 }
