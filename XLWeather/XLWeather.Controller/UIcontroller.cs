@@ -430,6 +430,7 @@ namespace XLWeather.Controller
                         break;
                     case false:
                         // Off toggle for Fog
+                        Main.Weatherctrl.ResetDataSettings();
                         AssetHandler.Instance.activeSky[3].SetActive(false);
                         ToggleStateData.addFogToggle = false;
                         ToggleStateData.removeFogToggle = false;
@@ -526,7 +527,7 @@ namespace XLWeather.Controller
                     {
                         // Creates UI for Slider
                         GUILayout.BeginVertical("Box");
-                        Main.settings.LeafDensityFloat = RGUI.SliderFloat(Main.settings.LeafDensityFloat, 0f, 80000f, DefaultSettings.LeafDensityFloat, "Density");
+                        Main.settings.LeafDensityFloat = RGUI.SliderFloat((int)Main.settings.LeafDensityFloat, 0f, 80000f, DefaultSettings.LeafDensityFloat, "Density");
                         Main.settings.LeafSizeFloat = RGUI.SliderFloat(Main.settings.LeafSizeFloat, 1f, 200f, DefaultSettings.LeafSizeFloat, "Area Size");
                         Main.settings.LeafGravityFloat = RGUI.SliderFloat(Main.settings.LeafGravityFloat, 1f, 6f, DefaultSettings.LeafGravityFloat, "Gravity");
                         Main.settings.LeafWindFloat = RGUI.SliderFloat(Main.settings.LeafWindFloat, 1f, 12f, DefaultSettings.LeafWindFloat, "Wind");
@@ -535,6 +536,7 @@ namespace XLWeather.Controller
                     }    
                     break;
                 case false:
+                    Main.Weatherctrl.ResetDataSettings();
                     AssetHandler.Instance.activeVFX[0].SetActive(false);
                     break;
             }
@@ -558,7 +560,7 @@ namespace XLWeather.Controller
                     {
                         // Creates UI for Slider
                         GUILayout.BeginVertical("Box");
-                        Main.settings.SnowDensityFloat = RGUI.SliderFloat(Main.settings.SnowDensityFloat, 0f, 285000f, DefaultSettings.SnowDensityFloat, "Density");
+                        Main.settings.SnowDensityFloat = RGUI.SliderFloat((int)Main.settings.SnowDensityFloat, 0f, 285000f, DefaultSettings.SnowDensityFloat, "Density");
                         Main.settings.SnowSizeFloat = RGUI.SliderFloat(Main.settings.SnowSizeFloat, 1f, 200f, DefaultSettings.SnowSizeFloat, "Area Size");
                         Main.settings.SnowGravityFloat = RGUI.SliderFloat(Main.settings.SnowGravityFloat, 1f, 4f, DefaultSettings.SnowGravityFloat, "Gravity");
                         Main.settings.SnowWindFloat = RGUI.SliderFloat(Main.settings.SnowWindFloat, 0f, 4f, DefaultSettings.SnowWindFloat, "Wind");
@@ -567,6 +569,7 @@ namespace XLWeather.Controller
                     }   
                     break;
                 case false:
+                    Main.Weatherctrl.ResetDataSettings();
                     AssetHandler.Instance.activeVFX[1].SetActive(false);
                     break;
             }
@@ -593,7 +596,7 @@ namespace XLWeather.Controller
                         Main.settings.RainVolumeFloat = RGUI.SliderFloat(Main.settings.RainVolumeFloat, 0f, 1f, 0.4f, "Volume");
                         GUILayout.EndVertical();
                         GUILayout.BeginVertical("Box");
-                        Main.settings.RainDensityFloat = RGUI.SliderFloat(Main.settings.RainDensityFloat, 0f, 1000000f, DefaultSettings.RainDensityFloat, "Density");
+                        Main.settings.RainDensityFloat = RGUI.SliderFloat((int)Main.settings.RainDensityFloat, 0f, 850000f, DefaultSettings.RainDensityFloat, "Density");
                         Main.settings.RainSizeFloat = RGUI.SliderFloat(Main.settings.RainSizeFloat, 1f, 100f, DefaultSettings.RainSizeFloat, "Area Size");
                         Main.settings.RainGravityFloat = RGUI.SliderFloat(Main.settings.RainGravityFloat, 1f, 60f, DefaultSettings.RainGravityFloat, "Gravity");
                         Main.settings.RainWindFloat = RGUI.SliderFloat(Main.settings.RainWindFloat, 0f, 4f, DefaultSettings.RainWindFloat, "Wind");
@@ -620,6 +623,7 @@ namespace XLWeather.Controller
                     break;
 
                 case false:
+                    Main.Weatherctrl.ResetDataSettings();
                     AssetHandler.Instance.activeVFX[2].SetActive(false);
                     AssetHandler.Instance.activeVFX[4].SetActive(false);
                     break;
@@ -667,20 +671,20 @@ namespace XLWeather.Controller
                         GUILayout.Label("note: Clouds will look cut off if render distance is lower than 1000 in XLGraphics");
                         GUILayout.EndVertical();
                         GUILayout.BeginVertical("Box");
+                        Main.settings.Cloud_BaseHeight = RGUI.SliderFloat(Main.settings.Cloud_BaseHeight, 0f, 400f, DefaultSettings.Cloud_BaseHeight, " BaseHeight");
                         Main.settings.Cloud_ParallexOffset = RGUI.SliderFloat(Main.settings.Cloud_ParallexOffset, 0f, -80f, DefaultSettings.Cloud_ParallexOffset, " ParallexOffset");
-                        Main.settings.Cloud_Parallex2 = RGUI.SliderFloat(Main.settings.Cloud_Parallex2, 0f, -10f, DefaultSettings.Cloud_Parallex2, " Parallex2");
                         Main.settings.Cloud_Iterations = RGUI.SliderFloat(Main.settings.Cloud_Iterations, 0f, 12f, DefaultSettings.Cloud_Iterations, " Iterations");
                         Main.settings.Cloud_NoiseScale = RGUI.SliderFloat(Main.settings.Cloud_NoiseScale, 0f, 4f, DefaultSettings.Cloud_NoiseScale, " NoiseScale");
                         Main.settings.Cloud_NoiseDepth = RGUI.SliderFloat(Main.settings.Cloud_NoiseDepth, 0f, 4f, DefaultSettings.Cloud_NoiseDepth, " NoiseDepth");
                         Main.settings.Cloud_CrackTiling_x = RGUI.SliderFloat(Main.settings.Cloud_CrackTiling_x, 0f, 2f, DefaultSettings.Cloud_CrackTiling_x, " Tiling_X");
                         Main.settings.Cloud_CrackTiling_y = RGUI.SliderFloat(Main.settings.Cloud_CrackTiling_y, 0f, 2f, DefaultSettings.Cloud_CrackTiling_y, " Tiling_Y");
-                        Main.settings.Cloud_Speed = RGUI.SliderFloat(Main.settings.Cloud_Speed, 0f, 0.1f, DefaultSettings.Cloud_Speed, " Speed");
-                        Main.settings.Cloud_BaseHeight = RGUI.SliderFloat(Main.settings.Cloud_BaseHeight, 0f, 400f, DefaultSettings.Cloud_BaseHeight, " BaseHeight");
+                        Main.settings.Cloud_Speed = RGUI.SliderFloat(Main.settings.Cloud_Speed, 0f, 0.1f, DefaultSettings.Cloud_Speed, " Speed");    
                         Main.settings.Cloud_Intensity = RGUI.SliderFloat(Main.settings.Cloud_Intensity, 0f, 80f, DefaultSettings.Cloud_Intensity, " Intensity");
                         GUILayout.EndVertical();
                     }  
                     break;
                 case false:
+                    Main.Weatherctrl.ResetDataSettings();
                     AssetHandler.Instance.activeVFX[5].SetActive(false);
                     break;
             }
@@ -845,11 +849,14 @@ namespace XLWeather.Controller
                         // Off toggle for Day/Night Cycle
                         AssetHandler.Instance.activeDayNight.SetActive(false);
                         Main.MapLightctrl.ToggleMainLights(true);
-                        if (Main.settings.MapLayersToggle)
-                        {
-                            Main.MapLightctrl.ResetLayerToggles();
-                        }
+
+                        //if (Main.settings.MapLayersToggle)
+                        //{
+                        //    Main.MapLightctrl.ResetLayerToggles();
+                        //}
+
                         //ToggleStateData.ResetVolWeight = true;
+
                         break;
                 }
             }
@@ -945,6 +952,8 @@ namespace XLWeather.Controller
                         GUILayout.Label("<i> Darkness</i>");
                         Main.settings.SunMaxExFloat = RGUI.SliderFloat(Main.settings.SunMaxExFloat, 0f, 20f, DefaultSettings.SunMaxExFloat, "Max Exposure");
                         GUILayout.Space(8);
+                        Main.settings.SunExCompFlt = RGUI.SliderFloat(Main.settings.SunExCompFlt, -2.0f, 2.0f, DefaultSettings.SunExCompFlt, "Compensation");
+                        GUILayout.Space(8);
                         Main.settings.sunSkyExFloat = RGUI.SliderFloat(Main.settings.sunSkyExFloat, -2f, 2f, DefaultSettings.sunSkyExFloat, "Sky Exposure");
                         GUILayout.EndVertical();
 
@@ -954,6 +963,8 @@ namespace XLWeather.Controller
                         Main.settings.MoonMinExFloat = RGUI.SliderFloat(Main.settings.MoonMinExFloat, 0f, 20f, DefaultSettings.MoonMinExFloat, "Min Exposure");
                         GUILayout.Label("<i> Darkness</i>");
                         Main.settings.MoonMaxExFloat = RGUI.SliderFloat(Main.settings.MoonMaxExFloat, 0f, 20f, DefaultSettings.MoonMaxExFloat, "Max Exposure");
+                        GUILayout.Space(8);
+                        Main.settings.MoonExCompFlt = RGUI.SliderFloat(Main.settings.MoonExCompFlt, -2.0f, 2.0f, DefaultSettings.MoonExCompFlt, "Compensation");
                         GUILayout.Space(8);
                         Main.settings.moonSkyExFloat = RGUI.SliderFloat(Main.settings.moonSkyExFloat, -2f, 2f, DefaultSettings.moonSkyExFloat, "Sky Exposure");
                         GUILayout.EndVertical();
@@ -977,19 +988,22 @@ namespace XLWeather.Controller
                     GUILayout.BeginVertical();
 
                     GUILayout.BeginVertical("Box");
+                    Main.settings.ShadowDistFloat = RGUI.SliderFloat(Main.settings.ShadowDistFloat, 1f, 285f, DefaultSettings.ShadowDistFloat, "Shadow Distance");
+                    GUILayout.EndVertical();
+
+                    GUILayout.BeginVertical("Box");
+                    Main.settings.ShadowHighlights = RGUI.SliderFloat(Main.settings.ShadowHighlights, 0.0f, 0.2f, DefaultSettings.ShadowHighlights, "Shadow Highlights");
+                    GUILayout.EndVertical();
+
+                    GUILayout.BeginVertical("Box");
                     UIextensions.Instance.CenteredLabel("Sun Shadows");
                     Main.settings.sunShadowFloat = RGUI.SliderFloat(Main.settings.sunShadowFloat, 0f, 1f, DefaultSettings.sunShadowFloat, "Shadow Strength");
-                    Main.settings.ShadowHighlights = RGUI.SliderFloat(Main.settings.ShadowHighlights, 0.0f, 0.2f, DefaultSettings.ShadowHighlights, "Shadow Highlights");
                     GUILayout.EndVertical();
 
                     GUILayout.BeginVertical("Box");
                     UIextensions.Instance.CenteredLabel("Moon Shadows");
                     Main.settings.moonShadowFloat = RGUI.SliderFloat(Main.settings.moonShadowFloat, 0f, 1f, DefaultSettings.moonShadowFloat, "Shadow Strength");
-                    GUILayout.EndVertical();
-
-                    GUILayout.BeginVertical("Box");
-                    Main.settings.ShadowDistFloat = RGUI.SliderFloat(Main.settings.ShadowDistFloat, 1f, 285f, DefaultSettings.ShadowDistFloat, "Shadow Distance");
-                    GUILayout.EndVertical();
+                    GUILayout.EndVertical();    
 
                     GUILayout.EndVertical();
                 }

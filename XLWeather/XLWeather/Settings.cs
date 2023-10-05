@@ -69,7 +69,8 @@ namespace XLWeather
         // ----- End Set KeyBindings ------
 
         public Color BGColor = new Color(0.85f, 0.90f, 1.0f);
-        public bool MapLayersToggle = false;
+
+        //public bool MapLayersToggle = false;
 
         public float NightFixedExposureFloat = DefaultSettings.NightFixedExposureFloat;
         public float NightSkyboxExposureFloat = DefaultSettings.NightSkyboxExposureFloat;
@@ -102,8 +103,10 @@ namespace XLWeather
         public float ShadowHighlights = DefaultSettings.ShadowHighlights;
         public float SunMinExFloat = DefaultSettings.SunMinExFloat;
         public float SunMaxExFloat = DefaultSettings.SunMaxExFloat;
+        public float SunExCompFlt = DefaultSettings.SunExCompFlt;
         public float MoonMinExFloat = DefaultSettings.MoonMinExFloat;
         public float MoonMaxExFloat = DefaultSettings.MoonMaxExFloat;
+        public float MoonExCompFlt = DefaultSettings.MoonExCompFlt;
         public float sunSkyExFloat = DefaultSettings.sunSkyExFloat;
         public float moonSkyExFloat = DefaultSettings.moonSkyExFloat;
         public float CycleXrotFloat = DefaultSettings.CycleXrotFloat;
@@ -154,7 +157,6 @@ namespace XLWeather
         public float RainVolumeFloat = DefaultSettings.RainVolumeFloat;
 
         public float Cloud_ParallexOffset = DefaultSettings.Cloud_ParallexOffset;
-        public float Cloud_Parallex2 = DefaultSettings.Cloud_Parallex2;
         public float Cloud_Iterations = DefaultSettings.Cloud_Iterations;
         public float Cloud_NoiseScale = DefaultSettings.Cloud_NoiseScale;
         public float Cloud_NoiseDepth = DefaultSettings.Cloud_NoiseDepth;
@@ -258,8 +260,10 @@ namespace XLWeather
             ShadowHighlights = DefaultSettings.ShadowHighlights;
             SunMinExFloat = DefaultSettings.SunMinExFloat;
             SunMaxExFloat = DefaultSettings.SunMaxExFloat;
+            SunExCompFlt = DefaultSettings.SunExCompFlt;
             MoonMinExFloat = DefaultSettings.MoonMinExFloat;
             MoonMaxExFloat = DefaultSettings.MoonMaxExFloat;
+            MoonExCompFlt = DefaultSettings.MoonExCompFlt;
             sunSkyExFloat = DefaultSettings.sunSkyExFloat;
             moonSkyExFloat = DefaultSettings.moonSkyExFloat;
             CycleXrotFloat = DefaultSettings.CycleXrotFloat;
@@ -304,7 +308,6 @@ namespace XLWeather
             RainVolumeFloat = DefaultSettings.RainVolumeFloat;
 
             Cloud_ParallexOffset = DefaultSettings.Cloud_ParallexOffset;
-            Cloud_Parallex2 = DefaultSettings.Cloud_Parallex2;
             Cloud_Iterations = DefaultSettings.Cloud_Iterations;
             Cloud_NoiseScale = DefaultSettings.Cloud_NoiseScale;
             Cloud_NoiseDepth = DefaultSettings.Cloud_NoiseDepth;

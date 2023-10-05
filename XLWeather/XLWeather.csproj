@@ -196,11 +196,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="XLWeather.Data\DefaultSettings.cs" />
-    <Compile Include="XLWeather.Data\ToggleStateData.cs" />
-    <Compile Include="XLWeather.Data\WeatherData.cs" />
-    <Compile Include="XLWeather.Data\CycleData.cs" />
-    <Compile Include="XLWeather.Patches\PromoPatch.cs" />
     <Compile Include="RapidGUI\Button.cs" />
     <Compile Include="RapidGUI\Field.cs" />
     <Compile Include="RapidGUI\Field\BoolField.cs" />
@@ -224,7 +219,13 @@
     <Compile Include="RapidGUI\Utilities\UnparsedStr.cs" />
     <Compile Include="RapidGUI\Utilities\WarningLabelNoStyle.cs" />
     <Compile Include="RapidGUI\Utilities\WindowInvoker.cs" />
+    <Compile Include="XLWeather.Data\DefaultSettings.cs" />
+    <Compile Include="XLWeather.Data\ToggleStateData.cs" />
+    <Compile Include="XLWeather.Data\WeatherData.cs" />
+    <Compile Include="XLWeather.Data\CycleData.cs" />
+    <Compile Include="XLWeather.Patches\PromoPatch.cs" />
     <Compile Include="XLWeather.Utils\SceneChangeManager.cs" />
+    <Compile Include="XLWeather.Utils\VFXUtils.cs" />
     <Compile Include="XLWeather.Utils\UIextensions.cs" />
     <Compile Include="XLWeather.Utils\AssetHandler.cs" />
     <Compile Include="XLWeather.Controller\MapLightController.cs" />
@@ -245,6 +246,5 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

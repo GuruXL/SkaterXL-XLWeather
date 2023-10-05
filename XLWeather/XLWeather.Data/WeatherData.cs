@@ -81,7 +81,6 @@ namespace XLWeather.Data
         public class CloudSettings
         {
             public float ParallexOffset { get; set; }
-            public float Parallex2 { get; set; }
             public float Iterations { get; set; }
             public float NoiseScale { get; set; }
             public float NoiseDepth { get; set; }
@@ -90,10 +89,9 @@ namespace XLWeather.Data
             public float Intensity { get; set; }
 
             // constructor to set initial values
-            public CloudSettings(float parallexOffset, float parallex2, float iterations, float noiseScale, float noiseDepth, Vector3 crackTiling, float speed, float intensity)
+            public CloudSettings(float parallexOffset, float iterations, float noiseScale, float noiseDepth, Vector3 crackTiling, float speed, float intensity)
             {
                 ParallexOffset = parallexOffset;
-                Parallex2 = parallex2;
                 Iterations = iterations;
                 NoiseScale = noiseScale;
                 NoiseDepth = noiseDepth;

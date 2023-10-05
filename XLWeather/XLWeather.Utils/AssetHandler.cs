@@ -52,9 +52,7 @@ namespace XLWeather.Utils
 
             if (unityObjectType != null)
             {
-                // load assets here
-                PlayerController.Instance.StartCoroutine(LoadAssetBundleAsync()); // 1.2.2.8
-                //PlayerController.Instance.StartCoroutine(LoadAssetBundleAsync()); // 1.2.6.0             
+                PlayerController.Instance.StartCoroutine(LoadAssetBundleAsync()); // 1.2.2.8           
             }
         }
 
@@ -155,7 +153,7 @@ namespace XLWeather.Utils
             yield return null;
             VFXprefab[1] = fxBundle.LoadAsset<GameObject>("SnowV3");
             yield return null;
-            VFXprefab[2] = fxBundle.LoadAsset<GameObject>("RainV5");
+            VFXprefab[2] = fxBundle.LoadAsset<GameObject>("RainV3");
             yield return null;
             VFXprefab[3] = fxBundle.LoadAsset<GameObject>("NorthernLights");
             yield return null;

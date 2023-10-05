@@ -21,16 +21,18 @@ namespace XLWeather.Data
         {
             public float Min { get; set; }
             public float Max { get; set; }
+            public float Compensation { get; set; }
             public float SkyExposure { get; set; }
             public float SpaceEmission { get; set; }
             public float Dimmer { get; set; }
             public float IndirectLight { get; set; }
             public float SpecularLight { get; set; }
 
-            public SunVolSettings(float min, float max, float skyExposure, float emission, float dimmer, float indirectLight, float specularLight)
+            public SunVolSettings(float min, float max, float Comp, float skyExposure, float emission, float dimmer, float indirectLight, float specularLight)
             {
                 Min = min;
                 Max = max;
+                Compensation = Comp;
                 SkyExposure = skyExposure;
                 SpaceEmission = emission;
                 Dimmer = dimmer;
@@ -52,16 +54,18 @@ namespace XLWeather.Data
         {
             public float Min { get; set; }
             public float Max { get; set; }
+            public float Compensation { get; set; }
             public float SkyExposure { get; set; }
             public float SpaceEmission { get; set; }
             public float Dimmer { get; set; }
             public float IndirectLight { get; set; }
             public float SpecularLight { get; set; }
 
-            public MoonVolSettings(float min, float max, float skyExposure, float emission, float dimmer, float indirectLight, float specularLight)
+            public MoonVolSettings(float min, float max, float Comp,  float skyExposure, float emission, float dimmer, float indirectLight, float specularLight)
             {
                 Min = min;
                 Max = max;
+                Compensation = Comp;
                 SkyExposure = skyExposure;
                 SpaceEmission = emission;
                 Dimmer = dimmer;
