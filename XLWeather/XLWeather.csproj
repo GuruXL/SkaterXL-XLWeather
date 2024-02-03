@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Dillon\AppData\Local\Temp\vsAF6F.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\GURU\AppData\Local\Temp\vsBC04.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,28 +30,26 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Dillon\AppData\Local\Temp\vsAF6F.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\GURU\AppData\Local\Temp\vsBC04.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BFSUtilities, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\BFSUtilities.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\BFSUtilities.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Cinemachine.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="modio.UnityPlugin, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\modio.UnityPlugin.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\modio.UnityPlugin.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -59,47 +57,47 @@
     </Reference>
     <Reference Include="Photon3Unity3D, Version=4.1.4.9, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Photon3Unity3D.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="PhotonRealtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\PhotonRealtime.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\PhotonRealtime.dll</HintPath>
     </Reference>
     <Reference Include="PhotonUnityNetworking, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\PhotonUnityNetworking.dll</HintPath>
     </Reference>
     <Reference Include="PhotonUnityNetworking.Utilities, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\PhotonUnityNetworking.Utilities.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\PhotonUnityNetworking.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Rewired_Core.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Rewired_Core.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\SkaterXL.Core.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Core.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Data, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\SkaterXL.Data.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Data.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Gear, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\SkaterXL.Gear.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Gear.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Map, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\SkaterXL.Map.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Map.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Multiplayer, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\SkaterXL.Multiplayer.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Multiplayer.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Replay, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\SkaterXL.Replay.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Replay.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -111,87 +109,90 @@
     <Reference Include="System.Xml" />
     <Reference Include="Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualEffectGraph.Runtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Unity.VisualEffectGraph.Runtime.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Unity.VisualEffectGraph.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.InputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.TerrainPhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.TextCoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VFXModule">
-      <HintPath>..\..\..\..\..\..\Program Files\Unity\Hub\Editor\2019.3.15\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.VFXModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityModManager, Version=0.25.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityModManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
