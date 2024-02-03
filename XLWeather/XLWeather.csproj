@@ -224,6 +224,7 @@
     <Compile Include="XLWeather.Data\CycleData.cs" />
     <Compile Include="XLWeather.Patches\PromoPatch.cs" />
     <Compile Include="XLWeather.Utils\SceneChangeManager.cs" />
+    <Compile Include="XLWeather.Utils\MaterialUtil.cs" />
     <Compile Include="XLWeather.Utils\VFXUtils.cs" />
     <Compile Include="XLWeather.Utils\UIextensions.cs" />
     <Compile Include="XLWeather.Utils\AssetHandler.cs" />

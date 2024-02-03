@@ -25,6 +25,7 @@ namespace XLWeather
         public static CycleController Cyclectrl;
         public static DroneController Dronectrl;
         public static MapLightController MapLightctrl;
+        //public static MaterialUtil MatUtil;
 
         private static bool Load(UnityModManager.ModEntry modEntry)
         {
@@ -40,7 +41,7 @@ namespace XLWeather
         }
         private static void OnGUI(UnityModManager.ModEntry modEntry)
         {
-            /*
+            
             GUILayout.BeginVertical(GUILayout.Width(284));
             if (settings.MapLayersToggle)
             {
@@ -61,7 +62,7 @@ namespace XLWeather
                 }
             }
             GUILayout.EndVertical();
-            */
+            
 
             GUILayout.BeginVertical(GUILayout.Width(284));
             if (RGUI.Button(ToggleStateData.HotKeyToggle, "Change HotKey"))
@@ -159,6 +160,7 @@ namespace XLWeather
                 Cyclectrl = scriptManager.AddComponent<CycleController>();
                 Dronectrl = scriptManager.AddComponent<DroneController>();
                 UIctrl = scriptManager.AddComponent<UIcontroller>();
+                //MatUtil = scriptManager.AddComponent<MaterialUtil>();
 
                 EnableCheck();
                 AssetHandler.Instance.LoadBundles();

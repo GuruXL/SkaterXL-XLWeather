@@ -10,21 +10,21 @@ namespace XLWeather.Controller
     public class MapLightController : MonoBehaviour
     {
         public Light[] lights;
-        //List<Light> TaggedLightsList;
+        List<Light> TaggedLightsList;
         List<Light> CurrentMainLights;
-        //List<GameObject> TaggedGO;
+        List<GameObject> TaggedGO;
         public LightType lightType = LightType.Directional;
         public Light MainLight = null;
-        //public List<Material> hdrpMaterials;
-        //public List<ReflectionProbe> probes;
-        //public Dictionary<Material, float> originalEmissionweights;
-        //private int delay = 0;
+        public List<Material> hdrpMaterials;
+        public List<ReflectionProbe> probes;
+        public Dictionary<Material, float> originalEmissionweights;
+        private int delay = 0;
 
         private bool IsDefaultValueSet = false;
 
         private float lastIntensity;
 
-        /*
+        
         public bool ListsPopulated()
         {
             if (TaggedLightsList.Count > 0 && TaggedGO.Count > 0 && hdrpMaterials.Count > 0)
@@ -36,7 +36,7 @@ namespace XLWeather.Controller
                 return false;
             }
         }
-        */
+        
 
         private void Update()
         {
@@ -51,7 +51,7 @@ namespace XLWeather.Controller
 
         }
 
-        /*
+        
         private void FixedUpdate()
         {
             if (!Main.settings.MapLayersToggle)
@@ -62,7 +62,7 @@ namespace XLWeather.Controller
                 UpdateLayerMapLights();
             }
         }
-        */
+        
 
         // ----- Enable/Disable Lights for DayNightCycle -------
         public void GetLights()
@@ -144,8 +144,8 @@ namespace XLWeather.Controller
         }
         // ------ End Get Lights and Values for Main map Light -----------
 
-        /*
-        // ------- Toggles Objects on and off during Day Night if they are on Layer 28 ---------------
+        
+        // ------- Toggles Objects on and off during Day Night if they are on Layer 28 ------------
         public void GetLayerObjects()
         {
             if (GameStateMachine.Instance.CurrentState.GetType() == typeof(GearSelectionState))
@@ -272,8 +272,8 @@ namespace XLWeather.Controller
         }
 
         // ------- End Toggle for Tagged Lights ---------------
-        */
-        /*
+        
+        
         // ----------- get map materials -----------------
         private void GetMapMaterials()
         {
@@ -344,8 +344,8 @@ namespace XLWeather.Controller
         }
 
         // ---------- end of Material changes  --------------
-        */
-        /*
+        
+        
         // ---------- reflection probe functions -------------
         void GetReflectionProbes()
         {
@@ -379,6 +379,6 @@ namespace XLWeather.Controller
             }
         }
         //------------ end reflection probe functions ----------------
-        */
+        
     }   
 }
