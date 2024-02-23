@@ -805,7 +805,6 @@ namespace XLWeather.Controller
                     }
                     GUILayout.EndVertical();
                 }
-
                 
                 GUILayout.BeginVertical("Box");
                 if (RGUI.Button(ToggleStateData.DroneColorLerptoggle, "RGB"))

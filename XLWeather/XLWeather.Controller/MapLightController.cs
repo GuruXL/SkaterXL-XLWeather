@@ -154,7 +154,7 @@ namespace XLWeather.Controller
             GetLayerMapLights();
             GetLayerGO();
             GetMapMaterials();
-            GetReflectionProbes();
+            //GetReflectionProbes();
         }
 
         private void GetLayerMapLights()
@@ -249,14 +249,14 @@ namespace XLWeather.Controller
                     ToggleLayerGO(false);
                     ToggleMapLights(false);
                     ToggleEmission(false);
-                    toggleProbes(true);
+                    //toggleProbes(true);
                     Main.Logger.Log("sunActive: " + sunActive);
                     break;
                 case false:
                     ToggleLayerGO(true);
                     ToggleMapLights(true);
                     ToggleEmission(true);
-                    toggleProbes(false);
+                    //toggleProbes(false);
                     Main.Logger.Log("sunActive: " + sunActive);
                     break;
             }
@@ -268,7 +268,7 @@ namespace XLWeather.Controller
             ToggleLayerGO(false);
             ToggleMapLights(true);
             ToggleEmission(true);
-            toggleProbes(true);
+            //toggleProbes(true);
         }
 
         // ------- End Toggle for Tagged Lights ---------------
@@ -347,6 +347,7 @@ namespace XLWeather.Controller
         
         
         // ---------- reflection probe functions -------------
+        /*
         void GetReflectionProbes()
         {
             probes = new List<ReflectionProbe>();
@@ -378,6 +379,7 @@ namespace XLWeather.Controller
                 }
             }
         }
+        */
         //------------ end reflection probe functions ----------------
         
     }   
