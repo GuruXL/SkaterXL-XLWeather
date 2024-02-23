@@ -72,11 +72,11 @@ namespace XLWeather.Controller
         private string toolTip_FogMaxHeight = "Determines the upper limit of fog. Increase for higher fog coverage, decrease to lower fog ceiling.";
         private string toolTip_FogVolDistance = "Controls how quickly fog thickens with distance. Lower values result in thicker fog closer to the viewer.";
 
-        private string toolTip_VFXDensity = "Controls the amount of particles to be spawned";
-        private string toolTip_VFXArea = "Controls the distance around the player that the paricles will spawn";
-        private string toolTip_VFXGravity = "Controls the speed that paricles will fall";
-        private string toolTip_VFXWind = "Controls the force of wind that gets applied to the particles";
-        private string toolTip_VFXLifetime = "";
+        private string toolTip_VFXDensity = "The amount of particles to be spawned";
+        private string toolTip_VFXArea = "The distance around the player that the paricles will spawn";
+        private string toolTip_VFXGravity = "The speed and force that paricles will fall";
+        private string toolTip_VFXWind = "The amount of wind force that gets applied to the particles";
+        private string toolTip_VFXLifetime = "Determines how long eacch particle will exist";
 
         public string[] NightSkyStates = new string[] {
             "Cloudy Night",
@@ -546,11 +546,11 @@ namespace XLWeather.Controller
                     {
                         // Creates UI for Slider
                         GUILayout.BeginVertical("Box");
-                        Main.settings.LeafDensityFloat = RGUI.SliderFloat((int)Main.settings.LeafDensityFloat, 0f, 80000f, DefaultSettings.LeafDensityFloat, "Density");
-                        Main.settings.LeafSizeFloat = RGUI.SliderFloat(Main.settings.LeafSizeFloat, 1f, 200f, DefaultSettings.LeafSizeFloat, "Area Size");
-                        Main.settings.LeafGravityFloat = RGUI.SliderFloat(Main.settings.LeafGravityFloat, 1f, 6f, DefaultSettings.LeafGravityFloat, "Gravity");
-                        Main.settings.LeafWindFloat = RGUI.SliderFloat(Main.settings.LeafWindFloat, 1f, 12f, DefaultSettings.LeafWindFloat, "Wind");
-                        Main.settings.LeafLifeFloat = RGUI.SliderFloat(Main.settings.LeafLifeFloat, 1f, 12f, DefaultSettings.LeafLifeFloat, "Lifetime");
+                        Main.settings.LeafDensityFloat = RGUI.SliderFloat((int)Main.settings.LeafDensityFloat, 0f, 80000f, DefaultSettings.LeafDensityFloat, "Density", toolTip_VFXDensity);
+                        Main.settings.LeafSizeFloat = RGUI.SliderFloat(Main.settings.LeafSizeFloat, 1f, 200f, DefaultSettings.LeafSizeFloat, "Area Size", toolTip_VFXArea);
+                        Main.settings.LeafGravityFloat = RGUI.SliderFloat(Main.settings.LeafGravityFloat, 1f, 6f, DefaultSettings.LeafGravityFloat, "Gravity", toolTip_VFXGravity);
+                        Main.settings.LeafWindFloat = RGUI.SliderFloat(Main.settings.LeafWindFloat, 1f, 12f, DefaultSettings.LeafWindFloat, "Wind", toolTip_VFXWind);
+                        Main.settings.LeafLifeFloat = RGUI.SliderFloat(Main.settings.LeafLifeFloat, 1f, 12f, DefaultSettings.LeafLifeFloat, "Lifetime", toolTip_VFXLifetime);
                         GUILayout.EndVertical();
                     }    
                     break;
@@ -579,11 +579,11 @@ namespace XLWeather.Controller
                     {
                         // Creates UI for Slider
                         GUILayout.BeginVertical("Box");
-                        Main.settings.SnowDensityFloat = RGUI.SliderFloat((int)Main.settings.SnowDensityFloat, 0f, 285000f, DefaultSettings.SnowDensityFloat, "Density");
-                        Main.settings.SnowSizeFloat = RGUI.SliderFloat(Main.settings.SnowSizeFloat, 1f, 200f, DefaultSettings.SnowSizeFloat, "Area Size");
-                        Main.settings.SnowGravityFloat = RGUI.SliderFloat(Main.settings.SnowGravityFloat, 1f, 4f, DefaultSettings.SnowGravityFloat, "Gravity");
-                        Main.settings.SnowWindFloat = RGUI.SliderFloat(Main.settings.SnowWindFloat, 0f, 4f, DefaultSettings.SnowWindFloat, "Wind");
-                        Main.settings.SnowLifeFloat = RGUI.SliderFloat(Main.settings.SnowLifeFloat, 1f, 16f, DefaultSettings.SnowLifeFloat, "Lifetime");
+                        Main.settings.SnowDensityFloat = RGUI.SliderFloat((int)Main.settings.SnowDensityFloat, 0f, 285000f, DefaultSettings.SnowDensityFloat, "Density", toolTip_VFXDensity);
+                        Main.settings.SnowSizeFloat = RGUI.SliderFloat(Main.settings.SnowSizeFloat, 1f, 200f, DefaultSettings.SnowSizeFloat, "Area Size", toolTip_VFXArea);
+                        Main.settings.SnowGravityFloat = RGUI.SliderFloat(Main.settings.SnowGravityFloat, 1f, 4f, DefaultSettings.SnowGravityFloat, "Gravity", toolTip_VFXGravity);
+                        Main.settings.SnowWindFloat = RGUI.SliderFloat(Main.settings.SnowWindFloat, 0f, 4f, DefaultSettings.SnowWindFloat, "Wind", toolTip_VFXWind);
+                        Main.settings.SnowLifeFloat = RGUI.SliderFloat(Main.settings.SnowLifeFloat, 1f, 16f, DefaultSettings.SnowLifeFloat, "Lifetime", toolTip_VFXLifetime);
                         GUILayout.EndVertical();
                     }   
                     break;
@@ -615,11 +615,11 @@ namespace XLWeather.Controller
                         Main.settings.RainVolumeFloat = RGUI.SliderFloat(Main.settings.RainVolumeFloat, 0f, 1f, 0.4f, "Volume");
                         GUILayout.EndVertical();
                         GUILayout.BeginVertical("Box");
-                        Main.settings.RainDensityFloat = RGUI.SliderFloat((int)Main.settings.RainDensityFloat, 0f, 850000f, DefaultSettings.RainDensityFloat, "Density");
-                        Main.settings.RainSizeFloat = RGUI.SliderFloat(Main.settings.RainSizeFloat, 1f, 100f, DefaultSettings.RainSizeFloat, "Area Size");
-                        Main.settings.RainGravityFloat = RGUI.SliderFloat(Main.settings.RainGravityFloat, 1f, 60f, DefaultSettings.RainGravityFloat, "Gravity");
-                        Main.settings.RainWindFloat = RGUI.SliderFloat(Main.settings.RainWindFloat, 0f, 4f, DefaultSettings.RainWindFloat, "Wind");
-                        Main.settings.RainLifeFloat = RGUI.SliderFloat(Main.settings.RainLifeFloat, 0f, 4f, DefaultSettings.RainLifeFloat, "Lifetime");
+                        Main.settings.RainDensityFloat = RGUI.SliderFloat((int)Main.settings.RainDensityFloat, 0f, 850000f, DefaultSettings.RainDensityFloat, "Density", toolTip_VFXDensity);
+                        Main.settings.RainSizeFloat = RGUI.SliderFloat(Main.settings.RainSizeFloat, 1f, 100f, DefaultSettings.RainSizeFloat, "Area Size", toolTip_VFXArea);
+                        Main.settings.RainGravityFloat = RGUI.SliderFloat(Main.settings.RainGravityFloat, 1f, 60f, DefaultSettings.RainGravityFloat, "Gravity", toolTip_VFXGravity);
+                        Main.settings.RainWindFloat = RGUI.SliderFloat(Main.settings.RainWindFloat, 0f, 4f, DefaultSettings.RainWindFloat, "Wind", toolTip_VFXWind);
+                        Main.settings.RainLifeFloat = RGUI.SliderFloat(Main.settings.RainLifeFloat, 0f, 4f, DefaultSettings.RainLifeFloat, "Lifetime", toolTip_VFXLifetime);
                         GUILayout.EndVertical();
                         GUILayout.BeginVertical("Box");
 
@@ -821,27 +821,25 @@ namespace XLWeather.Controller
                         Main.settings.DroneLightColor.g = RGUI.SliderFloat(Main.settings.DroneLightColor.g, 0.0f, 1.0f, 1.0f, "Green");
                         Main.settings.DroneLightColor.b = RGUI.SliderFloat(Main.settings.DroneLightColor.b, 0.0f, 1.0f, 1.0f, "Blue");
                         GUILayout.EndVertical();
+                        GUILayout.BeginVertical("Box");
+                        if (RGUI.Button(ToggleStateData.DroneColorLerptoggle, "RGB"))
+                        {
+                            ToggleStateData.DroneColorLerptoggle = !ToggleStateData.DroneColorLerptoggle;
+
+                            if (ToggleStateData.DroneColorLerptoggle)
+                            {
+                                StartCoroutine(Main.Dronectrl.ColorLerpRoutine);
+                            }
+                            if (!ToggleStateData.DroneColorLerptoggle)
+                            {
+                                StopCoroutine(Main.Dronectrl.ColorLerpRoutine);
+                                Main.Dronectrl.droneLight.color = Color.white;
+                            }
+                        }
+                        GUILayout.EndVertical();
                     }
                     GUILayout.EndVertical();
-                }
-                
-                GUILayout.BeginVertical("Box");
-                if (RGUI.Button(ToggleStateData.DroneColorLerptoggle, "RGB"))
-                {
-                    ToggleStateData.DroneColorLerptoggle = !ToggleStateData.DroneColorLerptoggle;
-
-                    if (ToggleStateData.DroneColorLerptoggle)
-                    {
-                        StartCoroutine(Main.Dronectrl.ColorLerpRoutine);
-                    }
-                    if (!ToggleStateData.DroneColorLerptoggle)
-                    {
-                        StopCoroutine(Main.Dronectrl.ColorLerpRoutine);
-                        Main.Dronectrl.droneLight.color = Color.white;
-                    }
-                }
-                GUILayout.EndVertical();
-                
+                }    
                 GUILayout.EndVertical();
             }
         }

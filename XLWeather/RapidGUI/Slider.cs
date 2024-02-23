@@ -28,29 +28,51 @@ namespace RapidGUI
             GUI.backgroundColor = Color.white;
             GUILayout.BeginHorizontal(Array.Empty<GUILayoutOption>());
 
-            // Combine label and tooltip for display.
-            string fullLabel = string.IsNullOrEmpty(tooltip) ? $"<b>{label}</b>" : new GUIContent($"<b>{label}</b>", tooltip).tooltip;
-            // Create a style for tooltips
-            var tooltipStyle = GUI.skin.box;
-            tooltipStyle.alignment = TextAnchor.MiddleLeft;
-            tooltipStyle.wordWrap = true;
+            // Create the label content separately from the tooltip.
+            GUIContent labelContent = new GUIContent(label, tooltip);
 
-            // Display label with tooltip.
-            GUILayout.Label(new GUIContent(fullLabel, tooltip), new GUILayoutOption[] { GUILayout.MinWidth(150) });
+            // Display label with potential tooltip. Only the label text should appear here.
+            GUILayout.Label(labelContent, new GUILayoutOption[] { GUILayout.MinWidth(150) });
 
-            // Display tooltip if available and mouse is over the label.
+            // If the tooltip is not null or empty and the mouse is hovering over the label, display the tooltip.
             if (!string.IsNullOrEmpty(tooltip) && GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition))
             {
+                // Create a style for tooltips
+                GUIStyle tooltipStyle = new GUIStyle(GUI.skin.box)
+                {
+                    fontSize = 14,
+                    alignment = TextAnchor.MiddleLeft,
+                    wordWrap = true,
+                    padding = new RectOffset(8, 8, 6, 8),
+                };
+
+                // Create a solid black texture
+                Texture2D blackTexture = new Texture2D(1, 1);
+                blackTexture.SetPixel(0, 0, Color.black);
+                blackTexture.Apply();
+                tooltipStyle.normal.background = blackTexture;
+
+                float fixedWidth = Screen.width / 6;
+
+                // Calculate the height needed for the tooltip text given the fixed width
                 GUIContent tooltipContent = new GUIContent(tooltip);
-                Vector2 tooltipSize = tooltipStyle.CalcSize(tooltipContent);
-                GUI.Box(new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y - tooltipSize.y, tooltipSize.x, tooltipSize.y), tooltip, tooltipStyle);
+                float calcHeight = tooltipStyle.CalcHeight(tooltipContent, fixedWidth);
+
+                float x = Event.current.mousePosition.x;
+                float y = Event.current.mousePosition.y - calcHeight - 10;
+                x = Mathf.Max(x, 0);
+                x = Mathf.Min(x, Screen.width - fixedWidth);
+
+                // Display tooltip box near the label if the mouse is hovering over it
+                GUI.Box(new Rect(x, y, fixedWidth, calcHeight), tooltipContent, tooltipStyle);
             }
 
             float num = GUILayout.HorizontalSlider(v, min, max, new GUILayoutOption[] { GUILayout.MinWidth(SliderSetting.minWidth) });
             num = (float)StandardField(num, v.GetType(), GUILayout.Width(SliderSetting.fieldWidth));
-            GUI.backgroundColor = Color.white; // reset button color
+            GUI.backgroundColor = Color.white; // Reset background color
 
-            if (GUILayout.Button("Reset", new GUILayoutOption[] { GUILayout.Height(21f), GUILayout.ExpandWidth(true) }))
+            // Reset button next to the slider
+            if (GUILayout.Button("Reset", new GUILayoutOption[] { GUILayout.Height(21f), GUILayout.ExpandWidth(false) }))
             {
                 num = defaultValue;
             }
