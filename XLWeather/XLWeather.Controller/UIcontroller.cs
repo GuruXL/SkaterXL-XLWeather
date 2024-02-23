@@ -850,12 +850,12 @@ namespace XLWeather.Controller
                         AssetHandler.Instance.activeDayNight.SetActive(false);
                         Main.MapLightctrl.ToggleMainLights(true);
 
-                        //if (Main.settings.MapLayersToggle)
-                        //{
-                        //    Main.MapLightctrl.ResetLayerToggles();
-                        //}
+                        if (Main.settings.MapLayersToggle)
+                        {
+                            Main.MapLightctrl.ResetLayerToggles();
+                        }
 
-                        //ToggleStateData.ResetVolWeight = true;
+                        ToggleStateData.ResetVolWeight = true;
 
                         break;
                 }
