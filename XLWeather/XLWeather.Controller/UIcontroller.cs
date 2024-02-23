@@ -806,24 +806,24 @@ namespace XLWeather.Controller
                     GUILayout.EndVertical();
                 }
 
-                /*
+                
                 GUILayout.BeginVertical("Box");
-                if (RGUI.Button(Main.settings.DroneColorLerptoggle, "Alice Lights"))
+                if (RGUI.Button(ToggleStateData.DroneColorLerptoggle, "RGB"))
                 {
-                    Main.settings.DroneColorLerptoggle = !Main.settings.DroneColorLerptoggle;
+                    ToggleStateData.DroneColorLerptoggle = !ToggleStateData.DroneColorLerptoggle;
 
-                    if (Main.settings.DroneColorLerptoggle)
+                    if (ToggleStateData.DroneColorLerptoggle)
                     {
-                        StartCoroutine(Main.Dronectrl.routine);
+                        StartCoroutine(Main.Dronectrl.ColorLerpRoutine);
                     }
-                    if (!Main.settings.DroneColorLerptoggle)
+                    if (!ToggleStateData.DroneColorLerptoggle)
                     {
-                        StopCoroutine(Main.Dronectrl.routine);
+                        StopCoroutine(Main.Dronectrl.ColorLerpRoutine);
                         Main.Dronectrl.droneLight.color = Color.white;
                     }
                 }
                 GUILayout.EndVertical();
-                */
+                
                 GUILayout.EndVertical();
             }
         }

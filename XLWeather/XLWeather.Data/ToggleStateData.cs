@@ -16,7 +16,7 @@ namespace XLWeather.Data
         public static bool DroneToggle = false;
         public static bool DroneCamtoggle = false;
         public static bool MultiTargetToggle = false;
-        //public static bool DroneColorLerptoggle = false;
+        public static bool DroneColorLerptoggle = false;
         public static bool DayNightToggle = false;
         public static bool ResetVolWeight = false;
         public static bool LeafvfxToggle = false;

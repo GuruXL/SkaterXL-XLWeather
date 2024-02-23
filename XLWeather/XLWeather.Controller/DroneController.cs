@@ -15,9 +15,9 @@ namespace XLWeather.Controller
     {
         //public static DroneController Instance { get; set; }
 
-        //public GameObject dronePrefab;
-        //public GameObject activeDrone;
-        private Light droneLight;
+        public GameObject dronePrefab;
+        public GameObject activeDrone;
+        public Light droneLight;
         private HDAdditionalLightData droneLightdata;
         public CinemachineVirtualCamera DroneLightCam;
         private CinemachinePOV DroneCamPov;
@@ -27,8 +27,8 @@ namespace XLWeather.Controller
         private Vector3 offset;
         private Vector3 droneAnchor;
 
-        /*
-        public IEnumerator routine;
+        
+        public IEnumerator ColorLerpRoutine;
         Color LastColor;
         private IEnumerator ColorLerp()
         {
@@ -49,12 +49,12 @@ namespace XLWeather.Controller
                 yield return new WaitForSeconds(1);
             }
         }
-        */
+        
 
         private void Start()
         {
             StartCoroutine(GetDroneObjects());
-            //routine = ColorLerp();
+            ColorLerpRoutine = ColorLerp();
             ResetDataSettings();
         }
 
