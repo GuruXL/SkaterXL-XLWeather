@@ -61,6 +61,23 @@ namespace XLWeather.Controller
         //public string red = "#b71540";
         //public string TabColor;
 
+        private string toolTip_Exposure = "Controls brightness of the scene";
+        private string toolTip_SkyExposure = "Controls brightness of the sky box";
+        private string toolTip_Rotation = "Controls the sky box orientation";
+        private string toolTip_DefaultLightIntensity = "Controls the brightness of the main directional light (Sun)";
+
+        private string toolTip_FogDistance = "Controls fog density. Shorter distances increase fog thickness, longer distances make it clearer";
+        private string toolTip_FogHeight = "Sets the starting elevation of fog. Increase to raise fog level, decrease to lower it.";
+        private string toolTip_FogMaxDistance = "Max Distance the fog extends to. Decrease for denser near fog, increase to extend visibility.";
+        private string toolTip_FogMaxHeight = "Determines the upper limit of fog. Increase for higher fog coverage, decrease to lower fog ceiling.";
+        private string toolTip_FogVolDistance = "Controls how quickly fog thickens with distance. Lower values result in thicker fog closer to the viewer.";
+
+        private string toolTip_VFXDensity = "Controls the amount of particles to be spawned";
+        private string toolTip_VFXArea = "Controls the distance around the player that the paricles will spawn";
+        private string toolTip_VFXGravity = "Controls the speed that paricles will fall";
+        private string toolTip_VFXWind = "Controls the force of wind that gets applied to the particles";
+        private string toolTip_VFXLifetime = "";
+
         public string[] NightSkyStates = new string[] {
             "Cloudy Night",
             "Starry Night",
@@ -217,7 +234,7 @@ namespace XLWeather.Controller
 
             }
         }
-       
+
         private void SkyUI()
         {
             Tabs(Sky_Tab, UIextensions.Instance.TabColorSwitch(Sky_Tab));
@@ -225,6 +242,7 @@ namespace XLWeather.Controller
                 return;
 
             // ------ Night Sky Start -------
+
             GUILayout.BeginVertical("Box");
             if (RGUI.Button(ToggleStateData.NightSkyToggle, "Night Sky"))
             {
@@ -241,15 +259,15 @@ namespace XLWeather.Controller
 
                     // Creates fixed exposure UI Slider 
                     GUILayout.BeginVertical("Box");
-                    Main.settings.NightFixedExposureFloat = RGUI.SliderFloat(Main.settings.NightFixedExposureFloat, 8f, 15f, DefaultSettings.NightFixedExposureFloat, " Exposure");
+                    Main.settings.NightFixedExposureFloat = RGUI.SliderFloat(Main.settings.NightFixedExposureFloat, 8f, 15f, DefaultSettings.NightFixedExposureFloat, " Exposure", toolTip_Exposure);
                     Main.Weatherctrl.exposure[0].fixedExposure.Override(Main.settings.NightFixedExposureFloat);
 
                     // UI slider for SkyBox Exposure control
-                    Main.settings.NightSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.NightSkyboxExposureFloat, 8f, 15f, DefaultSettings.NightSkyboxExposureFloat, " Sky Exposure");
+                    Main.settings.NightSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.NightSkyboxExposureFloat, 8f, 15f, DefaultSettings.NightSkyboxExposureFloat, " Sky Exposure", toolTip_SkyExposure);
                     Main.Weatherctrl.activeHDRI[0].exposure.Override(Main.settings.NightSkyboxExposureFloat);
 
                     // UI slider for SkyBox Rotation
-                    Main.settings.NightRotateFloat = RGUI.SliderFloat(Main.settings.NightRotateFloat, 0f, 360f, DefaultSettings.NightRotateFloat, " Rotation");
+                    Main.settings.NightRotateFloat = RGUI.SliderFloat(Main.settings.NightRotateFloat, 0f, 360f, DefaultSettings.NightRotateFloat, " Rotation", toolTip_Rotation);
                     Main.Weatherctrl.activeHDRI[0].rotation.Override(Main.settings.NightRotateFloat);
                     GUILayout.EndVertical();
 
@@ -300,15 +318,15 @@ namespace XLWeather.Controller
 
                     // Creates UI for Slider
                     GUILayout.BeginVertical("Box");
-                    Main.settings.SunSetSkyExposureFloat = RGUI.SliderFloat(Main.settings.SunSetSkyExposureFloat, 8f, 15f, DefaultSettings.SunSetSkyExposureFloat, " Exposure");
+                    Main.settings.SunSetSkyExposureFloat = RGUI.SliderFloat(Main.settings.SunSetSkyExposureFloat, 8f, 15f, DefaultSettings.SunSetSkyExposureFloat, " Exposure", toolTip_Exposure);
                     Main.Weatherctrl.exposure[1].fixedExposure.Override(Main.settings.SunSetSkyExposureFloat);
 
                     // UI slider for SkyBox Exposure control
-                    Main.settings.SunSetSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.SunSetSkyboxExposureFloat, 8f, 15f, DefaultSettings.SunSetSkyboxExposureFloat, " Sky Exposure");
+                    Main.settings.SunSetSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.SunSetSkyboxExposureFloat, 8f, 15f, DefaultSettings.SunSetSkyboxExposureFloat, " Sky Exposure", toolTip_SkyExposure);
                     Main.Weatherctrl.activeHDRI[1].exposure.Override(Main.settings.SunSetSkyboxExposureFloat);
 
                     // UI slider for SkyBox Rotation
-                    Main.settings.SunSetRotateFloat = RGUI.SliderFloat(Main.settings.SunSetRotateFloat, 0f, 360f, DefaultSettings.SunSetRotateFloat, " Rotation");
+                    Main.settings.SunSetRotateFloat = RGUI.SliderFloat(Main.settings.SunSetRotateFloat, 0f, 360f, DefaultSettings.SunSetRotateFloat, " Rotation", toolTip_Rotation);
                     Main.Weatherctrl.activeHDRI[1].rotation.Override(Main.settings.SunSetRotateFloat);
                     GUILayout.EndVertical();
 
@@ -352,15 +370,15 @@ namespace XLWeather.Controller
 
                     // Create Ui for Slider
                     GUILayout.BeginVertical("Box");
-                    Main.settings.BlueSkyExposureFloat = RGUI.SliderFloat(Main.settings.BlueSkyExposureFloat, 8f, 15f, DefaultSettings.BlueSkyExposureFloat, " Exposure");
+                    Main.settings.BlueSkyExposureFloat = RGUI.SliderFloat(Main.settings.BlueSkyExposureFloat, 8f, 15f, DefaultSettings.BlueSkyExposureFloat, " Exposure", toolTip_Exposure);
                     Main.Weatherctrl.exposure[2].fixedExposure.Override(Main.settings.BlueSkyExposureFloat);
 
                     // UI slider for SkyBox Exposure control
-                    Main.settings.BlueSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.BlueSkyboxExposureFloat, 8f, 15f, DefaultSettings.BlueSkyboxExposureFloat, " Sky Exposure");
+                    Main.settings.BlueSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.BlueSkyboxExposureFloat, 8f, 15f, DefaultSettings.BlueSkyboxExposureFloat, " Sky Exposure", toolTip_SkyExposure);
                     Main.Weatherctrl.activeHDRI[2].exposure.Override(Main.settings.BlueSkyboxExposureFloat);
 
                     // UI slider for SkyBox Rotation
-                    Main.settings.BlueRotateFloat = RGUI.SliderFloat(Main.settings.BlueRotateFloat, 0f, 360f, DefaultSettings.BlueRotateFloat, " Rotation");
+                    Main.settings.BlueRotateFloat = RGUI.SliderFloat(Main.settings.BlueRotateFloat, 0f, 360f, DefaultSettings.BlueRotateFloat, " Rotation", toolTip_Rotation);
                     Main.Weatherctrl.activeHDRI[2].rotation.Override(Main.settings.BlueRotateFloat);
                     GUILayout.EndVertical();
 
@@ -394,7 +412,7 @@ namespace XLWeather.Controller
             {
                 Main.MapLightctrl.GetMainSun();
             }
-            Main.settings.MapLightIntensity = RGUI.SliderFloat(Main.settings.MapLightIntensity, 0f, 20000f, Main.settings.DefaultMapLightIntensity, " Sun Light Intensity");
+            Main.settings.MapLightIntensity = RGUI.SliderFloat(Main.settings.MapLightIntensity, 0f, 20000f, Main.settings.DefaultMapLightIntensity, " Sun Light Intensity", toolTip_DefaultLightIntensity);
             GUILayout.Label(Main.MapLightctrl.MainLight != null ? "<b><color=#7CFC00> Sun Light Found </color></b>" : "<b><color=#b30000> No Sun Light Found </color></b>", GUILayout.Width(184));
             GUILayout.EndVertical();
             // ------ Map Light Control End -------
@@ -441,6 +459,7 @@ namespace XLWeather.Controller
             if (ToggleStateData.FogToggle)
             {
                 // ------ fog start -------
+
                 GUILayout.BeginVertical();
 
                 UIextensions.Instance.FlexableButton("Remove Fog", RemoveFogSwitch, UIextensions.Instance.ButtonColorSwitch(ToggleStateData.removeFogToggle));
@@ -462,10 +481,10 @@ namespace XLWeather.Controller
                     ToggleStateData.removeFogToggle = false;
 
                     GUILayout.BeginVertical("Box");
-                    Main.settings.fogMeanFreePath = RGUI.SliderFloat(Main.settings.fogMeanFreePath, 1f, 400f, DefaultSettings.fogMeanFreePath, " Attentuation Distance");
-                    Main.settings.fogBaseHeight = RGUI.SliderFloat(Main.settings.fogBaseHeight, 0f, 200f, DefaultSettings.fogBaseHeight, " Base Height");
-                    Main.settings.fogMaxDistance = RGUI.SliderFloat(Main.settings.fogMaxDistance, 0f, 1000f, DefaultSettings.fogMaxDistance, " Max Distance");
-                    Main.settings.fogMaxHeight = RGUI.SliderFloat(Main.settings.fogMaxHeight, 0f, 2000f, DefaultSettings.fogMaxHeight, " Max Height");
+                    Main.settings.fogMeanFreePath = RGUI.SliderFloat(Main.settings.fogMeanFreePath, 1f, 400f, DefaultSettings.fogMeanFreePath, " Distance Density", toolTip_FogDistance);
+                    Main.settings.fogBaseHeight = RGUI.SliderFloat(Main.settings.fogBaseHeight, 0f, 200f, DefaultSettings.fogBaseHeight, " Base Height", toolTip_FogHeight);
+                    Main.settings.fogMaxDistance = RGUI.SliderFloat(Main.settings.fogMaxDistance, 0f, 1000f, DefaultSettings.fogMaxDistance, " Max Distance", toolTip_FogMaxDistance);
+                    Main.settings.fogMaxHeight = RGUI.SliderFloat(Main.settings.fogMaxHeight, 0f, 2000f, DefaultSettings.fogMaxHeight, " Max Height", toolTip_FogMaxHeight);
                     GUILayout.EndVertical();
                     GUILayout.BeginVertical("Box");
                     if (RGUI.Button(ToggleStateData.fogVolumetrics, "Fog Volumetrics"))
@@ -484,7 +503,7 @@ namespace XLWeather.Controller
                             Main.settings.fogDensitySpeedZ = RGUI.SliderFloat(Main.settings.fogDensitySpeedZ, 0f, 0.5f, DefaultSettings.fogDensitySpeedZ, "Z speed");
                             GUILayout.EndVertical();
                             GUILayout.BeginVertical("Box");
-                            Main.settings.fogDensityDistance = RGUI.SliderFloat(Main.settings.fogDensityDistance, 1f, 100f, DefaultSettings.fogDensityDistance, " Density Distance");
+                            Main.settings.fogDensityDistance = RGUI.SliderFloat(Main.settings.fogDensityDistance, 1f, 100f, DefaultSettings.fogDensityDistance, " Volumetric Density", toolTip_FogVolDistance);
                             GUILayout.EndVertical();
                             break;
                         case false:
