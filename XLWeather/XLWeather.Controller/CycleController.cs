@@ -245,8 +245,16 @@ namespace XLWeather.Controller
             cyclemoonLight.enabled = moonActive ? true : cyclemoonLight.enabled; // Enable/disable the moon light component based on the moon's active state          
             cyclemoonLight.gameObject.SetActive(moonActive); // Set the moon game object active state based on the moon's active state          
             sunVolume.gameObject.SetActive(sunActive); // Set the sun volume game object active state based on the sun's active state           
-            moonVolume.gameObject.SetActive(moonActive); // Set the moon volume game object active state based on the moon's active state       
-            starFx.gameObject.SetActive(!sunActive); // Set the starFx game object active state based on the opposite of the sun's active state
+            moonVolume.gameObject.SetActive(moonActive); // Set the moon volume game object active state based on the moon's active state
+
+            if (!ToggleStateData.DisableStarFXToggle)
+            {
+                starFx.gameObject.SetActive(!sunActive); // Set the starFx game object active state based on the opposite of the sun's active state
+            }
+            else if (ToggleStateData.DisableStarFXToggle && starFx.gameObject.activeSelf)
+            {
+                starFx.gameObject.SetActive(false);
+            }
 
             if (moonActive && hasSkyUpdated)
             {

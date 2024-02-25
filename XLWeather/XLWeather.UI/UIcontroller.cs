@@ -895,6 +895,11 @@ namespace XLWeather.UI
                         GUILayout.BeginVertical(); // Start Day Layout
 
                         GUILayout.BeginVertical("Box");
+                        UIextensions.Instance.CenteredLabel("Sun Size");
+                        Main.settings.sunAngularDiameter = RGUI.SliderFloat(Main.settings.sunAngularDiameter, -5f, 5f, DefaultSettings.sunAngularDiameter, "Sun Size", ToolTips.cycleSize);
+                        GUILayout.EndVertical();
+
+                        GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Sun Intensity");
                         Main.settings.sunMinIntensity = RGUI.SliderFloat(Main.settings.sunMinIntensity, 0f, 18000f, DefaultSettings.sunMinIntensity, "Sunrise/Sunset", ToolTips.cycleMinIntensity);
                         Main.settings.sunMaxIntensity = RGUI.SliderFloat(Main.settings.sunMaxIntensity, 0f, 28000f, DefaultSettings.sunMaxIntensity, "Noon", ToolTips.cycleMaxIntensity);
@@ -918,15 +923,8 @@ namespace XLWeather.UI
                         Main.settings.SunMinExFloat = RGUI.SliderFloat(Main.settings.SunMinExFloat, 0f, 20f, DefaultSettings.SunMinExFloat, "Min Exposure", ToolTips.cycleMinExposure);
                         GUILayout.Label("<i> Darkness</i>");
                         Main.settings.SunMaxExFloat = RGUI.SliderFloat(Main.settings.SunMaxExFloat, 0f, 20f, DefaultSettings.SunMaxExFloat, "Max Exposure", ToolTips.cycleMaxExposure);
-                        GUILayout.Space(8);
                         Main.settings.SunExCompFlt = RGUI.SliderFloat(Main.settings.SunExCompFlt, -2.0f, 2.0f, DefaultSettings.SunExCompFlt, "Compensation", ToolTips.cycleCompensation);
-                        GUILayout.Space(8);
                         Main.settings.sunSkyExFloat = RGUI.SliderFloat(Main.settings.sunSkyExFloat, -2f, 2f, DefaultSettings.sunSkyExFloat, "Sky Exposure", ToolTips.skyExposure);
-                        GUILayout.EndVertical();
-
-                        GUILayout.BeginVertical("Box");
-                        UIextensions.Instance.CenteredLabel("Sun Size");
-                        Main.settings.sunAngularDiameter = RGUI.SliderFloat(Main.settings.sunAngularDiameter, -5f, 10f, DefaultSettings.sunAngularDiameter, "Sun Size");
                         GUILayout.EndVertical();
 
                         GUILayout.EndVertical(); // End Day Layout
@@ -936,6 +934,11 @@ namespace XLWeather.UI
                     if (!Night_Tab.isClosed)
                     {
                         GUILayout.BeginVertical(); // Start Night Layout
+
+                        GUILayout.BeginVertical("Box");
+                        UIextensions.Instance.CenteredLabel("Moon Size");
+                        Main.settings.moonAngularDiameter = RGUI.SliderFloat(Main.settings.moonAngularDiameter, 1f, 10f, DefaultSettings.moonAngularDiameter, "Moon Size", ToolTips.cycleSize);
+                        GUILayout.EndVertical();
 
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Moon Intensity");
@@ -960,15 +963,15 @@ namespace XLWeather.UI
                         Main.settings.MoonMinExFloat = RGUI.SliderFloat(Main.settings.MoonMinExFloat, 0f, 20f, DefaultSettings.MoonMinExFloat, "Min Exposure", ToolTips.cycleMinExposure);
                         GUILayout.Label("<i> Darkness</i>");
                         Main.settings.MoonMaxExFloat = RGUI.SliderFloat(Main.settings.MoonMaxExFloat, 0f, 20f, DefaultSettings.MoonMaxExFloat, "Max Exposure", ToolTips.cycleMaxExposure);
-                        GUILayout.Space(8);
                         Main.settings.MoonExCompFlt = RGUI.SliderFloat(Main.settings.MoonExCompFlt, -2.0f, 2.0f, DefaultSettings.MoonExCompFlt, "Compensation", ToolTips.cycleCompensation);
-                        GUILayout.Space(8);
                         Main.settings.moonSkyExFloat = RGUI.SliderFloat(Main.settings.moonSkyExFloat, -2f, 2f, DefaultSettings.moonSkyExFloat, "Sky Exposure", ToolTips.skyExposure);
                         GUILayout.EndVertical();
 
                         GUILayout.BeginVertical("Box");
-                        UIextensions.Instance.CenteredLabel("Moon Size");
-                        Main.settings.moonAngularDiameter = RGUI.SliderFloat(Main.settings.moonAngularDiameter, 1f, 10f, DefaultSettings.moonAngularDiameter, "Moon Size");
+                        if (RGUI.Button(ToggleStateData.DisableStarFXToggle, "Disable Moving Stars"))
+                        {
+                            ToggleStateData.DisableStarFXToggle = !ToggleStateData.DisableStarFXToggle;
+                        }
                         GUILayout.EndVertical();
 
                         GUILayout.EndVertical(); // End Night Layout

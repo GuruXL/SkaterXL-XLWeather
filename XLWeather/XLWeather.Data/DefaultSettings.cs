@@ -47,7 +47,7 @@ namespace XLWeather.Data
         public static float sunAngularDiameter = 0.6f;
         public static float MoonIndirectLight = 0.75f;
         public static float MoonIndirectSpecular = 0.4f;
-        public static float moonAngularDiameter = 7.2f;
+        public static float moonAngularDiameter = 7.0f;
 
         public static float fogMeanFreePath = 100f;
         public static float fogBaseHeight = 20f;

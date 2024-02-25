@@ -214,6 +214,7 @@ namespace XLWeather
         }
         public void resetToggles()
         {
+
             ToggleStateData.ModEnabled = false;
             ToggleStateData.HotKeyToggle = false;
             ToggleStateData.NightSkyToggle = false;
@@ -226,14 +227,19 @@ namespace XLWeather
             ToggleStateData.DroneToggle = false;
             ToggleStateData.DroneCamtoggle = false;
             ToggleStateData.MultiTargetToggle = false;
+            ToggleStateData.DroneColorLerptoggle = false;
+            ToggleStateData.DayNightToggle = false;
+            ToggleStateData.DisableStarFXToggle = false;
+            ToggleStateData.ResetVolWeight = false;
             ToggleStateData.LeafvfxToggle = false;
             ToggleStateData.SnowvfxToggle = false;
             ToggleStateData.RainvfxToggle = false;
             ToggleStateData.AuroravfxToggle = false;
             ToggleStateData.LightningToggle = false;
-            ToggleStateData.DayNightToggle = false;
             ToggleStateData.CloudToggle = false;
+
         }
+
         public void ResetAllSettings()
         {
 
@@ -278,8 +284,10 @@ namespace XLWeather
             moonSpaceEmission = DefaultSettings.moonSpaceEmission;
             SunIndirectLight = DefaultSettings.SunIndirectLight;
             SunIndirectSpecular = DefaultSettings.SunIndirectSpecular;
+            sunAngularDiameter = DefaultSettings.sunAngularDiameter;
             MoonIndirectLight = DefaultSettings.MoonIndirectLight;
             MoonIndirectSpecular = DefaultSettings.MoonIndirectSpecular;
+            moonAngularDiameter = DefaultSettings.moonAngularDiameter;
 
             fogMeanFreePath = DefaultSettings.fogMeanFreePath;
             fogBaseHeight = DefaultSettings.fogBaseHeight;
