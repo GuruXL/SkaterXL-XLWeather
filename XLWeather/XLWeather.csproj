@@ -223,10 +223,9 @@
     <Compile Include="XLWeather.Data\ToggleStateData.cs" />
     <Compile Include="XLWeather.Data\WeatherData.cs" />
     <Compile Include="XLWeather.Data\CycleData.cs" />
-    <Compile Include="XLWeather.Patches\PromoPatch.cs" />
+    <Compile Include="XLWeather.Patches\PauseStateMenuPatch.cs" />
     <Compile Include="XLWeather.UI\ToolTips.cs" />
     <Compile Include="XLWeather.Utils\SceneChangeManager.cs" />
-    <Compile Include="XLWeather.Utils\MaterialUtil.cs" />
     <Compile Include="XLWeather.Utils\VFXUtils.cs" />
     <Compile Include="XLWeather.UI\UIextensions.cs" />
     <Compile Include="XLWeather.Utils\AssetHandler.cs" />

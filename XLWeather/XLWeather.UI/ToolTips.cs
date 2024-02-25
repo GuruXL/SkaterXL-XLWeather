@@ -47,7 +47,7 @@
         public static readonly string droneLightDimmer = "Adjusts light's overall intensity without changing its range. Lower for softer light, higher for brighter.";
 
         // Day/Night Cycle
-        public static readonly string cycleSize = "Sets the size of the light source. Increase for softer shadows, decrease for sharper shadows.";
+        public static readonly string cycleSize = "Sets the size of the light source. Increase for bigger, decrease for smaller.";
         public static readonly string cycleSpeed = "Controls the speed of the day/night transition. Increase for faster cycle, decrease for slower.";
         public static readonly string cycleStartTime = "Sets the initial time for the day/night cycle. Adjust to start at a specific time of day.";
         public static readonly string cycleSunRiseTime = "Sets the time of day for sunrise. Adjust to change what time of day the sun rises.";
