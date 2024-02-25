@@ -5,7 +5,7 @@ using XLWeather.Controller;
 using XLWeather.Data;
 using System;
 
-namespace XLWeather.Utils
+namespace XLWeather.UI
 {
     public class UIextensions
     {

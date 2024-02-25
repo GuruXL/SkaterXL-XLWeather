@@ -72,7 +72,7 @@ namespace XLWeather.Controller
                 return;
 
             DroneRayCast();
-            if (Main.Weatherctrl.state != typeof(ReplayState) | Main.Weatherctrl.state != typeof(PinMovementState))
+            if (Main.Weatherctrl.state != typeof(ReplayState) || Main.Weatherctrl.state != typeof(PinMovementState))
             {
                 if (!ToggleStateData.MultiTargetToggle)
                 {

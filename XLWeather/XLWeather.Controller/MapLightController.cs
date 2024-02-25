@@ -18,7 +18,7 @@ namespace XLWeather.Controller
         public List<Material> hdrpMaterials;
         public List<ReflectionProbe> probes;
         public Dictionary<Material, float> originalEmissionweights;
-        private int delay = 0;
+        //private int delay = 0;
 
         private bool IsDefaultValueSet = false;
 

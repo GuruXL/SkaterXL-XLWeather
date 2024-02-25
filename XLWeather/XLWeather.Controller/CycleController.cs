@@ -115,7 +115,6 @@ namespace XLWeather.Controller
 
             return diff;
         }
-
         private void RotateSun()
         {
             float sunRotation;

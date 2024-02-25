@@ -30,40 +30,38 @@ namespace RapidGUI
 
             // Create the label content separately from the tooltip.
             GUIContent labelContent = new GUIContent(label, tooltip);
-
-            // Display label with potential tooltip. Only the label text should appear here.
             GUILayout.Label(labelContent, new GUILayoutOption[] { GUILayout.MinWidth(150) });
 
-            // If the tooltip is not null or empty and the mouse is hovering over the label, display the tooltip.
             if (!string.IsNullOrEmpty(tooltip) && GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition))
             {
                 // Create a style for tooltips
                 GUIStyle tooltipStyle = new GUIStyle(GUI.skin.box)
                 {
                     fontSize = 14,
-                    alignment = TextAnchor.MiddleLeft,
+                    alignment = TextAnchor.UpperCenter,
                     wordWrap = true,
-                    padding = new RectOffset(8, 8, 6, 8),
+                    padding = new RectOffset(8, 8, 8, 12),
                 };
 
-                // Create a solid black texture
+                // solid black texture for background
                 Texture2D blackTexture = new Texture2D(1, 1);
                 blackTexture.SetPixel(0, 0, Color.black);
                 blackTexture.Apply();
                 tooltipStyle.normal.background = blackTexture;
 
-                float fixedWidth = Screen.width / 6;
+                // fixed width for tooltip box with a max width limit
+                float maxWidth = 350f;
+                float fixedWidth = Mathf.Min(Screen.width / 6, maxWidth);
 
                 // Calculate the height needed for the tooltip text given the fixed width
                 GUIContent tooltipContent = new GUIContent(tooltip);
                 float calcHeight = tooltipStyle.CalcHeight(tooltipContent, fixedWidth);
-
                 float x = Event.current.mousePosition.x;
-                float y = Event.current.mousePosition.y - calcHeight - 10;
+                float y = Event.current.mousePosition.y - calcHeight - 12;
                 x = Mathf.Max(x, 0);
                 x = Mathf.Min(x, Screen.width - fixedWidth);
 
-                // Display tooltip box near the label if the mouse is hovering over it
+                // Display tooltip box
                 GUI.Box(new Rect(x, y, fixedWidth, calcHeight), tooltipContent, tooltipStyle);
             }
 
@@ -71,7 +69,6 @@ namespace RapidGUI
             num = (float)StandardField(num, v.GetType(), GUILayout.Width(SliderSetting.fieldWidth));
             GUI.backgroundColor = Color.white; // Reset background color
 
-            // Reset button next to the slider
             if (GUILayout.Button("Reset", new GUILayoutOption[] { GUILayout.Height(21f), GUILayout.ExpandWidth(false) }))
             {
                 num = defaultValue;
