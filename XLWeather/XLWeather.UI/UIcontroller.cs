@@ -49,11 +49,13 @@ namespace XLWeather.UI
         readonly UItab Time_Tab = new UItab(true, "Time settings", 13);
         readonly UItab Light_Tab = new UItab(true, "Light settings", 13);
         readonly UItab Shadow_Tab = new UItab(true, "Shadow settings", 13);
-        readonly UItab Intensity_Tab = new UItab(true, "Intensity", 12);
-        readonly UItab LightColor_Tab = new UItab(true, "Color", 12);
-        readonly UItab IndirectLight_Tab = new UItab(true, "Indirect Light", 12);
-        readonly UItab Exposure_Tab = new UItab(true, "Exposure", 12);
-        readonly UItab Weight_Tab = new UItab(true, "Volume Weight", 12);
+        //readonly UItab Intensity_Tab = new UItab(true, "Intensity", 12);
+        //readonly UItab LightColor_Tab = new UItab(true, "Color", 12);
+        //readonly UItab IndirectLight_Tab = new UItab(true, "Indirect Light", 12);
+        //readonly UItab Exposure_Tab = new UItab(true, "Exposure", 12);
+        readonly UItab Day_Tab = new UItab(true, "Day", 12);
+        readonly UItab Night_Tab = new UItab(true, "Night", 12);
+        readonly UItab Other_Tab = new UItab(true, "Other Settings", 12);
 
         //public string white = "#e6ebe8";
         //public string LightBlue =  "#30e2e6";
@@ -885,12 +887,12 @@ namespace XLWeather.UI
                 Tabs(Light_Tab, UIextensions.Instance.TabColorSwitch(Light_Tab));
                 if (!Light_Tab.isClosed)
                 {
-                    GUILayout.BeginVertical("Box");
+                    GUILayout.BeginVertical("Box"); // start of Light Layout
 
-                    Tabs(Intensity_Tab, UIextensions.Instance.TabColorSwitch(Intensity_Tab));
-                    if (!Intensity_Tab.isClosed)
+                    Tabs(Day_Tab, UIextensions.Instance.TabColorSwitch(Day_Tab));
+                    if (!Day_Tab.isClosed)
                     {
-                        GUILayout.BeginVertical();
+                        GUILayout.BeginVertical(); // Start Day Layout
 
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Sun Intensity");
@@ -900,49 +902,15 @@ namespace XLWeather.UI
                         GUILayout.EndVertical();
 
                         GUILayout.BeginVertical("Box");
-                        UIextensions.Instance.CenteredLabel("Moon Intensity");
-                        Main.settings.moonIntensity = RGUI.SliderFloat(Main.settings.moonIntensity, 0f, 8500f, DefaultSettings.moonIntensity, "Moon Intensity", ToolTips.cycleMoonIntensity);
-                        Main.settings.moonDimmerFloat = RGUI.SliderFloat(Main.settings.moonDimmerFloat, 0.1f, 2f, DefaultSettings.moonDimmerFloat, "Moon Dimmer", ToolTips.cycleDimmer);
-                        GUILayout.EndVertical();
-
-                        GUILayout.EndVertical();
-                    }
-                    Tabs(LightColor_Tab, UIextensions.Instance.TabColorSwitch(LightColor_Tab));
-                    if (!LightColor_Tab.isClosed)
-                    {
-                        GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Color Temperature");
                         Main.settings.SunColorFloat = RGUI.SliderFloat(Main.settings.SunColorFloat, 1000f, 20000f, DefaultSettings.SunColorFloat, "Sun Color Temp", ToolTips.cycleSunColor);
-                        Main.settings.MoonColorFloat = RGUI.SliderFloat(Main.settings.MoonColorFloat, 1000f, 20000f, DefaultSettings.MoonColorFloat, "Moon Color Temp", ToolTips.cycleMoonColor);
                         GUILayout.EndVertical();
-                    }
-                    Tabs(IndirectLight_Tab, UIextensions.Instance.TabColorSwitch(IndirectLight_Tab));
-                    if (!IndirectLight_Tab.isClosed)
-                    {
-                        GUILayout.BeginVertical();
 
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Sun Indirect Light");
                         Main.settings.SunIndirectLight = RGUI.SliderFloat(Main.settings.SunIndirectLight, 0f, 4f, DefaultSettings.SunIndirectLight, "Sun Indirect Light", ToolTips.cycleIndirectLight);
                         Main.settings.SunIndirectSpecular = RGUI.SliderFloat(Main.settings.SunIndirectSpecular, 0f, 4f, DefaultSettings.SunIndirectSpecular, "Sun Specular Light", ToolTips.cycleSpecularLight);
                         GUILayout.EndVertical();
-
-                        GUILayout.BeginVertical("Box");
-                        UIextensions.Instance.CenteredLabel("Moon Indirect Light");
-                        Main.settings.MoonIndirectLight = RGUI.SliderFloat(Main.settings.MoonIndirectLight, 0f, 4f, DefaultSettings.MoonIndirectLight, "Moon Indirect Light", ToolTips.cycleIndirectLight);
-                        Main.settings.MoonIndirectSpecular = RGUI.SliderFloat(Main.settings.MoonIndirectSpecular, 0f, 4f, DefaultSettings.MoonIndirectSpecular, "Moon Specular Light", ToolTips.cycleSpecularLight);
-                        GUILayout.EndVertical();
-
-                        GUILayout.BeginVertical("Box"); ;
-                        Main.settings.AmbientLightFloat = RGUI.SliderFloat(Main.settings.AmbientLightFloat, 0f, 4500f, DefaultSettings.AmbientLightFloat, "Ambient Light", ToolTips.cycleAmbientLight);
-                        GUILayout.EndVertical();
-
-                        GUILayout.EndVertical();
-                    }
-                    Tabs(Exposure_Tab, UIextensions.Instance.TabColorSwitch(Exposure_Tab));
-                    if (!Exposure_Tab.isClosed)
-                    {
-                        GUILayout.BeginVertical();
 
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Sun Exposure");
@@ -957,6 +925,36 @@ namespace XLWeather.UI
                         GUILayout.EndVertical();
 
                         GUILayout.BeginVertical("Box");
+                        UIextensions.Instance.CenteredLabel("Sun Size");
+                        Main.settings.sunAngularDiameter = RGUI.SliderFloat(Main.settings.sunAngularDiameter, -5f, 10f, DefaultSettings.sunAngularDiameter, "Sun Size");
+                        GUILayout.EndVertical();
+
+                        GUILayout.EndVertical(); // End Day Layout
+                    }
+
+                    Tabs(Night_Tab, UIextensions.Instance.TabColorSwitch(Night_Tab));
+                    if (!Night_Tab.isClosed)
+                    {
+                        GUILayout.BeginVertical(); // Start Night Layout
+
+                        GUILayout.BeginVertical("Box");
+                        UIextensions.Instance.CenteredLabel("Moon Intensity");
+                        Main.settings.moonIntensity = RGUI.SliderFloat(Main.settings.moonIntensity, 0f, 8500f, DefaultSettings.moonIntensity, "Moon Intensity", ToolTips.cycleMoonIntensity);
+                        Main.settings.moonDimmerFloat = RGUI.SliderFloat(Main.settings.moonDimmerFloat, 0.1f, 2f, DefaultSettings.moonDimmerFloat, "Moon Dimmer", ToolTips.cycleDimmer);
+                        GUILayout.EndVertical();
+
+                        GUILayout.BeginVertical("Box");
+                        UIextensions.Instance.CenteredLabel("Color Temperature");
+                        Main.settings.MoonColorFloat = RGUI.SliderFloat(Main.settings.MoonColorFloat, 1000f, 20000f, DefaultSettings.MoonColorFloat, "Moon Color Temp", ToolTips.cycleMoonColor);
+                        GUILayout.EndVertical();
+
+                        GUILayout.BeginVertical("Box");
+                        UIextensions.Instance.CenteredLabel("Moon Indirect Light");
+                        Main.settings.MoonIndirectLight = RGUI.SliderFloat(Main.settings.MoonIndirectLight, 0f, 4f, DefaultSettings.MoonIndirectLight, "Moon Indirect Light", ToolTips.cycleIndirectLight);
+                        Main.settings.MoonIndirectSpecular = RGUI.SliderFloat(Main.settings.MoonIndirectSpecular, 0f, 4f, DefaultSettings.MoonIndirectSpecular, "Moon Specular Light", ToolTips.cycleSpecularLight);
+                        GUILayout.EndVertical();
+
+                        GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Moon Exposure");
                         GUILayout.Label("<i> Brightness</i>");
                         Main.settings.MoonMinExFloat = RGUI.SliderFloat(Main.settings.MoonMinExFloat, 0f, 20f, DefaultSettings.MoonMinExFloat, "Min Exposure", ToolTips.cycleMinExposure);
@@ -968,19 +966,27 @@ namespace XLWeather.UI
                         Main.settings.moonSkyExFloat = RGUI.SliderFloat(Main.settings.moonSkyExFloat, -2f, 2f, DefaultSettings.moonSkyExFloat, "Sky Exposure", ToolTips.skyExposure);
                         GUILayout.EndVertical();
 
-                        GUILayout.EndVertical();
-                    }
-                    Tabs(Weight_Tab, UIextensions.Instance.TabColorSwitch(Weight_Tab));
-                    if (!Weight_Tab.isClosed)
-                    {
                         GUILayout.BeginVertical("Box");
-                        UIextensions.Instance.CenteredLabel("Default Volume Weight");
-                        Main.settings.VolWeightfloat = RGUI.SliderFloat(Main.settings.VolWeightfloat, 0.0f, 1.0f, Main.settings.DefaultVolWeight, "Cycle Weight", ToolTips.cycleVolWeight);
+                        UIextensions.Instance.CenteredLabel("Moon Size");
+                        Main.settings.moonAngularDiameter = RGUI.SliderFloat(Main.settings.moonAngularDiameter, 1f, 10f, DefaultSettings.moonAngularDiameter, "Moon Size");
                         GUILayout.EndVertical();
+
+                        GUILayout.EndVertical(); // End Night Layout
                     }
 
-                    GUILayout.EndVertical();
+                    Tabs(Other_Tab, UIextensions.Instance.TabColorSwitch(Other_Tab));
+                    if (!Other_Tab.isClosed)
+                    {
+                        GUILayout.BeginVertical("Box");
+                        UIextensions.Instance.CenteredLabel("Other Settings");
+                        Main.settings.AmbientLightFloat = RGUI.SliderFloat(Main.settings.AmbientLightFloat, 0f, 4500f, DefaultSettings.AmbientLightFloat, "Ambient Light", ToolTips.cycleAmbientLight);
+                        Main.settings.VolWeightfloat = RGUI.SliderFloat(Main.settings.VolWeightfloat, 0.0f, 1.0f, Main.settings.DefaultVolWeight, "Cycle Weight", ToolTips.cycleVolWeight);
+                        GUILayout.EndVertical();              
+                    }
+
+                    GUILayout.EndVertical(); // End of Light Layout
                 }
+
                 Tabs(Shadow_Tab, UIextensions.Instance.TabColorSwitch(Shadow_Tab));
                 if (!Shadow_Tab.isClosed)
                 {
