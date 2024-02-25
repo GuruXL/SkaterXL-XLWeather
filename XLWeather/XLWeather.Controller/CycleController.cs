@@ -426,8 +426,8 @@ namespace XLWeather.Controller
         {
             TimeSettings = new CycleData.TimeSettings(0, 0, 0);
             ShadowSettings = new CycleData.ShadowSettings(0, 0, 0, 0);
-            sunSettings = new CycleData.SunVolSettings(0, 0, 0, 0, 0, 0, 0, 0);
-            moonSettings = new CycleData.MoonVolSettings(0, 0, 0, 0, 0, 0, 0, 0);
+            sunSettings = new CycleData.SunVolSettings(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            moonSettings = new CycleData.MoonVolSettings(0, 0, 0, 0, 0, 0, 0, 0, 0);
             sunLightSettings = new CycleData.SunLightSettings(0);
             moonLightSettings = new CycleData.MoonLightSettings(0, 0);
     }
@@ -490,7 +490,8 @@ namespace XLWeather.Controller
             Main.settings.sunSpaceEmission,
             Main.settings.sunDimmerFloat,
             Main.settings.SunIndirectLight,
-            Main.settings.SunIndirectSpecular);
+            Main.settings.SunIndirectSpecular,
+            Main.settings.sunAngularDiameter);
 
         private CycleData.MoonVolSettings moonSettings = new CycleData.MoonVolSettings(
             Main.settings.MoonMinExFloat,
@@ -500,7 +501,8 @@ namespace XLWeather.Controller
             Main.settings.moonSpaceEmission,
             Main.settings.moonDimmerFloat,
             Main.settings.MoonIndirectLight,
-            Main.settings.MoonIndirectSpecular);
+            Main.settings.MoonIndirectSpecular,
+            Main.settings.moonAngularDiameter);
 
         private CycleData.SunLightSettings sunLightSettings = new CycleData.SunLightSettings(Main.settings.SunColorFloat);
         private CycleData.MoonLightSettings moonLightSettings = new CycleData.MoonLightSettings(Main.settings.MoonColorFloat, Main.settings.moonIntensity);
@@ -619,6 +621,11 @@ namespace XLWeather.Controller
                     sunLC.indirectSpecularIntensity.Override(Main.settings.SunIndirectSpecular);
                     sunSettings.SpecularLight = Main.settings.SunIndirectSpecular;
                 }
+                if (sunSettings.AngularDiameter != Main.settings.sunAngularDiameter)
+                {
+                    SunLightData.angularDiameter = Main.settings.sunAngularDiameter;
+                    sunSettings.AngularDiameter = Main.settings.sunAngularDiameter;
+                }
             }
 
             // moon
@@ -668,6 +675,11 @@ namespace XLWeather.Controller
                 {
                     moonLC.indirectSpecularIntensity.Override(Main.settings.MoonIndirectSpecular);
                     moonSettings.SpecularLight = Main.settings.MoonIndirectSpecular;
+                }
+                if (moonSettings.AngularDiameter != Main.settings.moonAngularDiameter)
+                {
+                   MoonLightData.angularDiameter = Main.settings.moonAngularDiameter;
+                    moonSettings.AngularDiameter = Main.settings.moonAngularDiameter;
                 }
             }
         }

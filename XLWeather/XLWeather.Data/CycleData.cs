@@ -27,8 +27,9 @@ namespace XLWeather.Data
             public float Dimmer { get; set; }
             public float IndirectLight { get; set; }
             public float SpecularLight { get; set; }
+            public float AngularDiameter { get; set; }
 
-            public SunVolSettings(float min, float max, float Comp, float skyExposure, float emission, float dimmer, float indirectLight, float specularLight)
+            public SunVolSettings(float min, float max, float Comp, float skyExposure, float emission, float dimmer, float indirectLight, float specularLight, float angularDiameter)
             {
                 Min = min;
                 Max = max;
@@ -38,6 +39,7 @@ namespace XLWeather.Data
                 Dimmer = dimmer;
                 IndirectLight = indirectLight;
                 SpecularLight = specularLight;
+                AngularDiameter = angularDiameter;
             }
         }
         public class SunLightSettings
@@ -60,8 +62,9 @@ namespace XLWeather.Data
             public float Dimmer { get; set; }
             public float IndirectLight { get; set; }
             public float SpecularLight { get; set; }
+            public float AngularDiameter { get; set; }
 
-            public MoonVolSettings(float min, float max, float Comp,  float skyExposure, float emission, float dimmer, float indirectLight, float specularLight)
+            public MoonVolSettings(float min, float max, float Comp,  float skyExposure, float emission, float dimmer, float indirectLight, float specularLight, float angularDiameter)
             {
                 Min = min;
                 Max = max;
@@ -71,6 +74,7 @@ namespace XLWeather.Data
                 Dimmer = dimmer;
                 IndirectLight = indirectLight;
                 SpecularLight = specularLight;
+                AngularDiameter = angularDiameter;
             }
         }
 

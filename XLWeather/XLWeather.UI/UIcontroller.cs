@@ -701,7 +701,7 @@ namespace XLWeather.UI
                 return;
 
             GUILayout.BeginVertical("Box");
-            if (RGUI.Button(ToggleStateData.DroneToggle, "Drone Toggle"))
+            if (RGUI.Button(ToggleStateData.DroneToggle, "Drone"))
             {
                 ToggleStateData.DroneToggle = !ToggleStateData.DroneToggle;
 
@@ -832,7 +832,7 @@ namespace XLWeather.UI
             if (DayNight_Tab.isClosed)
                 return;
             GUILayout.BeginVertical("Box");
-            if (RGUI.Button(ToggleStateData.DayNightToggle, "Day/Night Toggle"))
+            if (RGUI.Button(ToggleStateData.DayNightToggle, "Day/Night Cycle"))
             {
                 ToggleStateData.DayNightToggle = !ToggleStateData.DayNightToggle;
 

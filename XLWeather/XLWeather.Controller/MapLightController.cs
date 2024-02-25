@@ -347,7 +347,7 @@ namespace XLWeather.Controller
         
         
         // ---------- reflection probe functions -------------
-        /*
+        /* no longer needed
         void GetReflectionProbes()
         {
             probes = new List<ReflectionProbe>();

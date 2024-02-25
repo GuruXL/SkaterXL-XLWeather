@@ -37,15 +37,17 @@ namespace XLWeather.Data
         public static float CycleXrotFloat = 0f;
         public static float sunDimmerFloat = 1.0f;
         public static float moonDimmerFloat = 1.0f;
-        public static float SunColorFloat = 5842f;
+        public static float SunColorFloat = 5845f;
         public static float MoonColorFloat = 7834f;
         public static float AmbientLightFloat = 400f;
         public static float sunSpaceEmission = 0f;
         public static float moonSpaceEmission = 0f;
         public static float SunIndirectLight = 1.0f;
         public static float SunIndirectSpecular = 1.25f;
+        public static float sunAngularDiameter = 0.6f;
         public static float MoonIndirectLight = 0.75f;
-        public static float MoonIndirectSpecular = 1.0f;
+        public static float MoonIndirectSpecular = 0.4f;
+        public static float moonAngularDiameter = 7.2f;
 
         public static float fogMeanFreePath = 100f;
         public static float fogBaseHeight = 20f;

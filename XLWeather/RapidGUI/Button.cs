@@ -22,7 +22,8 @@ namespace RapidGUI
 
                 if (v)
                 {
-                    GUI.backgroundColor = Color.green;
+                    //GUI.backgroundColor = Color.green;
+                    GUI.backgroundColor = Color.cyan;
                     text = "On";
                 }
                 else

@@ -119,8 +119,10 @@ namespace XLWeather
         public float moonSpaceEmission = DefaultSettings.moonSpaceEmission;
         public float SunIndirectLight = DefaultSettings.SunIndirectLight;
         public float SunIndirectSpecular = DefaultSettings.SunIndirectSpecular;
+        public float sunAngularDiameter = DefaultSettings.sunAngularDiameter;
         public float MoonIndirectLight = DefaultSettings.MoonIndirectLight;
         public float MoonIndirectSpecular = DefaultSettings.MoonIndirectSpecular;
+        public float moonAngularDiameter = DefaultSettings.moonAngularDiameter;
 
         public float DefaultVolWeight = 1f;
         public float VolWeightfloat = 1f;
