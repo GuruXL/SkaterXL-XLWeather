@@ -27,7 +27,8 @@ namespace XLWeather.UI
         public bool showUI;
         private bool setUp;
         private Rect MainWindowRect = new Rect(20, 20, Screen.width / 8, 20);
-        
+        private float lastUpdate = 0f;
+
         public static UIcontroller Instance { get; private set; }
 
         //readonly UItab Test_Tab = new UItab(true, "Test Stuff", 14);
@@ -49,6 +50,7 @@ namespace XLWeather.UI
         readonly UItab Time_Tab = new UItab(true, "Time settings", 13);
         readonly UItab Light_Tab = new UItab(true, "Light settings", 13);
         readonly UItab Shadow_Tab = new UItab(true, "Shadow settings", 13);
+        readonly UItab Presets_Tab = new UItab(true, "Presets", 13);
         //readonly UItab Intensity_Tab = new UItab(true, "Intensity", 12);
         //readonly UItab LightColor_Tab = new UItab(true, "Color", 12);
         //readonly UItab IndirectLight_Tab = new UItab(true, "Indirect Light", 12);
@@ -869,7 +871,7 @@ namespace XLWeather.UI
                 GUILayout.Label("Time of Day: " + Main.Cyclectrl.timeText);
                 GUILayout.EndHorizontal();
 
-                GUILayout.BeginVertical("Box");
+                GUILayout.BeginVertical("Box"); // start Day Night Tabs
                 Tabs(Time_Tab, UIextensions.Instance.TabColorSwitch(Time_Tab));
                 if (!Time_Tab.isClosed)
                 {
@@ -993,7 +995,7 @@ namespace XLWeather.UI
                 Tabs(Shadow_Tab, UIextensions.Instance.TabColorSwitch(Shadow_Tab));
                 if (!Shadow_Tab.isClosed)
                 {
-                    GUILayout.BeginVertical();
+                    GUILayout.BeginVertical(); // start shadow tab
 
                     GUILayout.BeginVertical("Box");
                     Main.settings.ShadowDistFloat = RGUI.SliderFloat(Main.settings.ShadowDistFloat, 1f, 285f, DefaultSettings.ShadowDistFloat, "Shadow Distance", ToolTips.cycleShadowDistance);
@@ -1013,11 +1015,39 @@ namespace XLWeather.UI
                     Main.settings.moonShadowFloat = RGUI.SliderFloat(Main.settings.moonShadowFloat, 0f, 1f, DefaultSettings.moonShadowFloat, "Shadow Strength", ToolTips.cycleShadowStrength);
                     GUILayout.EndVertical();    
 
-                    GUILayout.EndVertical();
+                    GUILayout.EndVertical(); // end shadow tab
                 }
-                GUILayout.EndVertical();
 
-                float lastUpdate = 0f;
+                Tabs(Presets_Tab, UIextensions.Instance.TabColorSwitch(Presets_Tab));
+                if (!Presets_Tab.isClosed)
+                {
+                    GUILayout.BeginHorizontal();
+                    RGUI.BeginBackgroundColor(Color.cyan);
+                    if (GUILayout.Button("Save Preset", RGUIStyle.button, GUILayout.Width(98)))
+                    {
+                        Main.presetManager.SavePreset();
+                    }
+                    Main.presetManager.PresetName = RGUI.Field(Main.presetManager.PresetName, "");
+                    //GUILayout.FlexibleSpace();
+                    RGUI.EndBackgroundColor();
+                    GUILayout.EndHorizontal();
+
+                    GUILayout.BeginHorizontal();
+                    RGUI.BeginBackgroundColor(Color.white);
+                    if (GUILayout.Button("Apply Preset", RGUIStyle.button, GUILayout.Width(98)))
+                    {
+                        Main.presetManager.ApplyPreset();
+                        Main.presetManager.ResetPresetList();
+                    }
+                    RGUI.EndBackgroundColor();
+                    GUILayout.FlexibleSpace();
+                    Main.presetManager.PresetToLoad = RGUI.SelectionPopup(Main.presetManager.PresetToLoad, Main.presetManager.GetPresetNames());
+                    GUILayout.FlexibleSpace();
+                    GUILayout.EndHorizontal();
+                }
+
+                GUILayout.EndVertical(); // end day night tabs
+
                 if (Time.time - lastUpdate >= 0.2f)
                 {
                     UpdateMinMax();

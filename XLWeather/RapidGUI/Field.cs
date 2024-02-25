@@ -34,7 +34,7 @@ namespace RapidGUI
             using (new GUILayout.VerticalScope(options))
             using (new GUILayout.HorizontalScope())
             {
-                GUILayout.Label("<b>" + label + "</b>");
+                GUILayout.Label("<b>" + label + "</b>", GUILayout.ExpandWidth(false));
                 obj = fieldFunc(obj, type);
             }
 

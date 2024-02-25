@@ -9,6 +9,7 @@ using XLWeather.Utils;
 using XLWeather.Data;
 using XLWeather.Controller;
 using XLWeather.UI;
+using XLWeather.Presets;
 
 namespace XLWeather
 {
@@ -20,12 +21,14 @@ namespace XLWeather
         public static string modId = "XLWeather";
         public static UnityModManager.ModEntry modEntry;
         public static GameObject scriptManager;
+        public static GameObject Presets;
         public static SceneChangeManager SceneUtils;
         public static WeatherController Weatherctrl;
         public static UIcontroller UIctrl;
         public static CycleController Cyclectrl;
         public static DroneController Dronectrl;
         public static MapLightController MapLightctrl;
+        public static PresetManager presetManager;
         //public static MaterialUtil MatUtil;
 
         private static bool Load(UnityModManager.ModEntry modEntry)
@@ -154,6 +157,8 @@ namespace XLWeather
                 harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
                 scriptManager = new GameObject("XLWeather");
                 UnityEngine.Object.DontDestroyOnLoad(scriptManager);
+                Presets = new GameObject("Presets");
+                Presets.transform.SetParent(scriptManager.transform);
 
                 SceneUtils = scriptManager.AddComponent<SceneChangeManager>();
                 MapLightctrl = scriptManager.AddComponent<MapLightController>();
@@ -161,6 +166,7 @@ namespace XLWeather
                 Cyclectrl = scriptManager.AddComponent<CycleController>();
                 Dronectrl = scriptManager.AddComponent<DroneController>();
                 UIctrl = scriptManager.AddComponent<UIcontroller>();
+                presetManager = Presets.AddComponent<PresetManager>();
                 //MatUtil = scriptManager.AddComponent<MaterialUtil>();
 
                 EnableCheck();

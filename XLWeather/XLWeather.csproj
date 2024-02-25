@@ -159,6 +159,9 @@
     <Reference Include="UnityEngine.InputModule">
       <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.InputModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.ParticleSystemModule.dll</HintPath>
@@ -224,6 +227,8 @@
     <Compile Include="XLWeather.Data\WeatherData.cs" />
     <Compile Include="XLWeather.Data\CycleData.cs" />
     <Compile Include="XLWeather.Patches\PauseStateMenuPatch.cs" />
+    <Compile Include="XLWeather.Presets\PresetManager.cs" />
+    <Compile Include="XLWeather.Presets\PresetSettings.cs" />
     <Compile Include="XLWeather.UI\ToolTips.cs" />
     <Compile Include="XLWeather.Utils\SceneChangeManager.cs" />
     <Compile Include="XLWeather.Utils\VFXUtils.cs" />
