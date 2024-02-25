@@ -59,10 +59,11 @@ namespace XLWeather.UI
         readonly UItab Night_Tab = new UItab(true, "Night", 12);
         readonly UItab Other_Tab = new UItab(true, "Other Settings", 12);
 
-        //public string white = "#e6ebe8";
-        //public string LightBlue =  "#30e2e6";
-        //public string green = "#7CFC00";
-        //public string red = "#b71540";
+        //private readonly string white = "#e6ebe8";
+        private readonly string grey = "#969696";
+        private readonly string cyan = "#00ffff";
+        private readonly string green = "#7CFC00";
+        private readonly string red = "#b71540";
         //public string TabColor;
 
         public string[] NightSkyStates = new string[] {
@@ -1042,6 +1043,27 @@ namespace XLWeather.UI
                     RGUI.EndBackgroundColor();
                     GUILayout.FlexibleSpace();
                     Main.presetManager.PresetToLoad = RGUI.SelectionPopup(Main.presetManager.PresetToLoad, Main.presetManager.GetPresetNames());
+                    GUILayout.FlexibleSpace();
+                    GUILayout.EndHorizontal();
+                    GUILayout.BeginHorizontal();
+                    GUILayout.FlexibleSpace();
+                    if (Main.presetManager.isPresetApplied)
+                    {
+                        GUILayout.Label($"<b><color={green}> {Main.presetManager.LastPresetLoaded} Applied Successfully </color></b>");
+                    }
+                    else if (Main.presetManager.isPresetLoaded)
+                    {
+                        GUILayout.Label($"<b><color={cyan}> {Main.presetManager.PresetToLoad} Ready To Apply </color></b>");
+                    }
+                    else if (Main.presetManager.presetFailedToLoad)
+                    {
+                        GUILayout.Label($"<b><color={red}> {Main.presetManager.PresetToLoad} Failed To Apply </color></b>");
+                       
+                    }
+                    else
+                    {
+                        GUILayout.Label($"<b><color={grey}> No Preset Selected </color></b>");
+                    }
                     GUILayout.FlexibleSpace();
                     GUILayout.EndHorizontal();
                 }

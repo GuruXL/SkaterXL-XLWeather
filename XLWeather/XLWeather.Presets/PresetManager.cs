@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System.IO;
 using ModIO.UI;
@@ -16,8 +16,11 @@ namespace XLWeather.Presets
         private string mainPath;
         public string PresetName = "";
         public string PresetToLoad { get; set; }
-        private string LastPresetLoaded;
+        public string LastPresetLoaded { get; private set; }
         private readonly string defaulState = "Select Preset to Load";
+        public bool isPresetLoaded { get; private set; } = false;
+        public bool presetFailedToLoad { get; private set; } = false;
+        public bool isPresetApplied { get; private set; } = false;
 
         public void Awake()
         {
@@ -31,6 +34,7 @@ namespace XLWeather.Presets
             }
 
             ResetPresetList();
+            ResetBoolStates();
             CreatePresets();
         }
 
@@ -47,14 +51,19 @@ namespace XLWeather.Presets
             savePreset = new PresetSettings();
             loadedPreset = new PresetSettings();
         }
-     
+        private void ResetBoolStates()
+        {
+            isPresetLoaded = false;
+            isPresetApplied = false;
+            presetFailedToLoad = false;
+        }
         public void ResetPresetList()
         {
             PresetToLoad = defaulState;
             LastPresetLoaded = defaulState;
         }
 
-        private bool loadingConditions()
+        public bool loadingConditions()
         {
             if (PresetToLoad != LastPresetLoaded && PresetToLoad != defaulState)
             {
@@ -71,10 +80,14 @@ namespace XLWeather.Presets
                 loadedPreset = JsonConvert.DeserializeObject<PresetSettings>(json); // Deserialize the JSON string
                 MessageSystem.QueueMessage(MessageDisplayData.Type.Info, $"{PresetToLoad} Preset Ready to Apply", 2.5f);
                 LastPresetLoaded = PresetToLoad;
+                isPresetLoaded = true;
+                presetFailedToLoad = false;
             }
             else
             {
                 MessageSystem.QueueMessage(MessageDisplayData.Type.Error, $"{PresetToLoad} Preset file not found.", 2.5f);
+                isPresetLoaded = false;
+                presetFailedToLoad = true;
             }
         }
         public void SavePreset()
@@ -165,9 +178,18 @@ namespace XLWeather.Presets
 
                 // Display success message
                 MessageSystem.QueueMessage(MessageDisplayData.Type.Success, $"{PresetToLoad} Preset Applied", 2.5f);
+                isPresetLoaded = false;
+                isPresetApplied = true;
+                StartCoroutine(ResetApply());
             }
         }
-
+        private IEnumerator ResetApply()
+        {
+            MessageSystem.QueueMessage(MessageDisplayData.Type.Success, $"ResetApply Routine Started", 2.5f);
+            yield return new WaitForSeconds(5);
+            isPresetApplied = false;
+            MessageSystem.QueueMessage(MessageDisplayData.Type.Success, $"ResetApply Routine finished", 2.5f);
+        }
         public string[] GetPresetNames()
         {
             string[] NullState = { defaulState };
