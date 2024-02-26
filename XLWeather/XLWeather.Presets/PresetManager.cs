@@ -15,12 +15,19 @@ namespace XLWeather.Presets
 
         private string mainPath;
         public string PresetName = "";
+        private readonly string defaultState = "Select Preset to Load";
         public string PresetToLoad { get; set; }
         public string LastPresetLoaded { get; private set; }
-        private readonly string defaulState = "Select Preset to Load";
+        public string LastPresetApplied { get; private set; } = "";
+
         public bool isPresetLoaded { get; private set; } = false;
         public bool presetFailedToLoad { get; private set; } = false;
         public bool isPresetApplied { get; private set; } = false;
+        public bool saveFailed { get; private set; } = false;
+
+        public string saveFailedMessage { get; private set; } = "";
+        public bool saveSucess { get; private set; } = false;
+        public string LastPresetSaved { get; private set; } = "";
 
         public void Awake()
         {
@@ -56,16 +63,17 @@ namespace XLWeather.Presets
             isPresetLoaded = false;
             isPresetApplied = false;
             presetFailedToLoad = false;
+            saveFailed = false;
         }
         public void ResetPresetList()
         {
-            PresetToLoad = defaulState;
-            LastPresetLoaded = defaulState;
+            PresetToLoad = defaultState;
+            LastPresetLoaded = defaultState;
         }
 
         public bool loadingConditions()
         {
-            if (PresetToLoad != LastPresetLoaded && PresetToLoad != defaulState)
+            if (PresetToLoad != LastPresetLoaded && PresetToLoad != defaultState)
             {
                 return true;
             }
@@ -92,6 +100,16 @@ namespace XLWeather.Presets
         }
         public void SavePreset()
         {
+            saveFailedMessage = "";
+
+            if (PresetName.Length <= 0)
+            {
+                saveFailed = true;
+                saveFailedMessage = "Save Failed: preset needs a name";
+                MessageSystem.QueueMessage(MessageDisplayData.Type.Error, $"{saveFailedMessage}", 2.5f);
+                StartCoroutine(ResetSave());
+                return;
+            }
             savePreset.timeMulipiler = Main.settings.timeMulipiler;
             savePreset.startHour = Main.settings.startHour;
             savePreset.sunriseHour = Main.settings.sunriseHour;
@@ -127,18 +145,46 @@ namespace XLWeather.Presets
             savePreset.moonAngularDiameter = Main.settings.moonAngularDiameter;
             savePreset.VolWeightfloat = Main.settings.VolWeightfloat;
 
-            string json = JsonConvert.SerializeObject(savePreset, Formatting.Indented); // Using JsonConvert with Formatting.Indented for serialization
+            string filePath = Path.Combine(mainPath, "CyclePresets", $"{PresetName}.json"); // Store the file path in a variable for reusability
+            string json = JsonConvert.SerializeObject(savePreset, Formatting.Indented); // Serialize the object to JSON
 
-            File.WriteAllText(Path.Combine(mainPath, "CyclePresets", $"{PresetName}.json"), json);
+            try
+            {
+                File.WriteAllText(filePath, json); // Write the JSON to a file
 
-            MessageSystem.QueueMessage(MessageDisplayData.Type.Success, $"{PresetName} Preset Created", 2.5f);
-
-            PresetName = "";
+                // Check if the file has been created successfully
+                if (File.Exists(filePath))
+                {
+                    saveSucess = true;
+                    StartCoroutine(ResetSave());
+                    MessageSystem.QueueMessage(MessageDisplayData.Type.Success, $"{PresetName} Preset Created", 2.5f);
+                    LastPresetSaved = PresetName;
+                }
+                else
+                {
+                    saveFailed = true;
+                    saveFailedMessage = "Preset save failed: File creation was not successful";
+                    MessageSystem.QueueMessage(MessageDisplayData.Type.Error, $"{saveFailedMessage}", 2.5f);
+                    StartCoroutine(ResetSave());
+                }
+            }
+            catch (Exception ex)
+            {
+                // Catch any exceptions during file writing and log them
+                saveFailed = true;
+                saveFailedMessage = $"Preset save failed: {ex.Message}";
+                MessageSystem.QueueMessage(MessageDisplayData.Type.Error, $"{saveFailedMessage}", 2.5f);
+                StartCoroutine(ResetSave());
+            }
+            finally
+            {
+                PresetName = ""; // Reset the PresetName in all cases
+            }
         }
 
         public void ApplyPreset()
         {
-            if (PresetToLoad != defaulState)
+            if (PresetToLoad != defaultState)
             {
                 // Applying values from loadedPreset to Main.settings
                 Main.settings.timeMulipiler = loadedPreset.timeMulipiler;
@@ -178,21 +224,28 @@ namespace XLWeather.Presets
 
                 // Display success message
                 MessageSystem.QueueMessage(MessageDisplayData.Type.Success, $"{PresetToLoad} Preset Applied", 2.5f);
+
+
                 isPresetLoaded = false;
                 isPresetApplied = true;
+                LastPresetApplied = LastPresetLoaded;
                 StartCoroutine(ResetApply());
             }
         }
         private IEnumerator ResetApply()
         {
-            MessageSystem.QueueMessage(MessageDisplayData.Type.Success, $"ResetApply Routine Started", 2.5f);
             yield return new WaitForSeconds(5);
             isPresetApplied = false;
-            MessageSystem.QueueMessage(MessageDisplayData.Type.Success, $"ResetApply Routine finished", 2.5f);
+        }
+        private IEnumerator ResetSave()
+        {
+            yield return new WaitForSeconds(3);
+            saveFailed = false;
+            saveSucess = false;
         }
         public string[] GetPresetNames()
         {
-            string[] NullState = { defaulState };
+            string[] NullState = { defaultState };
 
             if (!string.IsNullOrEmpty(mainPath))
             {

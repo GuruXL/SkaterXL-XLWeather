@@ -1029,7 +1029,6 @@ namespace XLWeather.UI
                         Main.presetManager.SavePreset();
                     }
                     Main.presetManager.PresetName = RGUI.Field(Main.presetManager.PresetName, "");
-                    //GUILayout.FlexibleSpace();
                     RGUI.EndBackgroundColor();
                     GUILayout.EndHorizontal();
 
@@ -1045,11 +1044,19 @@ namespace XLWeather.UI
                     Main.presetManager.PresetToLoad = RGUI.SelectionPopup(Main.presetManager.PresetToLoad, Main.presetManager.GetPresetNames());
                     GUILayout.FlexibleSpace();
                     GUILayout.EndHorizontal();
-                    GUILayout.BeginHorizontal();
-                    GUILayout.FlexibleSpace();
-                    if (Main.presetManager.isPresetApplied)
+
+                    GUILayout.BeginHorizontal(); // start of Preset log labels
+                    if (Main.presetManager.saveFailed)
                     {
-                        GUILayout.Label($"<b><color={green}> {Main.presetManager.LastPresetLoaded} Applied Successfully </color></b>");
+                        GUILayout.Label($"<b><color={red}> {Main.presetManager.saveFailedMessage} </color></b>");
+                    }
+                    else if (Main.presetManager.saveSucess)
+                    {
+                        GUILayout.Label($"<b><color={green}> {Main.presetManager.LastPresetSaved} Saved Successfully </color></b>");
+                    }
+                    else if (Main.presetManager.isPresetApplied)
+                    {
+                        GUILayout.Label($"<b><color={green}> {Main.presetManager.LastPresetApplied} Applied Successfully </color></b>");
                     }
                     else if (Main.presetManager.isPresetLoaded)
                     {
@@ -1057,15 +1064,14 @@ namespace XLWeather.UI
                     }
                     else if (Main.presetManager.presetFailedToLoad)
                     {
-                        GUILayout.Label($"<b><color={red}> {Main.presetManager.PresetToLoad} Failed To Apply </color></b>");
+                        GUILayout.Label($"<b><color={red}> Preset Failed To Apply </color></b>");
                        
                     }
                     else
                     {
                         GUILayout.Label($"<b><color={grey}> No Preset Selected </color></b>");
                     }
-                    GUILayout.FlexibleSpace();
-                    GUILayout.EndHorizontal();
+                    GUILayout.EndHorizontal(); // end of prest log labels
                 }
 
                 GUILayout.EndVertical(); // end day night tabs
