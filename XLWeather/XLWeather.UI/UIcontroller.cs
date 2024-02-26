@@ -854,10 +854,12 @@ namespace XLWeather.UI
                         AssetHandler.Instance.activeDayNight.SetActive(false);
                         Main.MapLightctrl.ToggleMainLights(true);
 
+                        /* not needed anymore, Reset gets called when dynamic light corroutine gets stopped
                         if (Main.settings.MapLayersToggle)
                         {
                             Main.MapLightctrl.ResetLayerToggles();
                         }
+                        */
 
                         ToggleStateData.ResetVolWeight = true;
 

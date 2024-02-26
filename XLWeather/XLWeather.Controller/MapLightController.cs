@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using XLWeather.Data;
 using ModIO.UI;
 using System;
+using System.Collections;
 
 namespace XLWeather.Controller
 {
@@ -16,15 +17,15 @@ namespace XLWeather.Controller
         public LightType lightType = LightType.Directional;
         public Light MainLight = null;
         public List<Material> hdrpMaterials;
-        public List<ReflectionProbe> probes;
+        //public List<ReflectionProbe> probes;
         public Dictionary<Material, float> originalEmissionweights;
         //private int delay = 0;
-
+        private bool previousSunActive; // true = day false = night
         private bool IsDefaultValueSet = false;
-
         private float lastIntensity;
+        private bool isCheckSunRunning = false;
+        private IEnumerator SunStateCheckCoroutine;
 
-        
         public bool ListsPopulated()
         {
             if (TaggedLightsList.Count > 0 && TaggedGO.Count > 0 && hdrpMaterials.Count > 0)
@@ -40,6 +41,8 @@ namespace XLWeather.Controller
 
         private void Update()
         {
+            HandleSunStateCheck();
+
             if (MainLight == null)
                 return;
 
@@ -48,12 +51,13 @@ namespace XLWeather.Controller
                 MainLight.intensity = Main.settings.MapLightIntensity;
                 lastIntensity = Main.settings.MapLightIntensity;
             }
-
         }
-
         
         private void FixedUpdate()
         {
+            //HandleSunStateCheck();
+
+            /*
             if (!Main.settings.MapLayersToggle)
                 return;
 
@@ -61,9 +65,84 @@ namespace XLWeather.Controller
             {
                 UpdateLayerMapLights();
             }
+            */
         }
-        
+        private void HandleSunStateCheck()
+        {
+            if (!Main.settings.MapLayersToggle)
+            {
+                // Stop the coroutine if it's running
+                if (isCheckSunRunning)
+                {
+                    ResetSunCheckRoutine();
+                }
 
+                return;
+            }
+            else
+            {
+                // Start the coroutine if it's not already running
+                if (ToggleStateData.DayNightToggle && ListsPopulated() && !isCheckSunRunning)
+                {
+                    SunStateCheckCoroutine = CheckSunState(); // Store the coroutine reference
+                    StartCoroutine(SunStateCheckCoroutine);
+                    Main.Logger.Log($"Dynamic light coroutine started");
+                    isCheckSunRunning = true;
+                }
+                else if (!ToggleStateData.DayNightToggle && isCheckSunRunning)
+                {
+                    ResetSunCheckRoutine();
+                }
+            }
+        }
+
+        private void ResetSunCheckRoutine()
+        {
+            if (SunStateCheckCoroutine != null) // Make sure the reference is not null
+            {
+                StopCoroutine(SunStateCheckCoroutine); // Use the reference to stop the coroutine
+                SunStateCheckCoroutine = null; // Clear the reference
+            }
+            ResetLayerToggles();
+            Main.Logger.Log($"Dynamic light coroutine started");
+            isCheckSunRunning = false;
+        }
+        /*
+        private void HandleSunStateCheck()
+        {
+            if (!Main.settings.MapLayersToggle)
+            {
+                // Stop the coroutine if it's running
+                if (isCheckSunRunning)
+                {
+                    StopCoroutine(CheckSunState());
+                    ResetLayerToggles();
+                    Main.Logger.Log($"corroutine stopped");
+                    isCheckSunRunning = false;
+                }
+
+                return;
+            }
+            else
+            {
+                // Start the coroutine if it's not already running
+                if (ToggleStateData.DayNightToggle && ListsPopulated() && !isCheckSunRunning)
+                {
+                    StartCoroutine(CheckSunState());
+                    Main.Logger.Log($"corroutine started");
+                    isCheckSunRunning = true;
+                }
+                else if (!ToggleStateData.DayNightToggle && isCheckSunRunning)
+                {
+                    StopCoroutine(CheckSunState());
+                    ResetLayerToggles();
+                    Main.Logger.Log($"corroutine stopped");
+                    isCheckSunRunning = false;
+                }
+            }
+            
+        }
+        */
         // ----- Enable/Disable Lights for DayNightCycle -------
         public void GetLights()
         {
@@ -145,7 +224,7 @@ namespace XLWeather.Controller
         // ------ End Get Lights and Values for Main map Light -----------
 
         
-        // ------- Toggles Objects on and off during Day Night if they are on Layer 28 ------------
+        // ------- Toggles Objects on and off during Day Night if they are on Layer 29 ------------
         public void GetLayerObjects()
         {
             if (GameStateMachine.Instance.CurrentState.GetType() == typeof(GearSelectionState))
@@ -227,6 +306,7 @@ namespace XLWeather.Controller
             Main.Logger.Log($"{i} : Game Objects toggled");
         }
 
+        /*
         public bool previousSunActive;
         public void UpdateLayerMapLights()
         {
@@ -238,26 +318,44 @@ namespace XLWeather.Controller
                 previousSunActive = sunActive;
             }
         }
-
-        public void LayerSwitch()
+        */
+        private IEnumerator CheckSunState()
         {
-            bool sunActive = Main.Cyclectrl.GetIsDay();
+            while (true) // Infinite loop to continuously check the condition
+            {
+                bool sunActive = Main.Cyclectrl.GetIsDay();
 
-            switch (sunActive)
+                if (sunActive != previousSunActive)
+                {
+                    LayerSwitch(sunActive);
+                    Main.Logger.Log($"Sun State Checked");
+                    previousSunActive = sunActive;
+                }
+                
+                yield return new WaitForSeconds(0.5f);
+                //yield return null;
+            }
+        }
+
+        public void LayerSwitch(bool state)
+        {
+            //bool sunActive = Main.Cyclectrl.GetIsDay();
+
+            switch (state)
             {
                 case true:
                     ToggleLayerGO(false);
                     ToggleMapLights(false);
                     ToggleEmission(false);
                     //toggleProbes(true);
-                    Main.Logger.Log("sunActive: " + sunActive);
+                    Main.Logger.Log("sunActive: " + state);
                     break;
                 case false:
                     ToggleLayerGO(true);
                     ToggleMapLights(true);
                     ToggleEmission(true);
                     //toggleProbes(false);
-                    Main.Logger.Log("sunActive: " + sunActive);
+                    Main.Logger.Log("sunActive: " + state);
                     break;
             }
         }
@@ -269,6 +367,7 @@ namespace XLWeather.Controller
             ToggleMapLights(true);
             ToggleEmission(true);
             //toggleProbes(true);
+            Main.Logger.Log("Layer Objects Reset");
         }
 
         // ------- End Toggle for Tagged Lights ---------------
@@ -320,19 +419,19 @@ namespace XLWeather.Controller
             Main.Logger.Log($"{hdrpMaterials.Count} emissive materials found");
         }
 
-        public void ToggleEmission(bool enable)
+        public void ToggleEmission(bool state)
         {
             if (hdrpMaterials == null)
                 return;
 
             foreach (Material material in hdrpMaterials)
             {
-                if (enable)
+                if (state)
                 {
                     material.SetFloat("_EmissiveExposureWeight", originalEmissionweights[material]);
                     //Main.Logger.Log($" {originalEmissionweights[material]}: Exposure weight");
                 }
-                else
+                else if (!state)
                 {
                     originalEmissionweights[material] = material.GetFloat("_EmissiveExposureWeight");
                     material.SetFloat("_EmissiveExposureWeight", 1f);
@@ -340,7 +439,7 @@ namespace XLWeather.Controller
                 }
             }
 
-            Main.Logger.Log($"Emissive materials {(enable ? "enabled" : "disabled")}");
+            Main.Logger.Log($"Emissive materials {(state ? "enabled" : "disabled")}");
         }
 
         // ---------- end of Material changes  --------------
