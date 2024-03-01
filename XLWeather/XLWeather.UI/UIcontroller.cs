@@ -727,14 +727,13 @@ namespace XLWeather.UI
 
             if (ToggleStateData.DroneToggle)
             {
-                GUILayout.BeginVertical("Box");
+                GUILayout.BeginVertical("Box"); // start main drone layout
                 // Drone Cam
                 GUILayout.BeginVertical("Box");
                 if (RGUI.Button(ToggleStateData.DroneCamtoggle, "Drone Cam"))
                 {
                     ToggleStateData.DroneCamtoggle = !ToggleStateData.DroneCamtoggle;
                 }
-
                 switch (ToggleStateData.DroneCamtoggle)
                 {
                     case true:
@@ -743,31 +742,6 @@ namespace XLWeather.UI
                         GUILayout.BeginVertical("Box");
                         Main.settings.droneCamFov = RGUI.SliderFloat(Main.settings.droneCamFov, 10f, 130f, DefaultSettings.droneCamFov, " Cam FOV", ToolTips.droneCamFOV);
                         GUILayout.Label("<i>This is a work in progress, you may experience camera jitter or other bugs</i>");
-                        GUILayout.Label("Drone Target");
-                        Main.settings.DroneTargetState = RGUI.SelectionPopup(Main.settings.DroneTargetState, DroneTargetStates);
-                        GUILayout.EndVertical();
-
-                        GUILayout.BeginVertical("Box");
-                        if (RGUI.Button(ToggleStateData.MultiTargetToggle, "Target Online Player"))
-                        {
-                            ToggleStateData.MultiTargetToggle = !ToggleStateData.MultiTargetToggle;
-                        }
-                        switch (ToggleStateData.MultiTargetToggle)
-                        {
-                            case true:
-                                GUILayout.Label("Player Target");
-                                Main.settings.multiplayer_target = RGUI.SelectionPopup(Main.settings.multiplayer_target, Main.Dronectrl.getPlayerList());
-
-                                if (Main.Dronectrl.ReplayCheck())
-                                {
-                                    GUILayout.Label("<color=#FFFF00><i> Replay Targeting is Not functional at this time. </i></color>");
-                                }
-                                break;
-
-                            case false:
-                                Main.settings.multiplayer_target = "None";
-                                break;
-                        }
                         GUILayout.EndVertical();
                         break;
 
@@ -776,7 +750,39 @@ namespace XLWeather.UI
                         Main.Dronectrl.DroneLightCam.gameObject.SetActive(false);
                         break;
                 }
+                GUILayout.BeginVertical("Box");
+                GUILayout.Label("Drone Target");
+                Main.settings.DroneTargetState = RGUI.SelectionPopup(Main.settings.DroneTargetState, DroneTargetStates);
                 GUILayout.EndVertical();
+
+                if (MultiplayerManager.Instance.InRoom)
+                {
+                    GUILayout.BeginVertical("Box"); // online target box
+                    if (RGUI.Button(ToggleStateData.MultiTargetToggle, "Target Online Player"))
+                    {
+                        ToggleStateData.MultiTargetToggle = !ToggleStateData.MultiTargetToggle;
+                    }
+                    switch (ToggleStateData.MultiTargetToggle)
+                    {
+                        case true:
+                            GUILayout.Label("Player Target");
+                            Main.settings.multiplayer_target = RGUI.SelectionPopup(Main.settings.multiplayer_target, Main.Dronectrl.getPlayerList());
+
+                            if (Main.Dronectrl.ReplayCheck())
+                            {
+                                GUILayout.Label("<color=#FFFF00><i> Replay Targeting is Not functional at this time. </i></color>");
+                            }
+                            break;
+
+                        case false:
+                            Main.settings.multiplayer_target = "None";
+                            break;
+                    }
+
+                    GUILayout.EndVertical(); // end online target box
+                }        
+                
+                GUILayout.EndVertical(); // end main drone box
 
                 Tabs(droneFollow_Tab, UIextensions.Instance.TabColorSwitch(droneFollow_Tab));
                 if (!droneFollow_Tab.isClosed)
@@ -924,17 +930,12 @@ namespace XLWeather.UI
 
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Sun Exposure");
-
-                        RGUI.MinMaxSlider(ref Main.settings.SunMinExFloat, ref Main.settings.SunMaxExFloat, "Min/Max");
-
-                        /*
                         GUILayout.Label("<i> Brightness</i>");
                         Main.settings.SunMinExFloat = RGUI.SliderFloat(Main.settings.SunMinExFloat, 0f, 20f, DefaultSettings.SunMinExFloat, "Min Exposure", ToolTips.cycleMinExposure);
                         GUILayout.Label("<i> Darkness</i>");
                         Main.settings.SunMaxExFloat = RGUI.SliderFloat(Main.settings.SunMaxExFloat, 0f, 20f, DefaultSettings.SunMaxExFloat, "Max Exposure", ToolTips.cycleMaxExposure);
                         Main.settings.SunExCompFlt = RGUI.SliderFloat(Main.settings.SunExCompFlt, -2.0f, 2.0f, DefaultSettings.SunExCompFlt, "Compensation", ToolTips.cycleCompensation);
                         Main.settings.sunSkyExFloat = RGUI.SliderFloat(Main.settings.sunSkyExFloat, -2f, 2f, DefaultSettings.sunSkyExFloat, "Sky Exposure", ToolTips.skyExposure);
-                        */
 
                         GUILayout.EndVertical();
 
@@ -970,15 +971,12 @@ namespace XLWeather.UI
 
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Moon Exposure");
-                        RGUI.MinMaxSlider(ref Main.settings.MoonMinExFloat, ref Main.settings.MoonMaxExFloat, "Min/Max");
-                        /*
                         GUILayout.Label("<i> Brightness</i>");
                         Main.settings.MoonMinExFloat = RGUI.SliderFloat(Main.settings.MoonMinExFloat, 0f, 20f, DefaultSettings.MoonMinExFloat, "Min Exposure", ToolTips.cycleMinExposure);
                         GUILayout.Label("<i> Darkness</i>");
                         Main.settings.MoonMaxExFloat = RGUI.SliderFloat(Main.settings.MoonMaxExFloat, 0f, 20f, DefaultSettings.MoonMaxExFloat, "Max Exposure", ToolTips.cycleMaxExposure);
                         Main.settings.MoonExCompFlt = RGUI.SliderFloat(Main.settings.MoonExCompFlt, -2.0f, 2.0f, DefaultSettings.MoonExCompFlt, "Compensation", ToolTips.cycleCompensation);
                         Main.settings.moonSkyExFloat = RGUI.SliderFloat(Main.settings.moonSkyExFloat, -2f, 2f, DefaultSettings.moonSkyExFloat, "Sky Exposure", ToolTips.skyExposure);
-                        */
                         GUILayout.EndVertical();
 
                         GUILayout.BeginVertical("Box");
@@ -1087,13 +1085,11 @@ namespace XLWeather.UI
 
                 GUILayout.EndVertical(); // end day night tabs
 
-                /*
                 if (Time.time - lastUpdate >= 0.2f)
                 {
                     UpdateMinMax();
                     lastUpdate = Time.time;
                 }
-                */
             }
         }
         private void UpdateMinMax()
