@@ -924,12 +924,18 @@ namespace XLWeather.UI
 
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Sun Exposure");
+
+                        RGUI.MinMaxSlider(ref Main.settings.SunMinExFloat, ref Main.settings.SunMaxExFloat, "Min/Max");
+
+                        /*
                         GUILayout.Label("<i> Brightness</i>");
                         Main.settings.SunMinExFloat = RGUI.SliderFloat(Main.settings.SunMinExFloat, 0f, 20f, DefaultSettings.SunMinExFloat, "Min Exposure", ToolTips.cycleMinExposure);
                         GUILayout.Label("<i> Darkness</i>");
                         Main.settings.SunMaxExFloat = RGUI.SliderFloat(Main.settings.SunMaxExFloat, 0f, 20f, DefaultSettings.SunMaxExFloat, "Max Exposure", ToolTips.cycleMaxExposure);
                         Main.settings.SunExCompFlt = RGUI.SliderFloat(Main.settings.SunExCompFlt, -2.0f, 2.0f, DefaultSettings.SunExCompFlt, "Compensation", ToolTips.cycleCompensation);
                         Main.settings.sunSkyExFloat = RGUI.SliderFloat(Main.settings.sunSkyExFloat, -2f, 2f, DefaultSettings.sunSkyExFloat, "Sky Exposure", ToolTips.skyExposure);
+                        */
+
                         GUILayout.EndVertical();
 
                         GUILayout.EndVertical(); // End Day Layout
@@ -964,12 +970,15 @@ namespace XLWeather.UI
 
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Moon Exposure");
+                        RGUI.MinMaxSlider(ref Main.settings.MoonMinExFloat, ref Main.settings.MoonMaxExFloat, "Min/Max");
+                        /*
                         GUILayout.Label("<i> Brightness</i>");
                         Main.settings.MoonMinExFloat = RGUI.SliderFloat(Main.settings.MoonMinExFloat, 0f, 20f, DefaultSettings.MoonMinExFloat, "Min Exposure", ToolTips.cycleMinExposure);
                         GUILayout.Label("<i> Darkness</i>");
                         Main.settings.MoonMaxExFloat = RGUI.SliderFloat(Main.settings.MoonMaxExFloat, 0f, 20f, DefaultSettings.MoonMaxExFloat, "Max Exposure", ToolTips.cycleMaxExposure);
                         Main.settings.MoonExCompFlt = RGUI.SliderFloat(Main.settings.MoonExCompFlt, -2.0f, 2.0f, DefaultSettings.MoonExCompFlt, "Compensation", ToolTips.cycleCompensation);
                         Main.settings.moonSkyExFloat = RGUI.SliderFloat(Main.settings.moonSkyExFloat, -2f, 2f, DefaultSettings.moonSkyExFloat, "Sky Exposure", ToolTips.skyExposure);
+                        */
                         GUILayout.EndVertical();
 
                         GUILayout.BeginVertical("Box");
@@ -1078,11 +1087,13 @@ namespace XLWeather.UI
 
                 GUILayout.EndVertical(); // end day night tabs
 
+                /*
                 if (Time.time - lastUpdate >= 0.2f)
                 {
                     UpdateMinMax();
                     lastUpdate = Time.time;
                 }
+                */
             }
         }
         private void UpdateMinMax()
