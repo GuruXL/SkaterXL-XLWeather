@@ -204,22 +204,35 @@
     <Compile Include="RapidGUI\Field\BoolField.cs" />
     <Compile Include="RapidGUI\Field\EnumField.cs" />
     <Compile Include="RapidGUI\Field\ListField.cs" />
+    <Compile Include="RapidGUI\Field\RecursiveField.cs" />
     <Compile Include="RapidGUI\Field\StandardField.cs" />
     <Compile Include="RapidGUI\MinMaxSlider.cs" />
     <Compile Include="RapidGUI\MinMaxSlider\MinMaxSliderCore.cs" />
     <Compile Include="RapidGUI\MinMaxSlider\RecursiveMinMaxSlider.cs" />
-    <Compile Include="RapidGUI\Utilities\MinMax.cs" />
     <Compile Include="RapidGUI\Popup.cs" />
+    <Compile Include="RapidGUI\PrefixLabel.cs" />
+    <Compile Include="RapidGUI\ResizableWindow.cs" />
     <Compile Include="RapidGUI\Scope\BackgroundColorScope.cs" />
     <Compile Include="RapidGUI\Scope\ColorScope.cs" />
+    <Compile Include="RapidGUI\Scope\CustomLabelScope.cs" />
     <Compile Include="RapidGUI\Scope\EnabledScope.cs" />
+    <Compile Include="RapidGUI\Scope\IgnoreFieldScope.cs" />
     <Compile Include="RapidGUI\Scope\IndentScope.cs" />
+    <Compile Include="RapidGUI\Scope\PrefixLabelIndentScope.cs" />
     <Compile Include="RapidGUI\Slider.cs" />
+    <Compile Include="RapidGUI\Utilities\Cursor\Cursor.cs" />
+    <Compile Include="RapidGUI\Utilities\Cursor\CursorData.cs" />
+    <Compile Include="RapidGUI\Utilities\FastScrollView.cs" />
     <Compile Include="RapidGUI\Utilities\FocusChecker.cs" />
+    <Compile Include="RapidGUI\Utilities\IDoGUI.cs" />
     <Compile Include="RapidGUI\Utilities\IDoGUIWindow.cs" />
+    <Compile Include="RapidGUI\Utilities\LazyFindObject.cs" />
+    <Compile Include="RapidGUI\Utilities\MinMax.cs" />
     <Compile Include="RapidGUI\Utilities\RapidGUIBehaviour.cs" />
+    <Compile Include="RapidGUI\Utilities\Recursive.cs" />
     <Compile Include="RapidGUI\Utilities\RGUIStyle.cs" />
     <Compile Include="RapidGUI\Utilities\RGUIUtility.cs" />
+    <Compile Include="RapidGUI\Utilities\TitleContent.cs" />
     <Compile Include="RapidGUI\Utilities\TypeUtility.cs" />
     <Compile Include="RapidGUI\Utilities\TypeUtilityMemberInfo.cs" />
     <Compile Include="RapidGUI\Utilities\UnparsedStr.cs" />
@@ -251,11 +264,16 @@
     <None Include="Info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="RapidGUI\MinMaxSlider\MinMaxSliderCore.cs.meta" />
-    <None Include="RapidGUI\MinMaxSlider\RecursiveMinMaxSlider.cs.meta" />
-    <None Include="RapidGUI\MinMaxSlider\Resources.meta" />
     <None Include="RapidGUI\MinMaxSlider\Resources\minmax slider thumb act.png.meta" />
     <None Include="RapidGUI\MinMaxSlider\Resources\minmax slider thumb.png.meta" />
+    <None Include="RapidGUI\Utilities\Cursor\Cursor.cs.meta" />
+    <None Include="RapidGUI\Utilities\Cursor\CursorData.cs.meta" />
+    <None Include="RapidGUI\Utilities\Cursor\Resources.meta" />
+    <None Include="RapidGUI\Utilities\Cursor\Resources\cursorData.asset" />
+    <None Include="RapidGUI\Utilities\Cursor\Resources\cursorData.asset.meta" />
+    <None Include="RapidGUI\Utilities\Cursor\Resources\cursor_ew.png.meta" />
+    <None Include="RapidGUI\Utilities\Cursor\Resources\cursor_ns.png.meta" />
+    <None Include="RapidGUI\Utilities\Cursor\Resources\cursor_nwse.png.meta" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -263,6 +281,9 @@
   <ItemGroup>
     <Content Include="RapidGUI\MinMaxSlider\Resources\minmax slider thumb act.png" />
     <Content Include="RapidGUI\MinMaxSlider\Resources\minmax slider thumb.png" />
+    <Content Include="RapidGUI\Utilities\Cursor\Resources\cursor_ew.png" />
+    <Content Include="RapidGUI\Utilities\Cursor\Resources\cursor_ns.png" />
+    <Content Include="RapidGUI\Utilities\Cursor\Resources\cursor_nwse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
