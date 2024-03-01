@@ -14,6 +14,7 @@ namespace RapidGUI
             UnparsedStr unparsedStr = UnparsedStr.Create();
             using (new ColorScope((unparsedStr.hasStr && !unparsedStr.CanParse(type)) ? Color.red : GUI.color))
             {
+                //string text = unparsedStr.Get() ?? ((v != null) ? string.Format("{0:0}", v) : "");
                 string text = unparsedStr.Get() ?? ((v != null) ? string.Format("{0:0.000}", v) : "");
                 string text2 = GUILayout.TextField(text, new GUILayoutOption[]
                 {
