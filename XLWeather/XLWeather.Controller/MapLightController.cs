@@ -28,7 +28,7 @@ namespace XLWeather.Controller
 
         public bool ListsPopulated()
         {
-            if (TaggedLightsList.Count > 0 || TaggedGO.Count > 0 || hdrpMaterials.Count > 0)
+            if (TaggedLightsList.Count > 0 && TaggedGO.Count > 0 && hdrpMaterials.Count > 0)
             {
                 return true;
             }
@@ -69,37 +69,34 @@ namespace XLWeather.Controller
         }
         private void HandleSunStateCheck()
         {
+            if (!Main.settings.MapLayersToggle)
+            {
+                // Stop the coroutine if it's running
+                if (isCheckSunRunning)
+                {
+                    ResetSunCheckRoutine();
+                }
 
-            if (Main.settings.MapLayersToggle)
+                return;
+            }
+            else
             {
                 // Start the coroutine if it's not already running
                 if (ToggleStateData.DayNightToggle && ListsPopulated() && !isCheckSunRunning)
                 {
-                    StartSunCheckRoutine();
+                    SunStateCheckCoroutine = CheckSunState(); // Store the coroutine reference
+                    StartCoroutine(SunStateCheckCoroutine);
+                    Main.Logger.Log($"Dynamic light coroutine started");
+                    isCheckSunRunning = true;
                 }
                 else if (!ToggleStateData.DayNightToggle && isCheckSunRunning)
                 {
-                    StopSunCheckRoutine();
-                }
-            }
-            else
-            {
-                if (isCheckSunRunning)
-                {
-                    StopSunCheckRoutine();
+                    ResetSunCheckRoutine();
                 }
             }
         }
 
-        public void StartSunCheckRoutine()
-        {
-            SunStateCheckCoroutine = CheckSunState(); // Store the coroutine reference
-            StartCoroutine(SunStateCheckCoroutine);
-            Main.Logger.Log($"Dynamic light coroutine: Started");
-            isCheckSunRunning = true;
-        }
-
-        private void StopSunCheckRoutine()
+        private void ResetSunCheckRoutine()
         {
             if (SunStateCheckCoroutine != null) // Make sure the reference is not null
             {
@@ -107,7 +104,7 @@ namespace XLWeather.Controller
                 SunStateCheckCoroutine = null; // Clear the reference
             }
             ResetLayerToggles();
-            Main.Logger.Log($"Dynamic light coroutine: Stopped");
+            Main.Logger.Log($"Dynamic light coroutine started");
             isCheckSunRunning = false;
         }
         /*
@@ -347,14 +344,14 @@ namespace XLWeather.Controller
             switch (state)
             {
                 case true:
-                    ToggleLayerGO(true);
+                    ToggleLayerGO(false);
                     ToggleMapLights(false);
                     ToggleEmission(false);
                     //toggleProbes(true);
                     Main.Logger.Log("sunActive: " + state);
                     break;
                 case false:
-                    ToggleLayerGO(false);
+                    ToggleLayerGO(true);
                     ToggleMapLights(true);
                     ToggleEmission(true);
                     //toggleProbes(false);
@@ -366,7 +363,7 @@ namespace XLWeather.Controller
         public void ResetLayerToggles()
         {
             previousSunActive = false;
-            ToggleLayerGO(true);
+            ToggleLayerGO(false);
             ToggleMapLights(true);
             ToggleEmission(true);
             //toggleProbes(true);
