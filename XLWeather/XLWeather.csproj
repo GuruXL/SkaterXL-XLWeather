@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Dillon\AppData\Local\Temp\vsC898.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\GURU\AppData\Local\Temp\vs5DBC.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <IntermediateOutputPath>C:\Users\Dillon\AppData\Local\Temp\vsC898.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\GURU\AppData\Local\Temp\vs5DBC.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -205,7 +205,10 @@
     <Compile Include="RapidGUI\Field\EnumField.cs" />
     <Compile Include="RapidGUI\Field\ListField.cs" />
     <Compile Include="RapidGUI\Field\StandardField.cs" />
-    <Compile Include="RapidGUI\MinMax.cs" />
+    <Compile Include="RapidGUI\MinMaxSlider.cs" />
+    <Compile Include="RapidGUI\MinMaxSlider\MinMaxSliderCore.cs" />
+    <Compile Include="RapidGUI\MinMaxSlider\RecursiveMinMaxSlider.cs" />
+    <Compile Include="RapidGUI\Utilities\MinMax.cs" />
     <Compile Include="RapidGUI\Popup.cs" />
     <Compile Include="RapidGUI\Scope\BackgroundColorScope.cs" />
     <Compile Include="RapidGUI\Scope\ColorScope.cs" />
@@ -248,9 +251,18 @@
     <None Include="Info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="RapidGUI\MinMaxSlider\MinMaxSliderCore.cs.meta" />
+    <None Include="RapidGUI\MinMaxSlider\RecursiveMinMaxSlider.cs.meta" />
+    <None Include="RapidGUI\MinMaxSlider\Resources.meta" />
+    <None Include="RapidGUI\MinMaxSlider\Resources\minmax slider thumb act.png.meta" />
+    <None Include="RapidGUI\MinMaxSlider\Resources\minmax slider thumb.png.meta" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RapidGUI\MinMaxSlider\Resources\minmax slider thumb act.png" />
+    <Content Include="RapidGUI\MinMaxSlider\Resources\minmax slider thumb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
