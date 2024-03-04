@@ -45,9 +45,10 @@ namespace XLWeather.Controller
 
         private void Awake()
         {
-            MasterPrefab = PlayerController.Instance.skaterController.transform.parent.transform.parent; // 1.2.2.8
-            //MasterPrefab = PlayerController.Main.transform.parent; //1.2.6.0
+            MasterPrefab = GameStateMachine.Instance.transform;
 
+            //MasterPrefab = PlayerController.Instance.skaterController.transform.parent.transform.parent; // 1.2.2.8
+            //MasterPrefab = PlayerController.Main.transform.parent; //1.2.6.0
             Main.settings.ResetIfEnabled();
         }
 

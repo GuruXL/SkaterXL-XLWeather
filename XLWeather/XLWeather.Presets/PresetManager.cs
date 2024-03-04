@@ -10,8 +10,8 @@ namespace XLWeather.Presets
 {
     public class PresetManager : MonoBehaviour
     {
-        public PresetSettings savePreset;
-        public PresetSettings loadedPreset;
+        private PresetSettings savePreset;
+        private PresetSettings loadedPreset;
 
         private string mainPath;
         public string PresetName = "";
@@ -19,15 +19,15 @@ namespace XLWeather.Presets
         public string PresetToLoad { get; set; }
         public string LastPresetLoaded { get; private set; }
         public string LastPresetApplied { get; private set; } = "";
+        public string saveFailedMessage { get; private set; } = "";
+        public string LastPresetSaved { get; private set; } = "";
 
         public bool isPresetLoaded { get; private set; } = false;
         public bool presetFailedToLoad { get; private set; } = false;
         public bool isPresetApplied { get; private set; } = false;
         public bool saveFailed { get; private set; } = false;
-
-        public string saveFailedMessage { get; private set; } = "";
         public bool saveSucess { get; private set; } = false;
-        public string LastPresetSaved { get; private set; } = "";
+  
 
         public void Awake()
         {

@@ -171,8 +171,8 @@ namespace XLWeather.UI
                 return;
             GUI.backgroundColor = Main.settings.BGColor;
             MainWindowRect = GUILayout.Window(74692, MainWindowRect, MainWindow, "<b> XLWeather </b>");
-
         }
+
         // Creates the GUI window
         private void MainWindow(int windowID)
         {

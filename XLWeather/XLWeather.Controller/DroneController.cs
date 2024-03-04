@@ -269,7 +269,8 @@ namespace XLWeather.Controller
                 return droneAnchor;
 
             int index = int.Parse(Main.settings.multiplayer_target.Split(':')[0]);
-            var activeplayer = MultiplayerManager.Instance.GetNextPlayer(index - 1);
+            //var activeplayer = MultiplayerManager.Instance.GetNextPlayer(index - 1);
+            var activeplayer = MultiplayerManager.Instance.GetPlayerController(index);
 
             if (activeplayer == null /*&& !activeplayer.IsLocal*/)
                 return droneAnchor;
@@ -283,17 +284,17 @@ namespace XLWeather.Controller
                     Vector3 boardpos = activeplayer.GetSkateboard().transform.position;
                     targetpos = boardpos;
                 }
-                if (Main.settings.DroneTargetState == "Player")
+                else if (Main.settings.DroneTargetState == "Player")
                 {
                     Vector3 playerpos = activeplayer.GetBody().transform.position;
                     targetpos = playerpos;
                 }
-                if (activeplayer.State.Equals(SkaterXL.Multiplayer.NetworkPlayerStateEnum.Pin))
+                else if (activeplayer.State.Equals(SkaterXL.Multiplayer.NetworkPlayerStateEnum.Pin))
                 {
                     Vector3 pinpos = activeplayer.GetPin().transform.position;
                     targetpos = pinpos;
                 }
-                if (activeplayer.State.Equals(SkaterXL.Multiplayer.NetworkPlayerStateEnum.Replay))
+                else if (activeplayer.State.Equals(SkaterXL.Multiplayer.NetworkPlayerStateEnum.Replay))
                 {
                     Vector3 replaypos = activeplayer.replayPlaybackController.transformReference.boardTransform.position;
                     targetpos = replaypos;
