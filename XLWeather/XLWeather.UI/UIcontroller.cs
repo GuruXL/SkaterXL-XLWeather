@@ -1084,33 +1084,9 @@ namespace XLWeather.UI
                 }
 
                 GUILayout.EndVertical(); // end day night tabs
-
-                if (Time.time - lastUpdate >= 0.2f)
-                {
-                    UpdateMinMax();
-                    lastUpdate = Time.time;
-                }
             }
         }
-        private void UpdateMinMax()
-        {
-            float newsunMin = Mathf.Min(Main.settings.SunMinExFloat, Main.settings.SunMaxExFloat);
-            float newsunMax = Mathf.Max(Main.settings.SunMinExFloat, Main.settings.SunMaxExFloat);
-            float newmoonMin = Mathf.Min(Main.settings.MoonMinExFloat, Main.settings.MoonMaxExFloat);
-            float newmoonMax = Mathf.Max(Main.settings.MoonMinExFloat, Main.settings.MoonMaxExFloat);
-
-            float newsunIntensityMin = Mathf.Min(Main.settings.sunMinIntensity, Main.settings.sunMaxIntensity);
-            float newsunIntensityMax = Mathf.Max(Main.settings.sunMinIntensity, Main.settings.sunMaxIntensity);
-
-            Main.settings.SunMinExFloat = newsunMin;
-            Main.settings.SunMaxExFloat = newsunMax;
-            Main.settings.MoonMinExFloat = newmoonMin;
-            Main.settings.MoonMaxExFloat = newmoonMax;
-
-            Main.settings.sunMinIntensity = newsunIntensityMin;
-            Main.settings.sunMaxIntensity = newsunIntensityMax;
-        }
-
+      
     }
 }
 
