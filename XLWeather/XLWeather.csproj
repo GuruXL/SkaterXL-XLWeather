@@ -33,23 +33,28 @@
     <IntermediateOutputPath>C:\Users\Dillon\AppData\Local\Temp\vs75AE.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="BFSUtilities, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\BFSUtilities.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\BFSUtilities.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Cinemachine.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="modio.UnityPlugin, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\modio.UnityPlugin.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\modio.UnityPlugin.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -57,19 +62,22 @@
     </Reference>
     <Reference Include="Photon3Unity3D, Version=4.1.4.9, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Photon3Unity3D.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonChat">
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\PhotonChat.dll</HintPath>
     </Reference>
     <Reference Include="PhotonRealtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\PhotonRealtime.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\PhotonRealtime.dll</HintPath>
     </Reference>
     <Reference Include="PhotonUnityNetworking, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\PhotonUnityNetworking.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\PhotonUnityNetworking.dll</HintPath>
     </Reference>
     <Reference Include="PhotonUnityNetworking.Utilities, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\PhotonUnityNetworking.Utilities.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\PhotonUnityNetworking.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -77,27 +85,39 @@
     </Reference>
     <Reference Include="SkaterXL.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Core.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.Core.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Data, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Data.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SkaterXL.Gameplay">
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.Gameplay.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Gear, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Gear.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.Gear.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Map, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Map.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.Map.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Multiplayer, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Multiplayer.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.Multiplayer.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Replay, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\SkaterXL.Replay.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.Replay.dll</HintPath>
+    </Reference>
+    <Reference Include="SkaterXL.ScriptModManager">
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.ScriptModManager.dll</HintPath>
+    </Reference>
+    <Reference Include="SkaterXL.Sound">
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.Sound.dll</HintPath>
+    </Reference>
+    <Reference Include="SkaterXL.TrickDetection">
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\SkaterXL.TrickDetection.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -193,9 +213,9 @@
     <Reference Include="UnityEngine.VFXModule">
       <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityEngine.VFXModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityModManager, Version=0.25.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="UnityModManager, Version=0.25.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\UnityModManager.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -226,7 +246,6 @@
     <Compile Include="XLWeather.Data\ToggleStateData.cs" />
     <Compile Include="XLWeather.Data\WeatherData.cs" />
     <Compile Include="XLWeather.Data\CycleData.cs" />
-    <Compile Include="XLWeather.Patches\PauseStateMenuPatch.cs" />
     <Compile Include="XLWeather.Presets\PresetManager.cs" />
     <Compile Include="XLWeather.Presets\PresetSettings.cs" />
     <Compile Include="XLWeather.UI\ToolTips.cs" />
