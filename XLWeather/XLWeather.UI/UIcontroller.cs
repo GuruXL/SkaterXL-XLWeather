@@ -27,7 +27,7 @@ namespace XLWeather.UI
         public bool showUI;
         private bool setUp;
         private Rect MainWindowRect = new Rect(20, 20, Screen.width / 8, 20);
-        private float lastUpdate = 0f;
+        //private float lastUpdate = 0f;
 
         public static UIcontroller Instance { get; private set; }
 
