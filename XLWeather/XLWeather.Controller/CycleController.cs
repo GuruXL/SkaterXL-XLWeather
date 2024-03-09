@@ -588,11 +588,13 @@ namespace XLWeather.Controller
                 {
                     sunExposure.limitMin.Override(Main.settings.SunMinExFloat);
                     sunSettings.Min = Main.settings.SunMinExFloat;
+                    UpdateMinMax();
                 }
                 if (sunSettings.Max != Main.settings.SunMaxExFloat)
                 {
                     sunExposure.limitMax.Override(Main.settings.SunMaxExFloat);
                     sunSettings.Max = Main.settings.SunMaxExFloat;
+                    UpdateMinMax();
                 }
 
                 if (sunSettings.SkyExposure != Main.settings.sunSkyExFloat)
@@ -643,11 +645,13 @@ namespace XLWeather.Controller
                 {
                     moonExposure.limitMin.Override(Main.settings.MoonMinExFloat);
                     moonSettings.Min = Main.settings.MoonMinExFloat;
+                    UpdateMinMax();
                 }
                 if (moonSettings.Max != Main.settings.MoonMaxExFloat)
                 {
                     moonExposure.limitMax.Override(Main.settings.MoonMaxExFloat);
                     moonSettings.Max = Main.settings.MoonMaxExFloat;
+                    UpdateMinMax();
                 }
 
                 if (moonSettings.SkyExposure != Main.settings.moonSkyExFloat)
@@ -692,5 +696,24 @@ namespace XLWeather.Controller
             }
         }
         // --------------- End set Properites -----------------
+
+        private void UpdateMinMax()
+        {
+            float newsunMin = Mathf.Min(Main.settings.SunMinExFloat, Main.settings.SunMaxExFloat);
+            float newsunMax = Mathf.Max(Main.settings.SunMinExFloat, Main.settings.SunMaxExFloat);
+            float newmoonMin = Mathf.Min(Main.settings.MoonMinExFloat, Main.settings.MoonMaxExFloat);
+            float newmoonMax = Mathf.Max(Main.settings.MoonMinExFloat, Main.settings.MoonMaxExFloat);
+
+            float newsunIntensityMin = Mathf.Min(Main.settings.sunMinIntensity, Main.settings.sunMaxIntensity);
+            float newsunIntensityMax = Mathf.Max(Main.settings.sunMinIntensity, Main.settings.sunMaxIntensity);
+
+            Main.settings.SunMinExFloat = newsunMin;
+            Main.settings.SunMaxExFloat = newsunMax;
+            Main.settings.MoonMinExFloat = newmoonMin;
+            Main.settings.MoonMaxExFloat = newmoonMax;
+
+            Main.settings.sunMinIntensity = newsunIntensityMin;
+            Main.settings.sunMaxIntensity = newsunIntensityMax;
+        }
     }
 }
