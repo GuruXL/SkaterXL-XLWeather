@@ -995,7 +995,7 @@ namespace XLWeather.UI
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Other Settings");
                         Main.settings.AmbientLightFloat = RGUI.SliderFloat(Main.settings.AmbientLightFloat, 0f, 4500f, DefaultSettings.AmbientLightFloat, "Ambient Light", ToolTips.cycleAmbientLight);
-                        Main.settings.VolWeightfloat = RGUI.SliderFloat(Main.settings.VolWeightfloat, 0.0f, 1.0f, Main.settings.DefaultVolWeight, "Cycle Weight", ToolTips.cycleVolWeight);
+                        Main.settings.VolWeightfloat = RGUI.SliderFloat(Main.settings.VolWeightfloat, 0.0f, 1.0f, Main.settings.DefaultVolWeight, "PostFx Weight", ToolTips.cycleVolWeight);
                         GUILayout.EndVertical();              
                     }
 
