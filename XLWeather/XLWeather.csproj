@@ -74,7 +74,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Desktop\XLrefernceDLLs\1.2.2.8\Rewired_Core.dll</HintPath>
     </Reference>
-    <Reference Include="SkaterXL.Core">
+    <Reference Include="SkaterXL.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Games\Skater XL 1.2.2.8\SkaterXL_Data\Managed\SkaterXL.Core.dll</HintPath>
     </Reference>
     <Reference Include="SkaterXL.Data">

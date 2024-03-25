@@ -70,7 +70,7 @@
         public static readonly string cycleMaxExposure = "Sets the maximum brightness level for exposure. Lower values are birghter, higher values are darker.";
         public static readonly string cycleCompensation = "Adjustment for exposure to make scenes brighter or darker. Increase to brighten, decrease to darken.";
 
-        public static readonly string cycleVolWeight = "Sets the influence level of post-processing effects. Increase for more effect, decrease for less.";
+        public static readonly string cycleVolWeight = "Sets the influence level of the default post-processing effects. Increase for more effect, decrease for less.";
 
         public static readonly string cycleShadowDistance = "Sets how far shadows are cast. Increase for distant shadows, decrease for shorter range. (Less range will result in higher quality shadows)";
         public static readonly string cycleShadowHighLights = "Adjusts the brightness of highlighted areas in shadows. Increase to lighten, decrease to darken highlights.";

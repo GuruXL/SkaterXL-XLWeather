@@ -23,13 +23,10 @@ namespace XLWeather.UI
 
     public class UIcontroller : MonoBehaviour
     {
-
         public bool showUI;
         private bool setUp;
         private Rect MainWindowRect = new Rect(20, 20, Screen.width / 8, 20);
-        private float lastUpdate = 0f;
-
-        public static UIcontroller Instance { get; private set; }
+        //private float lastUpdate = 0f;
 
         //readonly UItab Test_Tab = new UItab(true, "Test Stuff", 14);
         readonly UItab Drone_Tab = new UItab(true, "Drone", 14);
@@ -995,7 +992,7 @@ namespace XLWeather.UI
                         GUILayout.BeginVertical("Box");
                         UIextensions.Instance.CenteredLabel("Other Settings");
                         Main.settings.AmbientLightFloat = RGUI.SliderFloat(Main.settings.AmbientLightFloat, 0f, 4500f, DefaultSettings.AmbientLightFloat, "Ambient Light", ToolTips.cycleAmbientLight);
-                        Main.settings.VolWeightfloat = RGUI.SliderFloat(Main.settings.VolWeightfloat, 0.0f, 1.0f, Main.settings.DefaultVolWeight, "Cycle Weight", ToolTips.cycleVolWeight);
+                        Main.settings.VolWeightfloat = RGUI.SliderFloat(Main.settings.VolWeightfloat, 0.0f, 1.0f, Main.settings.DefaultVolWeight, "PostFx Weight", ToolTips.cycleVolWeight);
                         GUILayout.EndVertical();              
                     }
 

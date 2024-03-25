@@ -1,8 +1,8 @@
 ﻿{
 	"Id": "XLWeather",
-	"DisplayName": "XLWeather_sxl_1.2.2.8",
+	"DisplayName": "XLWeather",
 	"Author": "Guru",
-	"Version": "0.3.0",
+	"Version": "0.4.0",
 	"ManagerVersion": "0.22.5.0",
 	"Requirements": [],
 	"LoadAfter": [],
