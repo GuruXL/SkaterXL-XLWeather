@@ -26,11 +26,10 @@ namespace XLWeather.Utils
         }
         public static void CheckPrio(Volume[] volumes)
         {
-            float prio = GetHighestPrio(volumes);
-            if (Main.Cyclectrl.GetSunVolumePrio() < prio)
+            if (Main.Cyclectrl.GetSunVolumePrio() < HighestPrio)
             {
-                Main.Cyclectrl.SetCycleVolPrio(prio);
-                Main.Weatherctrl.SetSkyVolumePrio(prio);
+                Main.Cyclectrl.SetCycleVolPrio(HighestPrio);
+                Main.Weatherctrl.SetSkyVolumePrio(HighestPrio);
             }
         }
 
