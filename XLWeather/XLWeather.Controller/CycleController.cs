@@ -96,8 +96,8 @@ namespace XLWeather.Controller
         }
         public void SetCycleVolPrio(float prio)
         {
-            sunVolume.priority = prio;
-            moonVolume.priority = prio;
+            sunVolume.priority = prio + 1;
+            moonVolume.priority = prio + 1;
         }
         public void UpdateTimeOfDay()
         {

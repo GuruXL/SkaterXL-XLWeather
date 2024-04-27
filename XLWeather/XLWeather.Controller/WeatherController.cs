@@ -282,8 +282,7 @@ namespace XLWeather.Controller
             if (volList == null)
                 yield break;
 
-            PrioCheck.GetHighestPrio(volList);
-            PrioCheck.CheckPrio();
+            PrioCheck.CheckPrio(volList);
 
             foreach (Volume vol in volList)
             {
@@ -301,10 +300,10 @@ namespace XLWeather.Controller
         }
         public void SetSkyVolumePrio(float prio)
         {
-            volume[0].priority = prio;  // Night Sky
-            volume[1].priority = prio;  // SunSet Sky
-            volume[2].priority = prio;  // Blue Sky
-            volume[3].priority = prio;  // Fog Remove
+            volume[0].priority = prio + 1;  // Night Sky
+            volume[1].priority = prio + 1;  // SunSet Sky
+            volume[2].priority = prio + 1;  // Blue Sky
+            volume[3].priority = prio + 1;  // Fog Remove
         }
         // ---------------- End Get Components -----------------------
 
