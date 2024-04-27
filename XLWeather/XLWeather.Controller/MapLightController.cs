@@ -17,7 +17,7 @@ namespace XLWeather.Controller
         public LightType lightType = LightType.Directional;
         public Light MainLight = null;
         public List<Material> hdrpMaterials;
-        public List<ReflectionProbe> probes;
+        //public List<ReflectionProbe> probes;
         public Dictionary<Material, float> originalEmissionweights;
         //private int delay = 0;
         private bool previousSunActive; // true = day false = night
@@ -464,19 +464,18 @@ namespace XLWeather.Controller
                 }
             }
         }
-        */
         public void GetReflectionProbes()
         {
             probes = new List<ReflectionProbe>();
 
             ReflectionProbe[] reflectionProbes = FindObjectsOfType<ReflectionProbe>();
 
-            if (reflectionProbes != null || reflectionProbes.Length <= 0)
+            if (reflectionProbes == null || reflectionProbes.Length <= 0)
                 return;
 
             foreach (ReflectionProbe probe in reflectionProbes)
             {
-                if (probe.isActiveAndEnabled)
+                if (probe.enabled && probe.gameObject.activeSelf)
                 {
                     probes.AddRange(reflectionProbes);
                 }
@@ -490,7 +489,7 @@ namespace XLWeather.Controller
                 probe.gameObject.SetActive(!value);
             }
         }
-
+        */
         //------------ end reflection probe functions ----------------
         
     }   

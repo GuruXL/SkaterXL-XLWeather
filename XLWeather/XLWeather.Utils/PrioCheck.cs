@@ -24,7 +24,7 @@ namespace XLWeather.Utils
                 HighestPrio = Math.Max(volumes.Select(v => v.priority).Max(), 0);
                 return HighestPrio;
             }
-            return HighestPrio;
+            return HighestPrio + 1;
         }
 
         public static void CheckPrio()
