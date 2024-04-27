@@ -13,26 +13,26 @@ namespace XLWeather.Utils
 {
     public class PrioCheck
     {
-        public static float HighestPrio;
-
+        //public static float HighestPrio;
         public static float GetHighestPrio(Volume[] volumes)
         {
-            HighestPrio = 0f;
+            float HighestPrio = 0f;
 
             if (volumes != null && volumes.Length > 0)
             {
                 HighestPrio = Math.Max(volumes.Select(v => v.priority).Max(), 0);
                 return HighestPrio;
             }
-            return HighestPrio + 1;
+            return HighestPrio;
         }
-
-        public static void CheckPrio()
+        public static void CheckPrio(Volume[] volumes)
         {
-            if (Main.Cyclectrl.GetSunVolumePrio() < HighestPrio)
+            float prio = GetHighestPrio(volumes);
+
+            if (Main.Cyclectrl.GetSunVolumePrio() < prio)
             {
-                Main.Cyclectrl.SetCycleVolPrio(HighestPrio);
-                Main.Weatherctrl.SetSkyVolumePrio(HighestPrio);
+                Main.Cyclectrl.SetCycleVolPrio(prio);
+                Main.Weatherctrl.SetSkyVolumePrio(prio);
             }
         }
 
