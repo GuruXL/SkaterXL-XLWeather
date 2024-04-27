@@ -17,7 +17,6 @@ namespace XLWeather.Utils
         public static float GetHighestPrio(Volume[] volumes)
         {
             float HighestPrio = 0f;
-
             if (volumes != null && volumes.Length > 0)
             {
                 HighestPrio = Math.Max(volumes.Select(v => v.priority).Max(), 0);
@@ -28,7 +27,6 @@ namespace XLWeather.Utils
         public static void CheckPrio(Volume[] volumes)
         {
             float prio = GetHighestPrio(volumes);
-
             if (Main.Cyclectrl.GetSunVolumePrio() < prio)
             {
                 Main.Cyclectrl.SetCycleVolPrio(prio);
