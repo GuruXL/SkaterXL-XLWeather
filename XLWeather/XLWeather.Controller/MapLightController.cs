@@ -471,9 +471,12 @@ namespace XLWeather.Controller
 
             ReflectionProbe[] reflectionProbes = FindObjectsOfType<ReflectionProbe>();
 
+            if (reflectionProbes != null || reflectionProbes.Length <= 0)
+                return;
+
             foreach (ReflectionProbe probe in reflectionProbes)
             {
-                if (reflectionProbes != null && reflectionProbes.Length > 0)
+                if (probe.isActiveAndEnabled)
                 {
                     probes.AddRange(reflectionProbes);
                 }

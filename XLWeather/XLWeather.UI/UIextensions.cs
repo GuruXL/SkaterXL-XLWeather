@@ -30,6 +30,19 @@ namespace XLWeather.UI
             }
             return TabColor;
         }
+        public static void TabFontSwitch(UItab Tab)
+        {
+            switch (!Tab.isClosed)
+            {
+                case true:
+                    Tab.font = Tab.font + 2;
+                    break;
+
+                case false:
+                    Tab.font = Tab.font - 2;
+                    break;
+            }
+        }
         public Color ButtonColorSwitch(bool toggle)
         {
             if (toggle)

@@ -25,36 +25,36 @@ namespace XLWeather.UI
     {
         public bool showUI;
         private bool setUp;
-        private Rect MainWindowRect = new Rect(20, 20, Screen.width / 8, 20);
+        private Rect MainWindowRect = new Rect(20, 20, Screen.width / 6, 20);
         //private float lastUpdate = 0f;
 
         //readonly UItab Test_Tab = new UItab(true, "Test Stuff", 14);
-        readonly UItab Drone_Tab = new UItab(true, "Drone", 14);
-        readonly UItab droneFollow_Tab = new UItab(true, "Main Settings", 13);
-        readonly UItab droneLight_Tab = new UItab(true, "Light Settings", 13);
-        readonly UItab droneColor_Tab = new UItab(true, "Light Color", 12);
+        readonly UItab Drone_Tab = new UItab(true, "Drone", 16);
+        readonly UItab droneFollow_Tab = new UItab(true, "Main Settings", 14);
+        readonly UItab droneLight_Tab = new UItab(true, "Light Settings", 14);
+        readonly UItab droneColor_Tab = new UItab(true, "Light Color", 13);
 
-        readonly UItab Sky_Tab = new UItab(true, "Sky Options", 14);
-        readonly UItab Fog_Tab = new UItab(true, "Fog", 14);
+        readonly UItab Sky_Tab = new UItab(true, "Sky Options", 16);
+        readonly UItab Fog_Tab = new UItab(true, "Fog", 16);
 
-        readonly UItab vfx_Tab = new UItab(true, "VFX", 14);
-        readonly UItab Leaf_Tab = new UItab(true, "Leaf Settings", 13);
-        readonly UItab Snow_Tab = new UItab(true, "Snow Settings", 13);
-        readonly UItab Rain_Tab = new UItab(true, "Rain Settings", 13);
-        readonly UItab Cloud_Tab = new UItab(true, "Cloud Settings", 13);
+        readonly UItab vfx_Tab = new UItab(true, "VFX", 16);
+        readonly UItab Leaf_Tab = new UItab(true, "Leaf Settings", 14);
+        readonly UItab Snow_Tab = new UItab(true, "Snow Settings", 14);
+        readonly UItab Rain_Tab = new UItab(true, "Rain Settings", 14);
+        readonly UItab Cloud_Tab = new UItab(true, "Cloud Settings", 14);
 
-        readonly UItab DayNight_Tab = new UItab(true, "Day/Night Cycle", 14);
-        readonly UItab Time_Tab = new UItab(true, "Time settings", 13);
-        readonly UItab Light_Tab = new UItab(true, "Light settings", 13);
-        readonly UItab Shadow_Tab = new UItab(true, "Shadow settings", 13);
-        readonly UItab Presets_Tab = new UItab(true, "Presets", 13);
+        readonly UItab DayNight_Tab = new UItab(true, "Day/Night Cycle", 16);
+        readonly UItab Time_Tab = new UItab(true, "Time settings", 14);
+        readonly UItab Light_Tab = new UItab(true, "Light settings", 14);
+        readonly UItab Shadow_Tab = new UItab(true, "Shadow settings", 14);
+        readonly UItab Presets_Tab = new UItab(true, "Presets", 14);
         //readonly UItab Intensity_Tab = new UItab(true, "Intensity", 12);
         //readonly UItab LightColor_Tab = new UItab(true, "Color", 12);
         //readonly UItab IndirectLight_Tab = new UItab(true, "Indirect Light", 12);
         //readonly UItab Exposure_Tab = new UItab(true, "Exposure", 12);
-        readonly UItab Day_Tab = new UItab(true, "Day", 12);
-        readonly UItab Night_Tab = new UItab(true, "Night", 12);
-        readonly UItab Other_Tab = new UItab(true, "Other Settings", 12);
+        readonly UItab Day_Tab = new UItab(true, "Day", 13);
+        readonly UItab Night_Tab = new UItab(true, "Night", 13);
+        readonly UItab Other_Tab = new UItab(true, "Other Settings", 13);
 
         //private readonly string white = "#e6ebe8";
         private readonly string grey = "#969696";
@@ -211,12 +211,12 @@ namespace XLWeather.UI
 
         private void Tabs(UItab obj, string color = "#e6ebe8")
         {
-            if (GUILayout.Button($"<size={obj.font}><color={color}>" + (obj.isClosed ? "-" : "<b>+</b>") + obj.text + "</color>" + "</size>", "Label"))
+            if (GUILayout.Button($"<size={obj.font}><color={color}>" + (obj.isClosed ? "○" : "●") + obj.text + "</color>" + "</size>", "Label"))
             {
                 obj.isClosed = !obj.isClosed;
                 MainWindowRect.height = 20;
-                MainWindowRect.width = Screen.width / 8;
-
+                MainWindowRect.width = Screen.width / 5;
+                UIextensions.TabFontSwitch(obj);
             }
         }
 
