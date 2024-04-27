@@ -17,7 +17,7 @@ namespace XLWeather.Controller
         public LightType lightType = LightType.Directional;
         public Light MainLight = null;
         public List<Material> hdrpMaterials;
-        //public List<ReflectionProbe> probes;
+        public List<ReflectionProbe> probes;
         public Dictionary<Material, float> originalEmissionweights;
         //private int delay = 0;
         private bool previousSunActive; // true = day false = night
@@ -107,7 +107,7 @@ namespace XLWeather.Controller
             Main.Logger.Log($"Dynamic light coroutine started");
             isCheckSunRunning = false;
         }
-        /*
+        /* old version
         private void HandleSunStateCheck()
         {
             if (!Main.settings.MapLayersToggle)
@@ -306,19 +306,6 @@ namespace XLWeather.Controller
             Main.Logger.Log($"{i} : Game Objects toggled");
         }
 
-        /*
-        public bool previousSunActive;
-        public void UpdateLayerMapLights()
-        {
-            bool sunActive = Main.Cyclectrl.GetIsDay();
-
-            if (sunActive != previousSunActive)
-            {
-                LayerSwitch();
-                previousSunActive = sunActive;
-            }
-        }
-        */
         private IEnumerator CheckSunState()
         {
             while (true) // Infinite loop to continuously check the condition
@@ -443,14 +430,13 @@ namespace XLWeather.Controller
         }
 
         // ---------- end of Material changes  --------------
-        
-        
+
+
         // ---------- reflection probe functions -------------
-        /* no longer needed
+        /*
         void GetReflectionProbes()
         {
             probes = new List<ReflectionProbe>();
-            probes.Clear();
 
             foreach (GameObject obj in TaggedGO)
             {
@@ -462,7 +448,7 @@ namespace XLWeather.Controller
                 }
             }
         }
-        void toggleProbes(bool value)
+         void toggleProbes(bool value)
         {
             foreach (ReflectionProbe probe in probes)
             {
@@ -479,6 +465,29 @@ namespace XLWeather.Controller
             }
         }
         */
+        public void GetReflectionProbes()
+        {
+            probes = new List<ReflectionProbe>();
+
+            ReflectionProbe[] reflectionProbes = FindObjectsOfType<ReflectionProbe>();
+
+            foreach (ReflectionProbe probe in reflectionProbes)
+            {
+                if (reflectionProbes != null && reflectionProbes.Length > 0)
+                {
+                    probes.AddRange(reflectionProbes);
+                }
+            }
+
+        }
+        public void toggleProbes(bool value)
+        {
+            foreach (ReflectionProbe probe in probes)
+            {
+                probe.gameObject.SetActive(!value);
+            }
+        }
+
         //------------ end reflection probe functions ----------------
         
     }   

@@ -26,6 +26,7 @@ namespace XLWeather.Data
         public static bool AuroravfxToggle = false;
         public static bool LightningToggle = false;
         public static bool CloudToggle = false;
+        public static bool ProbeToggle = false;
         
     }
 }

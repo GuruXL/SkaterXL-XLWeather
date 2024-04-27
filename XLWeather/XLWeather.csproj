@@ -230,6 +230,7 @@
     <Compile Include="XLWeather.Presets\PresetSettings.cs" />
     <Compile Include="XLWeather.UI\ToolTips.cs" />
     <Compile Include="XLWeather.Utils\SceneChangeManager.cs" />
+    <Compile Include="XLWeather.Utils\PrioCheck.cs" />
     <Compile Include="XLWeather.Utils\VFXUtils.cs" />
     <Compile Include="XLWeather.UI\UIextensions.cs" />
     <Compile Include="XLWeather.Utils\AssetHandler.cs" />

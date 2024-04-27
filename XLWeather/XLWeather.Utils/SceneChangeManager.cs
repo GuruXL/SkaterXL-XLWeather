@@ -51,6 +51,7 @@ namespace XLWeather.Utils
             StartCoroutine(Main.Weatherctrl.GetMapVolComponents());
             Main.MapLightctrl.ResetMainLight();
             Main.MapLightctrl.GetLights();
+            Main.MapLightctrl.GetReflectionProbes();
 
             if (Main.settings.MapLayersToggle)
             {

@@ -94,7 +94,11 @@ namespace XLWeather.Controller
         {
             return sunVolume.priority;
         }
-
+        public void SetCycleVolPrio(float prio)
+        {
+            sunVolume.priority = prio;
+            moonVolume.priority = prio;
+        }
         public void UpdateTimeOfDay()
         {
             currentTime = currentTime.AddSeconds(Time.deltaTime * Main.settings.timeMulipiler);
@@ -359,7 +363,7 @@ namespace XLWeather.Controller
                 }
             }
         }
-        
+       
         private IEnumerator GetCycleVolComponents()
         {
             yield return new WaitUntil(() => AssetHandler.Instance.IsPrefabsSpawned());

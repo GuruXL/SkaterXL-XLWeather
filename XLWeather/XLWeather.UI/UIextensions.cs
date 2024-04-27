@@ -59,6 +59,55 @@ namespace XLWeather.UI
             }
             GUILayout.EndHorizontal();
         }
+        public static void StandardButton(string label, Action buttonAction, Color color, int width)
+        {
+            GUILayout.BeginHorizontal();
+            GUI.backgroundColor = color;
+            if (GUILayout.Button($"{label}", GUILayout.MaxWidth(width)))
+            {
+                buttonAction?.Invoke();
+            }
+            GUILayout.EndHorizontal();
+        }
 
+        public static void Slider(string label, Action<float> valueChangedCallback, Color color, float value, float minValue, float maxValue, float defaultValue)
+        {
+            GUILayout.BeginVertical(); // Start the main vertical layout
+
+            GUI.backgroundColor = color;
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(label, GUILayout.ExpandWidth(false));
+            GUILayout.FlexibleSpace();
+
+            // Use a TextField for the value input
+            string valueInput = GUILayout.TextField(value.ToString("F2"), GUILayout.Width(50));
+
+            // Draw the Reset button to the right of the input field
+            if (GUILayout.Button("Reset", GUILayout.Width(50)))
+            {
+                valueInput = defaultValue.ToString("F2"); // Update the valueInput with the default value
+                value = defaultValue; // Reset value to default
+                valueChangedCallback?.Invoke(defaultValue); // Invoke the callback with the default value
+            }
+            GUILayout.EndHorizontal();
+
+            // Slider underneath the labels
+            float newValue = GUILayout.HorizontalSlider(value, minValue, maxValue, GUILayout.ExpandWidth(true));
+
+            // Check if the text field input is a valid float and different from the current slider value
+            if (float.TryParse(valueInput, out float inputValue) && inputValue != value)
+            {
+                newValue = inputValue; // Update the slider position based on input field value
+            }
+
+            // If the slider was moved or reset button was pressed, update the value
+            if (newValue != value)
+            {
+                value = newValue; // Update the value if the slider moved
+                valueChangedCallback?.Invoke(newValue); // Invoke the callback with new value
+            }
+            GUILayout.EndVertical(); // End the main vertical layout
+        }
     }
 }

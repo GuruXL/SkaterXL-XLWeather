@@ -279,14 +279,15 @@ namespace XLWeather.Controller
 
             volList = FindObjectsOfType(typeof(Volume)) as Volume[];
 
-            //HighestPrio = Math.Max(volList.Select(v => v.priority).Max(), 0);
-
             if (volList == null)
                 yield break;
 
+            PrioCheck.GetHighestPrio(volList);
+            PrioCheck.CheckPrio();
+
             foreach (Volume vol in volList)
             {
-                if (vol.priority < Main.Cyclectrl.GetSunVolumePrio() && vol.profile.Has<VisualEnvironment>() && vol.enabled)
+                if (vol.enabled && vol.profile.Has<VisualEnvironment>() || vol.gameObject.name == "Sky and Fog Volume")
                 {
                     currentMapVolume = vol;
 
@@ -298,7 +299,13 @@ namespace XLWeather.Controller
                 }
             }
         }
-
+        public void SetSkyVolumePrio(float prio)
+        {
+            volume[0].priority = prio;  // Night Sky
+            volume[1].priority = prio;  // SunSet Sky
+            volume[2].priority = prio;  // Blue Sky
+            volume[3].priority = prio;  // Fog Remove
+        }
         // ---------------- End Get Components -----------------------
 
         // -------------- Update Settings --------------------

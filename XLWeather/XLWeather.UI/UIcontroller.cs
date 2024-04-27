@@ -400,6 +400,13 @@ namespace XLWeather.UI
             Main.settings.MapLightIntensity = RGUI.SliderFloat(Main.settings.MapLightIntensity, 0f, 20000f, Main.settings.DefaultMapLightIntensity, " Sun Light Intensity", ToolTips.defaultLightIntensity);
             GUILayout.Label(Main.MapLightctrl.MainLight != null ? "<b><color=#7CFC00> Sun Light Found </color></b>" : "<b><color=#b30000> No Sun Light Found </color></b>", GUILayout.Width(184));
             GUILayout.EndVertical();
+            GUILayout.BeginHorizontal("Box");
+            if (RGUI.Button(ToggleStateData.ProbeToggle, "Disable Reflection Probes"))
+            {
+                ToggleStateData.ProbeToggle = !ToggleStateData.ProbeToggle;
+                Main.MapLightctrl.toggleProbes(ToggleStateData.ProbeToggle);
+            }
+            GUILayout.EndHorizontal();
             // ------ Map Light Control End -------
         }
 
