@@ -111,6 +111,7 @@ namespace XLWeather.Controller
             isCheckSunRunning = false;
         }
         
+
         /* old version
         private void HandleSunStateCheck()
         {
