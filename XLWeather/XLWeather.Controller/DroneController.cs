@@ -125,8 +125,8 @@ namespace XLWeather.Controller
 
             if (Main.Weatherctrl.state == typeof(PinMovementState))
             {
-                Vector3 pinpos = PlayerController.Instance.pinMover.gameObject.transform.position; // 1.2.2.8
-                //Vector3 pinpos = PlayerController.Main.pinController.gameObject.transform.position; // 1.2.6.0
+                //Vector3 pinpos = PlayerController.Instance.pinMover.gameObject.transform.position; // 1.2.2.8
+                Vector3 pinpos = PlayerController.Main.pinController.gameObject.transform.position; // 1.2.7.8
                 Dronefollow(pinpos);
             }
             else

@@ -160,13 +160,13 @@ namespace XLWeather.Controller
         }
         private void GetPlayerTarget()
         {
-            Transform parent = PlayerController.Instance.skaterController.gameObject.transform; // 1.2.2.8
-            //Transform parent = PlayerController.Main.gameplay.skaterController.gameObject.transform; // 1.2.6.0
+            //Transform parent = PlayerController.Instance.skaterController.gameObject.transform; // 1.2.2.8
+            Transform parent = PlayerController.Main.gameplay.skaterController.gameObject.transform; // 1.2.7.8
             Transform joints = parent.Find("Skater_Joints");
             pelvis = joints.FindChildRecursively("Skater_pelvis");
 
-            board = PlayerController.Instance.boardController.boardTransform; // 1.2.2.8
-            //board = PlayerController.Main.gameplay.boardController.gameObject.transform; // 1.2.6.0
+            //board = PlayerController.Instance.boardController.boardTransform; // 1.2.2.8
+            board = PlayerController.Main.gameplay.boardController.gameObject.transform; // 1.2.7.8
         }
         private void GetMainCamera()
         {
