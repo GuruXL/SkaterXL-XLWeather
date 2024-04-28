@@ -8,12 +8,18 @@ namespace XLWeather.Data
         public static float NightFixedExposureFloat = 11.8f;
         public static float NightSkyboxExposureFloat = 11.25f;
         public static float NightRotateFloat = 0f;
+        public static float NightIndirectDiffuse = 1f;
+        public static float NightIndirectSpecular = 1f;
         public static float SunSetSkyExposureFloat = 11f;
         public static float SunSetSkyboxExposureFloat = 10.8f;
         public static float SunSetRotateFloat = 0f;
+        public static float SunSetIndirectDiffuse = 1f;
+        public static float SunSetIndirectSpecular = 1f;
         public static float BlueSkyExposureFloat = 9.8f;
         public static float BlueSkyboxExposureFloat = 11f;
         public static float BlueRotateFloat = 0f;
+        public static float BlueIndirectDiffuse = 1f;
+        public static float BlueIndirectSpecular = 1f;
 
         public static float timeMulipiler = 100f;
         public static float startHour = 7f;

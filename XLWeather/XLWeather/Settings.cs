@@ -75,12 +75,18 @@ namespace XLWeather
         public float NightFixedExposureFloat = DefaultSettings.NightFixedExposureFloat;
         public float NightSkyboxExposureFloat = DefaultSettings.NightSkyboxExposureFloat;
         public float NightRotateFloat = DefaultSettings.NightRotateFloat;
+        public float NightIndirectDiffuse = DefaultSettings.NightIndirectDiffuse;
+        public float NightIndirectSpecular = DefaultSettings.NightIndirectSpecular;
         public float SunSetSkyExposureFloat = DefaultSettings.SunSetSkyExposureFloat;
         public float SunSetSkyboxExposureFloat = DefaultSettings.SunSetSkyboxExposureFloat;
         public float SunSetRotateFloat = DefaultSettings.SunSetRotateFloat;
+        public float SunSetIndirectDiffuse = DefaultSettings.SunSetIndirectDiffuse;
+        public float SunSetIndirectSpecular = DefaultSettings.SunSetIndirectSpecular;
         public float BlueSkyExposureFloat = DefaultSettings.BlueSkyExposureFloat;
         public float BlueSkyboxExposureFloat = DefaultSettings.BlueSkyboxExposureFloat;
         public float BlueRotateFloat = DefaultSettings.BlueRotateFloat;
+        public float BlueSkyIndirectDiffuse = DefaultSettings.BlueIndirectDiffuse;
+        public float BlueSkyIndirectSepcular = DefaultSettings.BlueIndirectSpecular;
 
         public string NightSkyState = "Cloudy Night";
         public string SunSetSkyState = "Sun Set 1";
@@ -246,12 +252,18 @@ namespace XLWeather
             NightFixedExposureFloat = DefaultSettings.NightFixedExposureFloat;
             NightSkyboxExposureFloat = DefaultSettings.NightSkyboxExposureFloat;
             NightRotateFloat = DefaultSettings.NightRotateFloat;
+            NightIndirectDiffuse = DefaultSettings.NightIndirectDiffuse;
+            NightIndirectSpecular = DefaultSettings.NightIndirectSpecular;
             SunSetSkyExposureFloat = DefaultSettings.SunSetSkyExposureFloat;
             SunSetSkyboxExposureFloat = DefaultSettings.SunSetSkyboxExposureFloat;
+            SunSetIndirectDiffuse = DefaultSettings.SunSetIndirectDiffuse;
+            SunSetIndirectSpecular = DefaultSettings.SunSetIndirectSpecular;
             SunSetRotateFloat = DefaultSettings.SunSetRotateFloat;
             BlueSkyExposureFloat = DefaultSettings.BlueSkyExposureFloat;
             BlueSkyboxExposureFloat = DefaultSettings.BlueSkyboxExposureFloat;
             BlueRotateFloat = DefaultSettings.BlueRotateFloat;
+            BlueSkyIndirectDiffuse = DefaultSettings.BlueIndirectDiffuse;
+            BlueSkyIndirectSepcular = DefaultSettings.BlueIndirectSpecular;
 
             timeMulipiler = DefaultSettings.timeMulipiler;
             startHour = DefaultSettings.startHour;

@@ -223,6 +223,7 @@
     <Compile Include="RapidGUI\Utilities\WindowInvoker.cs" />
     <Compile Include="XLWeather.Data\DefaultSettings.cs" />
     <Compile Include="XLWeather.Data\ToggleStateData.cs" />
+    <Compile Include="XLWeather.Data\SkyData.cs" />
     <Compile Include="XLWeather.Data\WeatherData.cs" />
     <Compile Include="XLWeather.Data\CycleData.cs" />
     <Compile Include="XLWeather.Patches\PauseStateMenuPatch.cs" />

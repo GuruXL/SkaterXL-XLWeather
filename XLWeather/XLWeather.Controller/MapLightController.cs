@@ -157,7 +157,6 @@ namespace XLWeather.Controller
             lights = null;
 
             CurrentMainLights = new List<Light>();
-            CurrentMainLights.Clear();
 
             lights = FindObjectsOfType(typeof(Light)) as Light[];
 
@@ -239,7 +238,6 @@ namespace XLWeather.Controller
         private void GetLayerMapLights()
         {
             TaggedLightsList = new List<Light>();
-            TaggedLightsList.Clear();
             
             if (lights == null)
                 return;
@@ -259,7 +257,6 @@ namespace XLWeather.Controller
         private void GetLayerGO()
         {
             TaggedGO = new List<GameObject>();
-            TaggedGO.Clear();
     
             GameObject[] allObjects = FindObjectsOfType<GameObject>();
 

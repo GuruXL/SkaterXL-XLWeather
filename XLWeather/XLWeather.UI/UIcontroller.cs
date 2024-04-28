@@ -245,15 +245,10 @@ namespace XLWeather.UI
                     // Creates fixed exposure UI Slider 
                     GUILayout.BeginVertical("Box");
                     Main.settings.NightFixedExposureFloat = RGUI.SliderFloat(Main.settings.NightFixedExposureFloat, 8f, 15f, DefaultSettings.NightFixedExposureFloat, " Exposure", ToolTips.exposure);
-                    Main.Weatherctrl.exposure[0].fixedExposure.Override(Main.settings.NightFixedExposureFloat);
-
-                    // UI slider for SkyBox Exposure control
                     Main.settings.NightSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.NightSkyboxExposureFloat, 8f, 15f, DefaultSettings.NightSkyboxExposureFloat, " Sky Exposure", ToolTips.skyExposure);
-                    Main.Weatherctrl.activeHDRI[0].exposure.Override(Main.settings.NightSkyboxExposureFloat);
-
-                    // UI slider for SkyBox Rotation
                     Main.settings.NightRotateFloat = RGUI.SliderFloat(Main.settings.NightRotateFloat, 0f, 360f, DefaultSettings.NightRotateFloat, " Rotation", ToolTips.rotation);
-                    Main.Weatherctrl.activeHDRI[0].rotation.Override(Main.settings.NightRotateFloat);
+                    Main.settings.NightIndirectDiffuse = RGUI.SliderFloat(Main.settings.NightIndirectDiffuse, -1f, 4f, DefaultSettings.NightIndirectDiffuse, "Indirect Light", ToolTips.cycleIndirectLight);
+                    Main.settings.NightIndirectSpecular = RGUI.SliderFloat(Main.settings.NightIndirectSpecular, -1f, 4f, DefaultSettings.NightIndirectSpecular, "Indirect Specular Light", ToolTips.cycleSpecularLight);
                     GUILayout.EndVertical();
 
                     // Pop up selection for changing skys
@@ -304,15 +299,10 @@ namespace XLWeather.UI
                     // Creates UI for Slider
                     GUILayout.BeginVertical("Box");
                     Main.settings.SunSetSkyExposureFloat = RGUI.SliderFloat(Main.settings.SunSetSkyExposureFloat, 8f, 15f, DefaultSettings.SunSetSkyExposureFloat, " Exposure", ToolTips.exposure);
-                    Main.Weatherctrl.exposure[1].fixedExposure.Override(Main.settings.SunSetSkyExposureFloat);
-
-                    // UI slider for SkyBox Exposure control
                     Main.settings.SunSetSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.SunSetSkyboxExposureFloat, 8f, 15f, DefaultSettings.SunSetSkyboxExposureFloat, " Sky Exposure", ToolTips.skyExposure);
-                    Main.Weatherctrl.activeHDRI[1].exposure.Override(Main.settings.SunSetSkyboxExposureFloat);
-
-                    // UI slider for SkyBox Rotation
                     Main.settings.SunSetRotateFloat = RGUI.SliderFloat(Main.settings.SunSetRotateFloat, 0f, 360f, DefaultSettings.SunSetRotateFloat, " Rotation", ToolTips.rotation);
-                    Main.Weatherctrl.activeHDRI[1].rotation.Override(Main.settings.SunSetRotateFloat);
+                    Main.settings.SunSetIndirectDiffuse = RGUI.SliderFloat(Main.settings.SunSetIndirectDiffuse, -1f, 4f, DefaultSettings.SunSetIndirectDiffuse, "Indirect Light", ToolTips.cycleIndirectLight);
+                    Main.settings.SunSetIndirectSpecular = RGUI.SliderFloat(Main.settings.SunSetIndirectSpecular, -1f, 4f, DefaultSettings.SunSetIndirectSpecular, "Indirect Specular Light", ToolTips.cycleSpecularLight);
                     GUILayout.EndVertical();
 
                     // Pop up selection for changing skys
@@ -356,15 +346,10 @@ namespace XLWeather.UI
                     // Create Ui for Slider
                     GUILayout.BeginVertical("Box");
                     Main.settings.BlueSkyExposureFloat = RGUI.SliderFloat(Main.settings.BlueSkyExposureFloat, 8f, 15f, DefaultSettings.BlueSkyExposureFloat, " Exposure", ToolTips.exposure);
-                    Main.Weatherctrl.exposure[2].fixedExposure.Override(Main.settings.BlueSkyExposureFloat);
-
-                    // UI slider for SkyBox Exposure control
                     Main.settings.BlueSkyboxExposureFloat = RGUI.SliderFloat(Main.settings.BlueSkyboxExposureFloat, 8f, 15f, DefaultSettings.BlueSkyboxExposureFloat, " Sky Exposure", ToolTips.skyExposure);
-                    Main.Weatherctrl.activeHDRI[2].exposure.Override(Main.settings.BlueSkyboxExposureFloat);
-
-                    // UI slider for SkyBox Rotation
                     Main.settings.BlueRotateFloat = RGUI.SliderFloat(Main.settings.BlueRotateFloat, 0f, 360f, DefaultSettings.BlueRotateFloat, " Rotation", ToolTips.rotation);
-                    Main.Weatherctrl.activeHDRI[2].rotation.Override(Main.settings.BlueRotateFloat);
+                    Main.settings.BlueSkyIndirectDiffuse = RGUI.SliderFloat(Main.settings.BlueSkyIndirectDiffuse, -1f, 4f, DefaultSettings.BlueIndirectDiffuse, "Indirect Light", ToolTips.cycleIndirectLight);
+                    Main.settings.BlueSkyIndirectSepcular = RGUI.SliderFloat(Main.settings.BlueSkyIndirectSepcular, -1f, 4f, DefaultSettings.BlueIndirectSpecular, "Indirect Specular Light", ToolTips.cycleSpecularLight);
                     GUILayout.EndVertical();
 
                     // Pop up selection for changing skys

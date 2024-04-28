@@ -23,6 +23,7 @@ namespace XLWeather.Controller
         private Volume[] volume = new Volume[5];
         private VolumeProfile[] profile = new VolumeProfile[4];
         public Exposure[] exposure = new Exposure[4];
+        public IndirectLightingController[] indirectLight = new IndirectLightingController[3];
         public Fog CustomFog;
         private DensityVolume fogDensityVol;
         public Type state;
@@ -58,8 +59,12 @@ namespace XLWeather.Controller
             StartCoroutine(GetVolumeComponent());
 
             ResetDataSettings();
+           
             updateFunctions = new UpdateSettings[]
             {
+                new UpdateSettings(UpdateNightSkySettings),
+                new UpdateSettings(UpdateSunSetSkySettings),
+                new UpdateSettings(UpdateBlueSkySettings),
                 new UpdateSettings(UpdateLeafSettings),
                 new UpdateSettings(UpdateRainSettings),
                 new UpdateSettings(UpdateSnowSettings),
@@ -85,12 +90,18 @@ namespace XLWeather.Controller
             {
                 //UpdateShadowSettings();
                 UpdateVolSettings();
-                hasReset = false;
+                if (hasReset)
+                {
+                    hasReset = false;
+                }
             }
             else if (!ToggleStateData.DayNightToggle && !hasReset)
             {
                 ResetVolWeight();
-                hasReset = true;
+                if (!hasReset)
+                {
+                    hasReset = true;
+                }
             }
         }
 
@@ -105,7 +116,10 @@ namespace XLWeather.Controller
 
         private void UpdateFunctions()
         {
-            bool[] toggles = new bool[] { 
+            bool[] toggles = new bool[] {
+                ToggleStateData.NightSkyToggle,
+                ToggleStateData.SunSetSkyToggle,
+                ToggleStateData.BlueSkyToggle,
                 ToggleStateData.LeafvfxToggle,
                 ToggleStateData.RainvfxToggle,
                 ToggleStateData.SnowvfxToggle,
@@ -220,23 +234,38 @@ namespace XLWeather.Controller
 
             // gets exposure
             profile[0].TryGet(out exposure[0]);
-            profile[1].TryGet(out exposure[1]);
-            profile[2].TryGet(out exposure[2]);
-
             if (!profile[0].TryGet(out exposure[0]))
             {
                 exposure[0] = profile[0].Add<Exposure>();
             }
+            profile[1].TryGet(out exposure[1]);
             if (!profile[1].TryGet(out exposure[1]))
             {
                 exposure[1] = profile[1].Add<Exposure>();
             }
+            profile[2].TryGet(out exposure[2]);
             if (!profile[2].TryGet(out exposure[2]))
             {
                 exposure[2] = profile[2].Add<Exposure>();
             }
-
+            // Get indirect Light Controller
+            profile[0].TryGet(out indirectLight[0]);
+            if (!profile[0].TryGet(out indirectLight[0]))
+            {
+                indirectLight[0] = profile[0].Add<IndirectLightingController>();
+            }
+            profile[1].TryGet(out indirectLight[1]);
+            if (!profile[1].TryGet(out indirectLight[1]))
+            {
+                indirectLight[1] = profile[1].Add<IndirectLightingController>();
+            }
+            profile[2].TryGet(out indirectLight[2]);
+            if (!profile[2].TryGet(out indirectLight[2]))
+            {
+                indirectLight[2] = profile[2].Add<IndirectLightingController>();
+            }
             //Gets Fog
+            profile[3].TryGet(out CustomFog);
             if (!profile[3].TryGet(out CustomFog))
             {
                 CustomFog = profile[3].Add<Fog>();
@@ -310,16 +339,120 @@ namespace XLWeather.Controller
         // -------------- Update Settings --------------------
 
         private WeatherData.FogSettings FogSettings = new WeatherData.FogSettings(Main.settings.fogMeanFreePath, Main.settings.fogBaseHeight, Main.settings.fogMaxDistance, Main.settings.fogMaxHeight);
+        private SkyData.NightSkySettings NightSkySettings = new SkyData.NightSkySettings(Main.settings.NightFixedExposureFloat, Main.settings.NightSkyboxExposureFloat, Main.settings.NightRotateFloat, Main.settings.NightIndirectDiffuse, Main.settings.NightIndirectSpecular);
+        private SkyData.SunSetSkySettings SunSetSkySettings = new SkyData.SunSetSkySettings(Main.settings.SunSetSkyExposureFloat, Main.settings.SunSetSkyboxExposureFloat, Main.settings.SunSetRotateFloat, Main.settings.SunSetIndirectDiffuse, Main.settings.SunSetIndirectSpecular);
+        private SkyData.BlueSkySettings BlueSkySettings = new SkyData.BlueSkySettings(Main.settings.BlueSkyExposureFloat, Main.settings.BlueSkyboxExposureFloat, Main.settings.BlueRotateFloat, Main.settings.BlueSkyIndirectDiffuse, Main.settings.BlueSkyIndirectSepcular);
+
         private Vector3 UpdatedSpeed;
         private float oldDensityDist;
 
         public void ResetDataSettings()
         {
+            NightSkySettings = new SkyData.NightSkySettings(0, 0, 0, 0, 0);
+            SunSetSkySettings = new SkyData.SunSetSkySettings(0, 0, 0, 0, 0);
+            BlueSkySettings = new SkyData.BlueSkySettings(0, 0, 0, 0, 0);
+
             FogSettings = new WeatherData.FogSettings(0, 0, 0, 0);
             leafSettings = new WeatherData.LeafSettings(0, 0, 0, 0, 0);
             snowSettings = new WeatherData.SnowSettings(0, 0, 0, 0, 0);
             rainSettings = new WeatherData.RainSettings(0, 0, 0, 0, 0);
             cloudSettings = new WeatherData.CloudSettings(0, 0, 0, 0, new Vector3(0, 0, 0), 0, 0);
+        }
+        private void UpdateNightSkySettings()
+        {
+            if (volume[0] == null)
+                return;
+
+            // Night Sky
+            if (NightSkySettings.Exposure != Main.settings.NightFixedExposureFloat)
+            {
+                exposure[0].fixedExposure.Override(Main.settings.NightFixedExposureFloat);
+                NightSkySettings.Exposure = Main.settings.NightFixedExposureFloat;
+            }
+            if (NightSkySettings.Skyexposure != Main.settings.NightSkyboxExposureFloat)
+            {
+                activeHDRI[0].exposure.Override(Main.settings.NightSkyboxExposureFloat);
+                NightSkySettings.Skyexposure = Main.settings.NightSkyboxExposureFloat;
+            }
+            if (NightSkySettings.Rotation != Main.settings.NightRotateFloat)
+            {
+                activeHDRI[0].rotation.Override(Main.settings.NightRotateFloat);
+                NightSkySettings.Rotation = Main.settings.NightRotateFloat;
+            }
+            if (NightSkySettings.IndirectDiffuse != Main.settings.NightIndirectDiffuse)
+            {
+                indirectLight[0].indirectDiffuseIntensity.Override(Main.settings.NightIndirectDiffuse);
+                NightSkySettings.IndirectDiffuse = Main.settings.NightIndirectDiffuse;
+            }
+            if (NightSkySettings.IndirectSpecular != Main.settings.NightIndirectSpecular)
+            {
+                indirectLight[0].indirectSpecularIntensity.Override(Main.settings.NightIndirectSpecular);
+                NightSkySettings.IndirectSpecular = Main.settings.NightIndirectSpecular;
+            }
+        }
+        private void UpdateSunSetSkySettings()
+        {
+            if (volume[1] == null)
+                return;
+
+            // Sun Set Sky
+            if (SunSetSkySettings.Exposure != Main.settings.SunSetSkyExposureFloat)
+            {
+                exposure[1].fixedExposure.Override(Main.settings.SunSetSkyExposureFloat);
+                SunSetSkySettings.Exposure = Main.settings.SunSetSkyExposureFloat;
+            }
+            if (SunSetSkySettings.Skyexposure != Main.settings.SunSetSkyboxExposureFloat)
+            {
+                activeHDRI[1].exposure.Override(Main.settings.SunSetSkyboxExposureFloat);
+                SunSetSkySettings.Skyexposure = Main.settings.SunSetSkyboxExposureFloat;
+            }
+            if (SunSetSkySettings.Rotation != Main.settings.SunSetRotateFloat)
+            {
+                activeHDRI[1].rotation.Override(Main.settings.SunSetRotateFloat);
+                SunSetSkySettings.Rotation = Main.settings.SunSetRotateFloat;
+            }
+            if (SunSetSkySettings.IndirectDiffuse != Main.settings.SunSetIndirectDiffuse)
+            {
+                indirectLight[1].indirectDiffuseIntensity.Override(Main.settings.SunSetIndirectDiffuse);
+                SunSetSkySettings.IndirectDiffuse = Main.settings.SunSetIndirectDiffuse;
+            }
+            if (SunSetSkySettings.IndirectSpecular != Main.settings.SunSetIndirectSpecular)
+            {
+                indirectLight[1].indirectSpecularIntensity.Override(Main.settings.SunSetIndirectSpecular);
+                SunSetSkySettings.IndirectSpecular = Main.settings.SunSetIndirectSpecular;
+            }
+        }
+        private void UpdateBlueSkySettings()
+        {
+            if (volume[2] == null)
+                return;
+
+            // Blue Sky
+            if (BlueSkySettings.Exposure != Main.settings.BlueSkyExposureFloat)
+            {
+                exposure[2].fixedExposure.Override(Main.settings.BlueSkyExposureFloat);
+                BlueSkySettings.Exposure = Main.settings.BlueSkyExposureFloat;
+            }
+            if (BlueSkySettings.Skyexposure != Main.settings.BlueSkyboxExposureFloat)
+            {
+                activeHDRI[2].exposure.Override(Main.settings.BlueSkyboxExposureFloat);
+                BlueSkySettings.Skyexposure = Main.settings.BlueSkyboxExposureFloat;
+            }
+            if (BlueSkySettings.Rotation != Main.settings.BlueRotateFloat)
+            {
+                activeHDRI[2].rotation.Override(Main.settings.BlueRotateFloat);
+                BlueSkySettings.Rotation = Main.settings.BlueRotateFloat;
+            }
+            if (BlueSkySettings.IndirectDiffuse != Main.settings.BlueSkyIndirectDiffuse)
+            {
+                indirectLight[2].indirectDiffuseIntensity.Override(Main.settings.BlueSkyIndirectDiffuse);
+                BlueSkySettings.IndirectDiffuse = Main.settings.BlueSkyIndirectDiffuse;
+            }
+            if (BlueSkySettings.IndirectSpecular != Main.settings.BlueSkyIndirectSepcular)
+            {
+                indirectLight[2].indirectSpecularIntensity.Override(Main.settings.BlueSkyIndirectSepcular);
+                BlueSkySettings.IndirectSpecular = Main.settings.BlueSkyIndirectSepcular;
+            }
         }
         private void UpdateFogSettings()
         {
@@ -398,7 +531,6 @@ namespace XLWeather.Controller
             Main.settings.VolWeightfloat = Main.settings.DefaultVolWeight;
             //currentMapVolume.weight = Main.settings.DefaultVolWeight;
         }
-
 
         // ------------- End Update Settings -----------------
 
