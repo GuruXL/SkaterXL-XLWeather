@@ -37,11 +37,12 @@ namespace XLWeather.Utils
         
         private void OnSceneUnloaded(Scene scene)
         {
+            
             if (Main.settings.MapLayersToggle && scene.name != "LoadingScene")
             {
                 Main.MapLightctrl.ResetLayerToggles();
             }
-
+            
             Main.Logger.Log("Scene Unloaded: " + scene.name);
         }
         
@@ -52,12 +53,12 @@ namespace XLWeather.Utils
             Main.MapLightctrl.ResetMainLight();
             Main.MapLightctrl.GetLights();
             //Main.MapLightctrl.GetReflectionProbes();
-
+            
             if (Main.settings.MapLayersToggle)
             {
                 Main.MapLightctrl.GetLayerObjects();
             }
-
+            
             if (ToggleStateData.DayNightToggle)
             {
                 Main.MapLightctrl.ToggleMainLights(false);

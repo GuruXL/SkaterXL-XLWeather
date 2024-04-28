@@ -55,7 +55,7 @@ namespace XLWeather.Controller
         
         private void FixedUpdate()
         {
-            //HandleSunStateCheck();
+            //HandleSunStateCheck(); // old method, handle in update instead
 
             /*
             if (!Main.settings.MapLayersToggle)
@@ -67,6 +67,8 @@ namespace XLWeather.Controller
             }
             */
         }
+
+        
         private void HandleSunStateCheck()
         {
             if (!Main.settings.MapLayersToggle)
@@ -95,7 +97,8 @@ namespace XLWeather.Controller
                 }
             }
         }
-
+        
+        
         private void ResetSunCheckRoutine()
         {
             if (SunStateCheckCoroutine != null) // Make sure the reference is not null
@@ -107,6 +110,7 @@ namespace XLWeather.Controller
             Main.Logger.Log($"Dynamic light coroutine started");
             isCheckSunRunning = false;
         }
+        
         /* old version
         private void HandleSunStateCheck()
         {
@@ -224,6 +228,7 @@ namespace XLWeather.Controller
 
         
         // ------- Toggles Objects on and off during Day Night if they are on Layer 29 ------------
+        
         public void GetLayerObjects()
         {
             if (GameStateMachine.Instance.CurrentState.GetType() == typeof(GearSelectionState))
@@ -233,8 +238,7 @@ namespace XLWeather.Controller
             GetLayerGO();
             GetMapMaterials();
             //GetReflectionProbes();
-        }
-
+        }        
         private void GetLayerMapLights()
         {
             TaggedLightsList = new List<Light>();
@@ -252,8 +256,7 @@ namespace XLWeather.Controller
             }
 
             Main.Logger.Log($"{TaggedLightsList.Count} Map Lights on Layer 30");
-        }
-
+        }    
         private void GetLayerGO()
         {
             TaggedGO = new List<GameObject>();
@@ -273,8 +276,7 @@ namespace XLWeather.Controller
             }
 
             Main.Logger.Log($"{TaggedGO.Count} Game Objects on Layer 29");
-        }
-
+        }            
         private void ToggleMapLights(bool state)
         {
             if (TaggedLightsList == null)
@@ -288,7 +290,7 @@ namespace XLWeather.Controller
             }
             Main.Logger.Log($"{i} : lights toggled");
 
-        }
+        } 
         private void ToggleLayerGO(bool state)
         {
             if (TaggedGO == null)
@@ -301,8 +303,7 @@ namespace XLWeather.Controller
                 i++;
             }
             Main.Logger.Log($"{i} : Game Objects toggled");
-        }
-
+        }    
         private IEnumerator CheckSunState()
         {
             while (true) // Infinite loop to continuously check the condition
@@ -319,8 +320,7 @@ namespace XLWeather.Controller
                 yield return new WaitForSeconds(0.5f);
                 //yield return null;
             }
-        }
-
+        }          
         public void LayerSwitch(bool state)
         {
             //bool sunActive = Main.Cyclectrl.GetIsDay();
@@ -353,11 +353,11 @@ namespace XLWeather.Controller
             //toggleProbes(true);
             Main.Logger.Log("Layer Objects Reset");
         }
-
-        // ------- End Toggle for Tagged Lights ---------------
         
+        // ------- End Toggle for Tagged Lights ---------------     
         
         // ----------- get map materials -----------------
+        
         private void GetMapMaterials()
         {
             hdrpMaterials = new List<Material>();
@@ -425,7 +425,7 @@ namespace XLWeather.Controller
 
             Main.Logger.Log($"Emissive materials {(state ? "enabled" : "disabled")}");
         }
-
+        
         // ---------- end of Material changes  --------------
 
 
